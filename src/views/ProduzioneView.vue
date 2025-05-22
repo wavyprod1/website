@@ -145,21 +145,14 @@
 /* Stile per il contenuto della page-hero */
 
 
-/* Stile per i titoli di sezione (H2) su sfondi chiari */
-.section-title-on-light {
-  color: var(--color-dark-gray);
-  text-shadow: none;
-  text-align: center;
-  margin-bottom: 3rem;
-  /* font-size e text-transform ereditati da h2 globale */
-}
+
 
 /* Titoli h2 specifici se necessario, altrimenti .section-title-on-light è sufficiente */
 /* .service-detail-title è ridondante se si usa .section-title-on-light */
 
 
 .service-detail-section {
-  /* padding: 5rem 0; Ereditato da 'section' nel CSS globale */
+  padding: 1rem 0;
 }
 /* Classi esplicite per lo sfondo */
 .service-detail-section.bg-light {
@@ -177,34 +170,12 @@
 .service-detail-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 3rem;
   align-items: flex-start; /* Allinea gli item all'inizio del loro asse trasversale */
 }
 
-.service-detail-text-wrapper,
-.service-detail-image-wrapper {
-  flex: 1;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column; /* Per impilare immagine e box relativo */
-}
 
-.service-detail-text h4 {
-  color: var(--color-dark-gray);
-  text-shadow: none;
-  text-transform: none; /* Come da stile originale */
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-  font-weight: 700; /* Rende strong implicito */
-}
-.service-detail-text p {
-  color: var(--color-dark-gray); /* Testo scuro su sfondo chiaro/bianco */
-  margin-bottom: 1rem;
-  line-height: 1.7;
-}
-.service-detail-text strong { /* Se vuoi dare uno stile diverso agli strong dentro i p */
-    font-weight: 700; /* Già default, ma per esplicitarlo */
-}
+
+
 
 
 .service-detail-image,
@@ -319,6 +290,9 @@
   min-width: 250px;
   display: flex;
   justify-content: center;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
   align-items: center;
 }
 
@@ -416,6 +390,7 @@
     order: 2;
     width: 100%;
   }
+
   .service-detail-image,
   .image-related-box {
     width: 100%;

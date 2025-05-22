@@ -278,8 +278,7 @@ const allPortfolioItems = computed(() => {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr)); /* Ensures max 3 columns */
-  
+  grid-template-columns: repeat(3, 1fr); /* Force 3 columns */
   gap: 2rem;
   margin-top: 3rem; /* Spazio dal titolo della sezione */
 }
@@ -428,6 +427,32 @@ const allPortfolioItems = computed(() => {
   color: var(--color-dark-gray);
   width: 100%;
   /* Removing max-width and margin auto to keep original full-width layout */
+}
+
+/* Update the .portfolio-grid styles */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Force 3 columns */
+  gap: 2rem;
+  margin-top: 3rem; /* Spazio dal titolo della sezione */
+}
+
+/* Add styles for empty grid spaces */
+.portfolio-grid::after {
+  content: '';
+  grid-column: auto / span 1;
+}
+
+@media (max-width: 992px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
 }
 
 /* Remove or update the desktop media query */

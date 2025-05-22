@@ -58,13 +58,15 @@ onUnmounted(() => {
                 Tutto il tempo necessario per ottenere la performance perfetta, un ambiente
                 professionale e consigli tecnici.
               </p>
+              <div class="btn-wrapper">
               <button
                 @click="openEquipmentModal"
                 class="btn btn-secondary"
-                style="margin-top: 1.5rem"
+                style="margin-bottom: 1.5rem"
               >
                 SCHEDA TECNICA STUDIO
               </button>
+              </div>
             </div>
           </div>
           <div class="service-detail-image-wrapper">
@@ -85,7 +87,7 @@ onUnmounted(() => {
       <div class="container">
         <h2 class="section-title section-title-on-light">Mixing & Mastering</h2>
         <div class="service-detail-content">
-          <div class="service-detail-text-wrapper">
+          <div class="service-detail-text-wrapper container">
             <div class="service-detail-text">
               <p>
                 Non mi limito a bilanciare i volumi. Plasmo ogni suono per dare al tuo brano
@@ -94,7 +96,7 @@ onUnmounted(() => {
               </p>
               <p>Ed il mio lavoro di mixing e mastering te lo garantisce.</p>
             </div>
-            <div class="guarantee-box image-related-box">
+            <div class="guarantee-box">
               <!-- .guarantee-title (h3) sarà bianco con ombra su sfondo verde -->
               <h3 class="guarantee-title">LE MIE GARANZIE PER TE:</h3>
               <ul class="guarantee-list">
@@ -106,7 +108,7 @@ onUnmounted(() => {
               </ul>
             </div>
           </div>
-          <div class="service-detail-image-wrapper">
+          <div class="service-detail-image-wrapper container">
             <div class="service-detail-image">
               <img
                 src="/images/mix-master/speakers.jpg"
@@ -164,14 +166,7 @@ onUnmounted(() => {
 <style scoped>
 
 
-/* Stile per i titoli di sezione (H2) su sfondi chiari */
-.section-title-on-light {
-  color: var(--color-dark-gray);
-  text-shadow: none;
-  text-align: center;
-  margin-bottom: 3rem;
-  /* font-size e text-transform ereditati da h2 globale */
-}
+
 
 /* Titoli h2 specifici se necessario, altrimenti .section-title-on-light è sufficiente */
 /* .service-detail-title è ridondante se si usa .section-title-on-light */
@@ -188,31 +183,14 @@ onUnmounted(() => {
 .service-detail-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 3rem;
+
   align-items: flex-start; /* Allinea gli item all'inizio del loro asse trasversale */
 }
 
-.service-detail-text-wrapper,
-.service-detail-image-wrapper {
-  flex: 1;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-}
-/* Assicura che l'immagine e il box relativo siano centrati se il wrapper è più largo */
-.service-detail-image-wrapper {
-    align-items: center; /* Centra orizzontalmente l'immagine e il box se sono più stretti */
-}
-.service-detail-text-wrapper {
-    align-items: flex-start; /* Allinea il testo a sinistra */
-}
 
 
-.service-detail-text p {
-  color: var(--color-dark-gray); /* Testo scuro su sfondo chiaro/bianco */
-  margin-bottom: 1rem;
-  line-height: 1.7;
-}
+
+
 
 .service-detail-image {
   position: relative;
@@ -230,11 +208,6 @@ onUnmounted(() => {
   object-fit: cover;
 }
 
-.image-related-box {
-  margin-top: 1.5rem;
-  width: 100%;
-  max-width: 500px; /* Coerente con service-detail-image */
-}
 
 .guarantee-box {
   background-color: var(--color-green); /* Sfondo verde per guarantee box */
@@ -244,6 +217,8 @@ onUnmounted(() => {
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  order: 2;
+      margin-bottom: 1.5rem;
 }
 .guarantee-box::before { /* Stile nastro GARANZIA */
   content: 'GARANZIA';
@@ -378,13 +353,8 @@ onUnmounted(() => {
   .service-detail-content {
     flex-direction: column;
   }
-  .service-detail-text-wrapper { order: 1; align-items: stretch; }
-  .service-detail-image-wrapper { order: 2; width: 100%; align-items: center; }
-  .service-detail-image,
-  .image-related-box {
-    width: 100%;
-    max-width: none; /* Immagine e box prendono tutta la larghezza */
-  }
+
+
 
   /* Titoli di sezione H2 */
   .section-title-on-light,
