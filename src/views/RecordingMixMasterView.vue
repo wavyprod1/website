@@ -87,7 +87,7 @@ onUnmounted(() => {
       <div class="container">
         <h2 class="section-title section-title-on-light">Mixing & Mastering</h2>
         <div class="service-detail-content">
-          <div class="service-detail-text-wrapper container">
+          <div class="service-detail-text-wrapper">
             <div class="service-detail-text">
               <p>
                 Non mi limito a bilanciare i volumi. Plasmo ogni suono per dare al tuo brano
@@ -108,7 +108,7 @@ onUnmounted(() => {
               </ul>
             </div>
           </div>
-          <div class="service-detail-image-wrapper container">
+          <div class="service-detail-image-wrapper">
             <div class="service-detail-image">
               <img
                 src="/images/mix-master/speakers.jpg"
@@ -184,7 +184,7 @@ onUnmounted(() => {
   display: flex;
   flex-wrap: wrap;
 
-  align-items: flex-start; /* Allinea gli item all'inizio del loro asse trasversale */
+  align-items: flex-start;
 }
 
 
@@ -352,6 +352,7 @@ onUnmounted(() => {
 @media (max-width: 768px) { /* Mobile */
   .service-detail-content {
     flex-direction: column;
+    align-items: center;
   }
 
 

@@ -54,8 +54,7 @@ const starEmoji = '⭐';
     <!-- Classe .cta-primary dal CSS globale gestisce sfondo e colori testo -->
     <section class="cta cta-primary">
       <div class="container">
-        <h2 class="section-title">SEI GIÀ PRONTO A SVILUPPARE LA TUA MUSICA?</h2>
-        <p class="section-intro">Facciamo il primo passo insieme.</p>
+        <h2 class="section-title">VUOI CREARE IL TUO PROSSIMO BRANO INSIEME?</h2>
         <a
           href="https://wa.me/393661980944?text=Ciao%20Elia%2C%20vorrei%20raccontarti%20del%20mio%20progetto%20musicale%21"
           class="btn btn-primary"
@@ -68,7 +67,7 @@ const starEmoji = '⭐';
     <!-- Classe .section-bg-light per sfondo chiaro e testo scuro (definita nello scoped CSS) -->
     <section class="reviews section-bg-light">
       <div class="container">
-        <h2 class="section-title">COSA DICONO GLI ARTISTI CHE HANNO SCELTO DI AFFIDARSI A ME</h2>
+        <h2 class="section-title">COSA DICONO GLI ARTISTI CHE LAVORANO CON ME</h2>
          <div class="google-link-container">
           <a href="https://g.co/kgs/yNMLUtt" target="_blank" class="google-reviews-link">
               Visualizza tutte le recensioni su Google
