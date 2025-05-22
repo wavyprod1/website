@@ -4,6 +4,8 @@ import { useRoute } from 'vue-router' // Importa useRoute
 // Importa i dati dal file JSON
 import portfolioData from '@/data/portfolioData.json'
 
+const publicPath = import.meta.env.BASE_URL;
+
 const route = useRoute() // Istanzia useRoute
 
 // Stato per i modali
@@ -95,7 +97,7 @@ const allPortfolioItems = computed(() => {
             @click="openModal(artist.id)"
           >
             <div class="portfolio-item-image">
-              <img :src="artist.thumbnailImage" :alt="artist.name" v-if="artist.thumbnailImage" />
+              <img :src="`${publicPath}${artist.thumbnailImage}`" :alt="artist.name" v-if="artist.thumbnailImage" />
               <div
                 v-else
                 style="
@@ -193,7 +195,7 @@ const allPortfolioItems = computed(() => {
               ></iframe>
             </div>
             <div v-else-if="itemData.modalImage" class="portfolio-modal-image">
-              <img :src="itemData.modalImage" :alt="itemData.name" />
+              <img :src="`${publicPath}${itemData.modalImage}`" :alt="itemData.name" />
             </div>
             <div v-else class="portfolio-modal-image">
               <div
