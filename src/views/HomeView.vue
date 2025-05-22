@@ -67,7 +67,7 @@ const starEmoji = '⭐';
     <!-- Classe .section-bg-light per sfondo chiaro e testo scuro (definita nello scoped CSS) -->
     <section class="reviews section-bg-light">
       <div class="container">
-        <h2 class="section-title">COSA DICONO GLI ARTISTI CHE LAVORANO CON ME</h2>
+        <h2 class="section-title">COSA DICONO GLI ARTISTI DI ME</h2>
          <div class="google-link-container">
           <a href="https://g.co/kgs/yNMLUtt" target="_blank" class="google-reviews-link">
               Visualizza tutte le recensioni su Google
