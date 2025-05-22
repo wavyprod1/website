@@ -479,7 +479,10 @@ footer {
   }
 
   .hero {
-    height: 90vh;
+    min-height: 90vh; /* Prova con min-height */
+    height: auto;     /* Permetti all'altezza di adattarsi al contenuto */
+    padding-top: 70px; /* Aggiungi padding-top per compensare l'header fisso */
+    padding-bottom: 2rem; /* Aggiungi un po' di padding in basso */
   }
 }
 
@@ -498,7 +501,7 @@ footer {
 
   .nav-menu {
     position: fixed;
-    top: 70px; /* Adjust based on your header height */
+    top: 50px; /* Adjust based on your header height */
     left: -100%;
     flex-direction: column;
     background-color: var(--color-dark-gray);
