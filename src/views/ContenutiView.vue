@@ -102,21 +102,6 @@
       </div>
     </section>
 
-    <!-- CTA Section (Main Project CTA) -->
-    <section class="cta cta-primary">
-      <div class="container">
-        <h2 class="cta-title">VUOI APPROFONDIRE QUESTI ARGOMENTI INSIEME?</h2>
-        <p class="cta-text">
-          Parliamone, vediamo come posso aiutarti a far crescere la tua musica.
-        </p>
-        <a
-          href="https://wa.me/393661980944?text=Ciao%20Elia%2C%20vorrei%20raccontarti%20del%20mio%20progetto%20musicale%21"
-          class="btn btn-primary"
-          target="_blank"
-          >RACCONTAMI DEL TUO PROGETTO</a
-        >
-      </div>
-    </section>
   </main>
 </template>
 

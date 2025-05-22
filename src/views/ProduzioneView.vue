@@ -20,9 +20,9 @@
     <!-- Page Hero Section -->
     <section class="page-hero">
       <div class="container">
-        <h1>PRODUZIONE MUSICALE:<br />DIAMO VITA ALLE TUE IDEE</h1>
+        <h1>PRODUZIONE MUSICALE:</h1>
         <p class="page-intro">
-          Trasformiamo la tua visione artistica in un brano che ti rispecchi al 100%,<br />originale
+          Per trasformare la tua visione artistica in un brano che ti rispecchi al 100%,<br />originale
           e autentico.
         </p>
       </div>
@@ -31,7 +31,7 @@
     <!-- Come Lavoro Section (COME NASCONO LE TUE PRODUZIONI) -->
     <section class="service-detail-section">
       <div class="container">
-        <h2 class="benefits-title">COME NASCONO LE TUE PRODUZIONI</h2>
+        <h2 class="benefits-title">COME NASCONO LE PRODUZIONI</h2>
 
         <div class="service-detail-content">
           <div class="service-detail-text-wrapper">

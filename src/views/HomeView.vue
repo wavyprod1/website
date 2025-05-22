@@ -1,488 +1,460 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { ref } from 'vue' // Rimosso onMounted perché le reviews sono ora nel template
+//import { RouterLink } from 'vue-router'
 
 // Importa Swiper Vue components e stili
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
-import 'swiper/css/pagination'; // Già presente per i puntini
-import 'swiper/css/navigation'; // Necessario per i pulsanti di navigazione
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
-// Importa i moduli specifici che userai
-import { Pagination, Navigation } from 'swiper/modules'; // <<<<<<< MODIFICA QUI
+// Importa i moduli Swiper
+import { Pagination, Navigation, Autoplay } from 'swiper/modules'; // Aggiunto Autoplay come opzione
 
-// Array di moduli da passare a Swiper
-const swiperModules = [Pagination, Navigation]; // <<<<<<< MODIFICA QUI
+const swiperModules = [Pagination, Navigation, Autoplay];
 
-onMounted(() => {
-  // Google Reviews Integration
-  const reviewsContainer = document.querySelector('.google-reviews-container')
-  if (reviewsContainer) {
-    const reviews = [
-      { author_name: 'Camilla Gainotti', rating: 5, text: 'Esperienza super quella in studio con Elia! È molto creativo, professionale, preciso e ha un gran gusto musicale! Abbiamo finora prodotto un paio di canzoni con lui e sicuramente andremo avanti a produrne altre!', time: '' },
-      { author_name: 'Giovanni Licari', rating: 5, text: 'Abbiamo collaborato con "Ancora" un progetto musicale, produzione mix e master di livello, organizzazione di un live a Milano, con uno shot personalizzato per l\'occasione! Che dire ... Una persona rara ed un artista che mi ha permesso di produrre e far conoscere la mia musica anche fuori dalla mia città!', time: '' },
-      { author_name: 'Tommaso Ottocento', rating: 5, text: 'Elia è molto professionale e simpatico. Ti fa sentire a tuo agio e cerca di capire il tuo progetto. Lavorare con lui è sempre stimolante e appassionante.', time: '' },
-      { author_name: 'Davide Bussolino', rating: 5, text: 'Sono arrivato in studio senza realmente sapere come fare le cose, Elia mi ha guidato nel migliore dei modi, davvero! È uscito un prodotto che non solo mia ha soddisfatto ma non mi sarei aspettato suonasse in quel modo, quindi davvero grazie ad Elia! Ve lo consiglio di cuore, oltre ad essere un professionista impeccabile, e a lavorare in un ambiente con attrezzatura iper professionale, è una gran persona!', time: '' },
-    ];
+// Dati per le recensioni (ora direttamente nello script setup)
+const reviewsData = ref([
+  { id: 1, author_name: 'Camilla Gainotti', rating: 5, text: 'Esperienza super quella in studio con Elia! È molto creativo, professionale, preciso e ha un gran gusto musicale! Abbiamo finora prodotto un paio di canzoni con lui e sicuramente andremo avanti a produrne altre!' },
+  { id: 2, author_name: 'Giovanni Licari', rating: 5, text: 'Abbiamo collaborato con "Ancora" un progetto musicale, produzione mix e master di livello, organizzazione di un live a Milano, con uno shot personalizzato per l\'occasione! Che dire ... Una persona rara ed un artista che mi ha permesso di produrre e far conoscere la mia musica anche fuori dalla mia città!' },
+  { id: 3, author_name: 'Tommaso Ottocento', rating: 5, text: 'Elia è molto professionale e simpatico. Ti fa sentire a tuo agio e cerca di capire il tuo progetto. Lavorare con lui è sempre stimolante e appassionante.' },
+  { id: 4, author_name: 'Davide Bussolino', rating: 5, text: 'Sono arrivato in studio senza realmente sapere come fare le cose, Elia mi ha guidato nel migliore dei modi, davvero! È uscito un prodotto che non solo mia ha soddisfatto ma non mi sarei aspettato suonasse in quel modo, quindi davvero grazie ad Elia! Ve lo consiglio di cuore, oltre ad essere un professionista impeccabile, e a lavorare in un ambiente con attrezzatura iper professionale, è una gran persona!' },
+]);
 
-    const loadingMessage = reviewsContainer.querySelector('.reviews-loading')
-    if (loadingMessage) loadingMessage.remove();
-    else reviewsContainer.innerHTML = '';
 
-    const reviewsWrapper = document.createElement('div')
-    reviewsWrapper.className = 'reviews-wrapper'
+const starEmoji = '⭐'; // Emoji per le stelle
 
-    const googleLink = document.createElement('div')
-    googleLink.className = 'google-link'
-    googleLink.style.textAlign = 'center'
-    googleLink.style.marginBottom = '2rem'
-    googleLink.innerHTML = `
-      <a href="https://g.co/kgs/yNMLUtt" target="_blank" style="color: var(--color-blue); text-decoration: none; font-weight: bold;">
-          Visualizza tutte le recensioni su Google
-      </a>
-    `;
-    reviewsContainer.appendChild(googleLink)
-
-    reviews.forEach((review) => {
-      const reviewCard = document.createElement('div')
-      reviewCard.className = 'review-card'
-      reviewCard.style.backgroundColor = 'white'
-      reviewCard.style.borderRadius = '10px'
-      reviewCard.style.padding = '1.5rem'
-      reviewCard.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)'
-
-      let stars = ''
-      for (let i = 0; i < review.rating; i++) {
-        stars += '<span style="color: #fbbc05;">★</span>'
-      }
-
-      reviewCard.innerHTML = `
-        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #4285f4; color: white; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-weight: bold; flex-shrink: 0;">
-                ${review.author_name.charAt(0)}
-            </div>
-            <div>
-                <div style="font-weight: bold; color: var(--color-dark-gray);">${review.author_name}</div>
-                <div style="font-size: 0.8rem; color: #70757a;">${review.time}</div>
-            </div>
-        </div>
-        <div style="margin-bottom: 0.5rem;">${stars}</div>
-        <p style="color: #333; line-height: 1.5; font-size: 0.9rem;">${review.text}</p>
-      `;
-      reviewsWrapper.appendChild(reviewCard)
-    })
-    reviewsContainer.appendChild(reviewsWrapper)
-  }
-})
 </script>
 
 <template>
   <main>
-    <!-- Hero Section -->
+    <!-- HERO SECTION -->
     <section class="hero">
       <div class="hero-bg"></div>
-      <div class="container hero-container-mobile-flex">
-        <!-- Layout per Desktop -->
-        <div class="hero-layout-desktop">
-          <div class="hero-text-content-desktop">
-            <h1>ELIA PIRRELLO</h1>
-            <h2 class="hero-subtitle">Il Tuo Produttore Musicale Di Fiducia</h2>
-            <p class="hero-description">
-              Dalla scrittura alla produzione, dalla registrazione alla release.
-              <br /><br />
-              Se il tuo obbiettivo non è quello di "acquistare un servizio", ma di sviluppare un
-              progetto musicale, sei nel posto giusto.
-              <br /><br />
-              Il mio impegno è quello di essere l'artista ed il produttore che avrei voluto avere al
-              mio fianco quando ho iniziato. Quello a cui avrei affidato il mio progetto musicale ad
-              occhi chiusi.
-            </p>
-            <a
-              href="https://wa.me/393661980944?text=Ciao%20Elia%2C%20vorrei%20raccontarti%20del%20mio%20progetto%20musicale%21"
-              class="btn btn-primary"
-              target="_blank"
-              >RACCONTAMI DEL TUO PROGETTO</a
-            >
-          </div>
-          <div class="hero-image-container-desktop">
-            <img
-              src="/images/hero-profile.jpg"
-              alt="Elia Pirrello - Produttore Musicale"
-              class="hero-profile-img"
-            />
-          </div>
-        </div>
+      <div class="container hero-content-wrapper">
+        <div class="hero-text-column">
+          <h1 class="hero-main-title">ELIA PIRRELLO</h1>
+          <h2 class="hero-main-subtitle">Il Tuo Produttore Musicale Di Fiducia</h2>
+          <p class="hero-main-description">
+            Dalla scrittura alla produzione, dalla registrazione alla release.
+            <br /><br />
+            Se il tuo obbiettivo non è quello di "acquistare un servizio", ma di sviluppare un
+            progetto musicale, sei nel posto giusto.
+            <br /><br />
+            Il mio impegno è quello di essere l'artista ed il produttore che avrei voluto avere al
+            mio fianco quando ho iniziato. Quello a cui avrei affidato il mio progetto musicale ad
+            occhi chiusi.
+          </p>
 
-        <!-- Contenuto specifico per Mobile -->
-        <h1 class="hero-title-mobile">ELIA PIRRELLO</h1>
-        <h2 class="hero-subtitle-mobile">Il Tuo Produttore Musicale Di Fiducia</h2>
-        <div class="hero-image-container-mobile">
+        </div>
+        <div class="hero-image-column">
           <img
             src="/images/hero-profile-square.jpg"
             alt="Elia Pirrello - Produttore Musicale"
-            class="hero-profile-img-mobile"
+            class="hero-main-image"
           />
         </div>
-        <div class="hero-description-cta-mobile">
-            <p class="hero-description">
-              Dalla scrittura alla produzione, dalla registrazione alla release.
-              <br /><br />
-              Se il tuo obbiettivo non è quello di "acquistare un servizio", ma di sviluppare un
-              progetto musicale, sei nel posto giusto.
-              <br /><br />
-              Il mio impegno è quello di essere l'artista ed il produttore che avrei voluto avere al
-              mio fianco quando ho iniziato. Quello a cui avrei affidato il mio progetto musicale ad
-              occhi chiusi.
-            </p>
-            <a
-              href="https://wa.me/393661980944?text=Ciao%20Elia%2C%20vorrei%20raccontarti%20del%20mio%20progetto%20musicale%21"
-              class="btn btn-primary"
-              target="_blank"
-              >RACCONTAMI DEL TUO PROGETTO</a
-            >
-        </div>
       </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section class="benefits">
-      <div class="container">
-        <h2 class="benefits-title">COSA ASPETTARTI FACENDO MUSICA INSIEME</h2>
-        <p class="benefits-intro">Non solo un servizio, ma un percorso.</p>
 
-        <!-- Carosello per Mobile -->
-        <div class="benefits-carousel-mobile">
-          <swiper
-            :slides-per-view="1.2"
-            :space-between="15"
-            :centered-slides="true"
-            :pagination="{ clickable: true }"
-            :navigation="true"           
-            :modules="swiperModules"           
-            class="mySwiper"
-          >
-            <swiper-slide>
-              <div class="benefit-item">
-                <div class="benefit-icon icon-blue"><i class="fas fa-lightbulb"></i></div>
-                <h3 class="benefit-title">Massima Attenzione</h3>
-                <p class="benefit-text">Per comprendere la tua unicità.<br />Dall'idea al suono personalizzato.</p>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="benefit-item">
-                <div class="benefit-icon icon-green"><i class="fas fa-chart-line"></i></div>
-                <h3 class="benefit-title">Crescita Artistica</h3>
-                <p class="benefit-text">Acquisirai più consapevolezza per la tua carriera artistica:<br />Da metodi di scrittura unici a nozioni di marketing.</p>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="benefit-item">
-                <div class="benefit-icon icon-red"><i class="fas fa-users"></i></div>
-                <h3 class="benefit-title">Un Team al Tuo Fianco</h3>
-                <p class="benefit-text">Accesso a professionisti fidati (come SMM e Vocal Coach) per sviluppare ogni lato del tuo progetto artistico.</p>
-              </div>
-            </swiper-slide>
-            <!-- Aggiungi gli slot per i pulsanti di navigazione se vuoi posizionarli manualmente
-                 o lascia che Swiper li aggiunga automaticamente con :navigation="true" -->
-            <!--
-            <template #container-end>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-            </template>
-            -->
-          </swiper>
-        </div>
-
-        <!-- Griglia per Desktop -->
-        <div class="benefits-grid-desktop">
-          <div class="benefit-item">
-            <div class="benefit-icon icon-blue"><i class="fas fa-lightbulb"></i></div>
-            <h3 class="benefit-title">Massima Attenzione</h3>
-            <p class="benefit-text">Per comprendere la tua unicità.<br />Dall'idea al suono personalizzato.</p>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon icon-green"><i class="fas fa-chart-line"></i></div>
-            <h3 class="benefit-title">Crescita Artistica</h3>
-            <p class="benefit-text">Acquisirai più consapevolezza per la tua carriera artistica:<br />Da metodi di scrittura unici a nozioni di marketing.</p>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon icon-red"><i class="fas fa-users"></i></div>
-            <h3 class="benefit-title">Un Team al Tuo Fianco</h3>
-            <p class="benefit-text">Accesso a professionisti fidati (come SMM e Vocal Coach) per sviluppare ogni lato del tuo progetto artistico.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Reviews Section -->
+    <!-- REVIEWS SECTION -->
     <section class="reviews">
-      <div class="container reviews-container">
-        <h2>COSA DICONO GLI ARTISTI CHE HANNO SCELTO DI AFFIDARSI A ME</h2>
-        <div id="google-reviews" style="width: 100%; margin-top: 3rem">
-          <div class="google-reviews-container">
-            <div class="reviews-loading">Caricamento recensioni...</div>
-            <!-- Il JS popolerà .reviews-wrapper qui -->
-          </div>
+      <div class="container">
+        <h2 class="section-title reviews-title">COSA DICONO GLI ARTISTI CHE HANNO SCELTO DI AFFIDARSI A ME</h2>
+         <div class="google-link-container">
+          <a href="https://g.co/kgs/yNMLUtt" target="_blank" class="google-reviews-link">
+              Visualizza tutte le recensioni su Google
+          </a>
         </div>
+        <swiper
+          :modules="swiperModules"
+          :slides-per-view="1"
+          :space-between="30"
+          :centered-slides="true"
+          :loop="reviewsData.length > 1"
+          :pagination="{ clickable: true }"
+          :navigation="true"
+          :autoplay="{ delay: 5000, disableOnInteraction: false }"
+          :breakpoints="{
+            // Quando la larghezza della finestra è >= 768px
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+              centeredSlides: reviewsData.length > 2,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+              centeredSlides: reviewsData.length > 3,
+            }
+          }"
+          class="reviews-swiper"
+        >
+          <swiper-slide v-for="review in reviewsData" :key="review.id" class="review-slide">
+            <div class="review-card">
+              <div class="review-card-header">
+                <div class="review-author-avatar">
+                  {{ review.author_name.charAt(0) }}
+                </div>
+                <div class="review-author-info">
+                  <span class="review-author-name">{{ review.author_name }}</span>
+                  <span class="review-rating">{{ review.rating }} {{ starEmoji }}</span>
+                </div>
+              </div>
+              <p class="review-text">{{ review.text }}</p>
+            </div>
+          </swiper-slide>
+        </swiper>
       </div>
     </section>
 
-    <!-- Second CTA Section -->
+    <!-- CTA SECTION 1 (PRINCIPALE) -->
     <section class="cta cta-primary">
       <div class="container">
-        <h2 class="cta-title">SEI GIÀ PRONTO A SVILUPPARE LA TUA MUSICA?</h2>
-        <p class="cta-text">Facciamo il primo passo insieme.</p>
+        <h2 class="section-title cta-title">SEI GIÀ PRONTO A SVILUPPARE LA TUA MUSICA?</h2>
+        <p class="section-intro cta-text">Facciamo il primo passo insieme.</p>
         <a
           href="https://wa.me/393661980944?text=Ciao%20Elia%2C%20vorrei%20raccontarti%20del%20mio%20progetto%20musicale%21"
           class="btn btn-primary"
           target="_blank"
-          >RACCONTAMI DEL TUO PROGETTO</a
-        >
+        >RACCONTAMI DEL TUO PROGETTO</a>
       </div>
     </section>
 
-    <!-- Optional Soft CTA to Content -->
-    <section class="cta cta-secondary">
-      <div class="container">
-        <h3 class="cta-title">SE INVECE STAI ANCORA LAVORANDO SUI TUOI BRANI</h3>
-        <p class="cta-text">Ecco un paio di consigli per sbloccare la creatività.</p>
-        <RouterLink to="/contenuti" class="btn btn-secondary">SCOPRI I MIEI CONTENUTI</RouterLink>
-      </div>
-    </section>
   </main>
 </template>
 
 <style scoped>
-.reviews-loading {
+/* Stili generali di sezione (per coerenza, potrebbero essere globali) */
+.section-title {
   text-align: center;
-  padding: 2rem;
-  font-style: italic;
-  color: #70757a;
+  margin-bottom: 1rem; /* Ridotto rispetto al .benefits-title originale per più flessibilità */
+}
+.section-intro {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem auto; /* Centra e aggiunge spazio sotto */
 }
 
-/* Icone colorate per Benefits section */
+/* HERO SECTION */
+.hero {
+  /* L'altezza e il padding-top sono gestiti dal CSS globale per mobile */
+  /* min-height: 100vh;  Gestito globalmente */
+  /* padding-top: 70px; Gestito globalmente */
+  display: flex; /* Mantenuto dal globale */
+  align-items: center; /* Mantenuto dal globale */
+  position: relative; /* Mantenuto dal globale */
+  overflow: hidden; /* Mantenuto dal globale */
+}
+.hero-bg { /* Immagine di sfondo, già nel globale */ }
+
+.hero-content-wrapper { /* Nuovo wrapper per il contenuto della hero */
+  display: flex;
+  flex-direction: row; /* Default per desktop */
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem; /* Spazio tra testo e immagine su desktop */
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.hero-text-column {
+  flex: 1 1 55%; /* Permette al testo di prendere più spazio */
+  max-width: 650px;
+}
+.hero-main-title { /* h1 */
+  font-size: 3.2rem; /* Leggermente aggiustato */
+  margin-bottom: 0.75rem;
+}
+.hero-main-subtitle { /* h2 */
+  font-size: 1.6rem; /* Leggermente aggiustato */
+  margin-bottom: 1.5rem;
+  font-weight: normal; /* Sottotitolo meno pesante */
+  text-transform: none; /* Non uppercase per il sottotitolo */
+}
+.hero-main-description { /* p */
+  font-size: 1.1rem; /* Leggermente aggiustato */
+  margin-bottom: 2rem;
+  color: var(--color-light-gray); /* Testo descrizione più chiaro su sfondo scuro */
+}
+.hero-main-cta { /* .btn */
+  /* Stili del bottone già definiti globalmente */
+}
+
+.hero-image-column {
+  flex: 1 1 40%;
+  max-width: 400px; 
+  display: flex; /* Per centrare l'immagine se necessario */
+  justify-content: center;
+  align-items: center;
+}
+.hero-main-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5; /* Mantiene questo aspect ratio */
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+
+/* BENEFITS SECTION */
+.benefits .section-title { color: var(--color-dark-gray); } /* Titolo scuro su sfondo chiaro */
+.benefits .section-intro { color: var(--color-dark-gray); }
+
+.benefits-swiper {
+  padding-bottom: 3rem; /* Spazio per la paginazione */
+}
+.benefit-item {
+  background-color: var(--color-white);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  height: 300px; /* Altezza fissa per coerenza nel carosello */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Allinea contenuto in alto */
+  align-items: center;
+  box-sizing: border-box;
+}
+.benefit-icon { /* Stili già nel globale, ma per specificità del colore */
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
 .benefit-icon.icon-blue { color: var(--color-blue); }
 .benefit-icon.icon-green { color: var(--color-green); }
 .benefit-icon.icon-red { color: var(--color-red); }
-.benefit-icon.icon-yellow { color: var(--color-yellow); }
 
-
-/* HERO SECTION STYLES */
-.hero-layout-desktop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4rem;
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+.benefit-title {
+  color: var(--color-dark-gray); /* Titolo scuro */
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
 }
-.hero-text-content-desktop { flex: 0 1 60%; max-width: 650px; }
-.hero-image-container-desktop { flex: 0 1 40%; max-width: 400px; min-width: 270px; }
-.hero-profile-img { width: 100%; height: auto; max-height: 580px; object-fit: cover; border-radius: 10px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); }
-
-.hero-title-mobile,
-.hero-subtitle-mobile,
-.hero-image-container-mobile,
-.hero-description-cta-mobile {
-  display: none; /* Nascosti di default */
+.benefit-text {
+  color: var(--color-dark-gray); /* Testo scuro */
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 
-/* BENEFITS SECTION STYLES */
-.benefits-grid-desktop {
-  display: grid; /* Questo è lo stile per desktop */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+/* REVIEWS SECTION */
+.reviews {
+  background-color: var(--color-dark-gray); /* Sfondo scuro per le recensioni */
+  color: var(--color-white);
 }
-.benefits-carousel-mobile {
-  display: none; /* Nascosto di default su desktop */
-  position: relative; /* Necessario per posizionare i pulsanti di navigazione custom */
+.reviews .section-title { /* Titolo bianco su sfondo scuro */
+  color: var(--color-white);
+  margin-bottom: 1.5rem; /* Più spazio prima del link Google */
 }
-.benefits-carousel-mobile .benefit-item {
-  width: 260px;
-  min-width: 260px;
-  max-width: 260px;
-  height: 320px;
-  min-height: 320px;
-  max-height: 320px;
+.google-link-container {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.google-reviews-link {
+  color: var(--color-blue);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+.google-reviews-link:hover {
+  color: var(--color-light-gray);
+}
+
+.reviews-swiper {
+  padding-bottom: 3.5rem; /* Spazio per paginazione e navigazione */
+}
+.review-slide {
+  display: flex; /* Per centrare la card se è più stretta dello slide */
+  justify-content: center;
+  align-items: stretch; /* Fa sì che le card occupino l'altezza dello swiper-wrapper */
+  height: auto; /* Permette a swiper di calcolare l'altezza */
+  box-sizing: border-box;
+}
+.review-card {
+  background-color: var(--color-white);
+  color: var(--color-dark-gray);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  width: 100%; /* La card prende la larghezza dello slide */
+  max-width: 380px; /* Massimo per non essere troppo larga */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  /* Altezza fissa per tutte le card, aggiusta se necessario */
+  /* min-height: 280px;  O usa flex per allungare la card più corta */
   box-sizing: border-box;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
-  padding: 2rem 1rem 1rem 1rem;
 }
-
-/* Stili per i pulsanti di navigazione di Swiper */
-/* Puoi personalizzare questi stili come preferisci */
-:deep(.swiper-button-next),
-:deep(.swiper-button-prev) {
-  color: var(--color-red); /* Colore delle frecce */
-  background-color: rgba(255, 255, 255, 0.7);
+.review-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.review-author-avatar {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  width: 30px; /* Riduci dimensione dei pulsanti */
-  height: 30px;
-  margin-top: -15px; /* Per centrarli verticalmente rispetto allo slide */
-}
-:deep(.swiper-button-next::after),
-:deep(.swiper-button-prev::after) {
-  font-size: 14px; /* Riduci dimensione dell'icona della freccia */
+  background-color: var(--color-blue); /* Colore avatar */
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
+  font-size: 1.1rem;
+  margin-right: 12px;
+  flex-shrink: 0;
 }
-:deep(.swiper-button-prev) {
-  left: 5px; /* Avvicina i pulsanti ai bordi del carosello */
+.review-author-info {
+  display: flex;
+  flex-direction: column; /* Nome sopra, rating sotto se necessario */
+  align-items: flex-start; /* Allinea a sinistra */
+  flex-grow: 1;
 }
-:deep(.swiper-button-next) {
-  right: 5px;
+.review-author-name {
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--color-dark-gray);
+}
+.review-rating {
+  font-size: 0.9rem;
+  color: var(--color-dark-gray); /* O #fbbc05 per il colore della stella */
+  margin-left: auto; /* Spinge il rating a destra */
+  padding-left: 0.5rem; /* Spazio dal nome se sono sulla stessa riga */
 }
 
-/* Stili per la paginazione (puntini) di Swiper */
-:deep(.swiper-pagination-bullet) {
+/* Per mettere nome e rating sulla stessa riga con rating a destra */
+.review-author-info {
+    flex-direction: row;
+    justify-content: space-between; /* Spinge il rating all'estrema destra */
+    align-items: center; /* Allinea verticalmente se hanno altezze diverse */
+}
+
+
+.review-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333; /* Testo recensione un po' più scuro */
+  flex-grow: 1; /* Permette al testo di occupare lo spazio rimanente per l'altezza uguale */
+}
+
+/* Swiper Navigation/Pagination Colors (già definiti nel globale o qui) */
+:deep(.reviews-swiper .swiper-button-next),
+:deep(.reviews-swiper .swiper-button-prev) {
+  color: var(--color-white); /* Frecce bianche su sfondo scuro */
+  background-color: rgba(0,0,0,0.2);
+}
+:deep(.reviews-swiper .swiper-button-next::after),
+:deep(.reviews-swiper .swiper-button-prev::after) {
+  font-size: 16px;
+}
+:deep(.reviews-swiper .swiper-pagination-bullet) {
+  background-color: rgba(255,255,255,0.5);
+}
+:deep(.reviews-swiper .swiper-pagination-bullet-active) {
+  background-color: var(--color-white);
+}
+
+:deep(.benefits-swiper .swiper-button-next),
+:deep(.benefits-swiper .swiper-button-prev) {
+  color: var(--color-red); /* Frecce rosse su sfondo chiaro */
+}
+:deep(.benefits-swiper .swiper-pagination-bullet) {
   background-color: var(--color-dark-gray);
-  opacity: 0.5;
 }
-:deep(.swiper-pagination-bullet-active) {
+:deep(.benefits-swiper .swiper-pagination-bullet-active) {
   background-color: var(--color-red);
-  opacity: 1;
 }
 
 
-/* REVIEWS SECTION STYLES */
-:deep(.reviews-wrapper) {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 992px) { /* Tablet e sotto */
+  .hero-content-wrapper {
+    gap: 2rem;
+  }
+  .hero-main-title { font-size: 2.8rem; }
+  .hero-main-subtitle { font-size: 1.4rem; }
+  .hero-image-column { max-width: 320px; }
 }
 
-
-/* Mobile Layout (<= 768px) */
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Mobile */
   .hero {
+    padding-top: 70px; /* Assicurati che questo sia l'altezza del tuo header */
     min-height: 100vh;
-    height: auto;
-    display: flex;
-    align-items: center;
-    padding-top: 70px;
-    padding-bottom: 2rem;
-    box-sizing: border-box;
+    height: auto; /* Per permettere al contenuto di espandersi */
   }
-
-  .hero .container.hero-container-mobile-flex {
-    display: flex;
+  .hero-content-wrapper {
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: flex-start; /* Allinea all'inizio su mobile */
     text-align: center;
-    width: 100%;
-    height: calc(100vh - 70px - 2rem - 2rem);
-    padding: 1rem 0;
-    gap: 0.5rem;
+    padding-top: 2rem; /* Spazio extra in cima sotto l'header */
+    padding-bottom: 2rem; /* Spazio in fondo */
+    gap: 1.5rem; /* Gap ridotto per mobile */
   }
 
-  .hero-layout-desktop { display: none; }
-
-  .hero-title-mobile,
-  .hero-subtitle-mobile,
-  .hero-image-container-mobile,
-  .hero-description-cta-mobile {
-    display: block;
-    width: 100%;
-    padding: 0 1rem;
+  .hero-text-column {
+    order: 1; /* Testo prima (Titolo, Sottotitolo) */
+    max-width: 100%;
+    margin-bottom: 0; /* Rimuovi se il gap è sufficiente */
   }
-
-  .hero-title-mobile { order: 1; font-size: 2.2rem; margin-bottom: 0.25rem; }
-  .hero-subtitle-mobile { order: 2; font-size: 1.3rem; margin-bottom: 1rem; }
-
-  .hero-image-container-mobile {
-    order: 3;
-    width: 60vw;
-    max-width: 220px;
-    height: 60vw;
-    max-height: 220px;
-    min-width: 120px;
-    min-height: 120px;
-    margin: 0 auto 1rem auto;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    padding: 0;
-    aspect-ratio: 1 / 1;
-  }
-  .hero-profile-img-mobile {
-    width: 100%;
-    height: 100%;
-    min-width: 120px;
-    min-height: 120px;
-    object-fit: cover;
-    border-radius: 10px;
-    aspect-ratio: 1 / 1;
-  }
-
-  .hero-description-cta-mobile { order: 4; }
-  .hero-description-cta-mobile .hero-description {
-    font-size: 0.9rem;
+  .hero-main-title { order: 1; font-size: 2.2rem; margin-bottom: 0.5rem; }
+  .hero-main-subtitle { order: 2; font-size: 1.3rem; margin-bottom: 1.5rem; }
+  
+  .hero-image-column {
+    order: 3; /* Immagine dopo titolo e sottotitolo */
+    width: 70vw;
+    max-width: 280px; /* O la tua dimensione preferita per 4:5 */
     margin-bottom: 1.5rem;
-    max-width: 95%;
-    margin-left: auto;
-    margin-right: auto;
+  }
+  .hero-main-image {
+    aspect-ratio: 4 / 5; /* Forza l'aspect ratio qui */
+    width: 100%;
+    height: auto; /* L'altezza si adatta all'aspect ratio */
+    max-height: calc(280px * 5 / 4); /* Calcola max-height basato su max-width */
   }
 
-  /* Benefits Carousel su Mobile */
-  .benefits-grid-desktop { display: none; }
-  .benefits-carousel-mobile {
-    display: block;
-    padding: 0 0 2.5rem 0; /* Aumentato padding per i puntini e un po' di spazio sotto */
+  .hero-main-description {
+    order: 4; /* Descrizione dopo l'immagine */
+    font-size: 1rem;
+    max-width: 90%;
+    margin: 0 auto 2rem auto; /* Centra e aggiunge spazio */
+  }
+  .hero-main-cta {
+    order: 5; /* Bottone alla fine */
+  }
+
+  .benefits-swiper {
+     /* Breakpoint già gestito da swiper, assicurati che sia 1 slide per view */
   }
   .benefit-item {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+      height: auto; /* Su mobile, lascia che l'altezza si adatti */
+      min-height: 280px; /* Altezza minima per evitare che siano troppo schiacciati */
+      padding: 1.5rem;
   }
-  .benefit-item p.benefit-text { font-size: 0.9rem; }
 
-  /* Reviews Grid su Mobile */
-  :deep(.reviews-wrapper) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+  .reviews-swiper {
+    /* Breakpoint per 1 slide per view già gestito da swiper (default) */
   }
-  :deep(.review-card) { padding: 1rem; }
-  :deep(.review-card p) { font-size: 0.85rem; }
-  :deep(.review-card div[style*="font-weight: bold"]) { font-size: 0.9rem; }
-}
+  .review-card {
+    /* min-height: 260px; */ /* Altezza minima per le card su mobile */
+    /* L'altezza uguale è gestita da Swiper se usi `autoHeight: true` o assicurandoti
+       che il contenuto non vari troppo o usando `align-items: stretch` sullo slide.
+       Per ora, lasciamo che il contenuto determini l'altezza e usiamo `align-items: stretch`
+       sullo .review-slide.
+    */
+  }
+   .review-author-info {
+    flex-direction: column; /* Nome e rating uno sopra l'altro su mobile */
+    align-items: flex-start;
+  }
+  .review-rating {
+    margin-left: 0; /* Reset margin */
+    padding-left: 0;
+    margin-top: 0.25rem; /* Spazio tra nome e rating */
+  }
 
-/* Per schermi molto piccoli, potresti volere una singola colonna per le recensioni */
-@media (max-width: 480px) {
-  :deep(.reviews-wrapper) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  .hero-title-mobile { font-size: 2rem; }
-  .hero-subtitle-mobile { font-size: 1.1rem; }
-  .hero-image-container-mobile {
-    width: 55vw;
-    height: 55vw;
-    max-width: 180px; /* Riduci ulteriormente se necessario */
-    max-height: 180px;
-  }
-  .hero-description-cta-mobile .hero-description { font-size: 0.85rem; }
-
-  /* Riduci ulteriormente la dimensione dei pulsanti di navigazione Swiper */
-  :deep(.swiper-button-next),
-  :deep(.swiper-button-prev) {
-    width: 25px;
-    height: 25px;
-    margin-top: -12.5px;
-  }
-  :deep(.swiper-button-next::after),
-  :deep(.swiper-button-prev::after) {
-    font-size: 12px;
-  }
+  .section-title { font-size: 1.8rem; }
+  .section-intro { font-size: 1rem; margin-bottom: 2rem; }
 }
 </style>
