@@ -125,15 +125,7 @@
 
 .instagram-embed-wrapper iframe {
   width: 100%;
-  min-height: 500px; /* Altezza minima per la maggior parte dei reel */
-  /* L'altezza effettiva è spesso controllata dall'embed stesso,
-     ma impostare un'altezza minima può aiutare con il layout.
-     Instagram suggerisce un'altezza fino a 710px per i post,
-     ma per i reel potrebbe essere diverso e spesso sono più verticali.
-     Una soluzione potrebbe essere un aspect-ratio se l'altezza non è fissa.
-     Per ora, un'altezza fissa o min-height.
-  */
-  height: 650px; /* Valore di esempio, aggiusta in base all'aspetto dei tuoi reel */
+  min-height: 680px; /* Altezza minima per la maggior parte dei reel */
   border: none;
   display: block;
 }

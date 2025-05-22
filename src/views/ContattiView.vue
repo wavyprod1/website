@@ -144,7 +144,6 @@ onMounted(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  margin-top: 3rem; /* Spazio dal top della sezione, se non c'è un titolo di sezione sopra */
   justify-content: center;
 }
 .contact-method {
