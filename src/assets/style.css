@@ -11,7 +11,7 @@
   /* Color palette */
   --color-red: #ff3b30;
   --color-yellow: #ffcc00;
-  --color-blue: #0066CC; /* Blu leggermente scurito */
+  --color-blue: #0066cc; /* Blu leggermente scurito */
   --color-green: #34c759;
   --color-white: #ffffff;
   --color-black: #000000;
@@ -74,7 +74,7 @@ p {
 section {
   padding: 1.5rem 0;
   position: relative; /* Utile per eventuali figli posizionati assolutamente */
-  overflow: hidden;  /* Utile per ::before/::after overlays */
+  overflow: hidden; /* Utile per ::before/::after overlays */
 }
 
 /* Buttons */
@@ -109,12 +109,10 @@ section {
 }
 
 .btn-secondary:hover {
-  background-color: #0052A3; /* Blu ancora più scuro per hover */
+  background-color: #0052a3; /* Blu ancora più scuro per hover */
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3); /* Ombra con il nuovo blu */
 }
-
-
 
 .logo {
   font-weight: bold;
@@ -169,7 +167,7 @@ section {
 }
 
 .section-gradient-overlay::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -179,16 +177,11 @@ section {
   z-index: 1; /* Sotto il contenuto della sezione */
 }
 
-/* @keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-} */
 
 /* Hero Section Specifics (se non coperte da .section-gradient-overlay) */
 .hero {
   /* position, height, display, align-items, overflow sono già in section o qui */
-  
+
   min-height: calc(100vh - 4rem); /* Subtract header height */
   margin-top: 4rem;
   display: flex;
@@ -202,14 +195,13 @@ section {
   align-items: center;
   justify-content: space-between;
   position: relative; /* Essenziale per z-index */
-  z-index: 2;       /* Sopra l'overlay ::before della classe .section-gradient-overlay */
+  z-index: 2; /* Sopra l'overlay ::before della classe .section-gradient-overlay */
   width: 100%;
 }
 
-.space-up-down{
+.space-up-down {
   margin: 1rem 0 1rem 0;
 }
-
 
 /* Page Hero Section (per pagine interne, es. "Chi Sono", "Servizi") */
 .page-hero {
@@ -229,16 +221,15 @@ section {
   padding: 0rem 1.5rem;
 }
 
-  .hero-main-title {
+.hero-main-title {
   font-size: 3rem; /* NUOVA DIMENSIONE RIDOTTA PER MOBILE PICCOLO */
-
-
 }
 
 .hero-main-description {
   font-size: 1.1rem;
   color: var(--color-light-gray); /* Testo descrizione chiaro su sfondo sfumato/scuro */
   line-height: 1.7;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .page-intro {
@@ -248,15 +239,17 @@ section {
   margin: 0 auto;
 }
 
+.about-me-content {
+  text-align: justify;
+}
+
 /* Stile per i titoli di sezione (H2) su sfondi chiari */
 .section-title-on-light {
   color: var(--color-dark-gray);
-  text-shadow: none;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   text-align: center;
   /* font-size e text-transform ereditati da h2 globale */
 }
-
-
 
 .service-detail-text h4 {
   color: var(--color-dark-gray);
@@ -275,8 +268,6 @@ section {
   padding: 1rem 1.5rem;
 }
 
-
-
 /* CTA Sections */
 .cta {
   text-align: center;
@@ -286,17 +277,18 @@ section {
   background-color: var(--color-blue); /* Userà il nuovo blu scuro */
   color: var(--color-white);
 }
-.cta-primary .section-title, /* h2.cta-title */
-.cta-primary .section-intro { /* p.cta-text */
+.cta-primary .section-title, .cta-title,
+.cta-primary .section-intro {
+  /* p.cta-text */
   color: var(--color-white);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Ombra leggermente diversa per cta */
 }
 .cta-primary .section-title {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 .cta-primary .section-intro {
-    max-width: 600px;
-    margin: 0 auto 2rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
 }
 
 .cta-secondary {
@@ -308,13 +300,12 @@ section {
   text-shadow: none;
 }
 .cta-secondary .section-title {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 .cta-secondary .section-intro {
-    max-width: 600px;
-    margin: 0 auto 2rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
 }
-
 
 /* Footer */
 footer {
@@ -324,22 +315,26 @@ footer {
 }
 /* ... stili footer ... */
 
-
-
-
 /* Responsive Design */
 @media (max-width: 992px) {
-  h1 { font-size: 3rem; }
-  h2 { font-size: 2.2rem; }
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.2rem;
+  }
   section {
     padding: 0;
   }
-
 }
 
 @media (max-width: 768px) {
-  h1 { font-size: 2.5rem; }
-  h2 { font-size: 1.8rem; }
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
 
   section {
     padding: 0;
@@ -349,24 +344,21 @@ footer {
     text-align: center;
   }
 
-
   .hero-main-title {
-  font-size: 2.2rem; /* NUOVA DIMENSIONE RIDOTTA PER MOBILE PICCOLO */
-
-  
-
-}
-.hero-content-wrapper {
+    font-size: 1.5rem; /* NUOVA DIMENSIONE RIDOTTA PER MOBILE PICCOLO */
+  }
+  .hero-content-wrapper {
     flex-direction: column;
     text-align: center; /* Centra il testo dei figli ordinati */
-
   }
   .hero-main-description {
     order: 3;
     font-size: 1.1rem;
   }
-  
-  .mobile-menu-btn { display: block; }
+
+  .mobile-menu-btn {
+    display: block;
+  }
   .nav-menu {
     position: fixed;
     top: 60px; /* Altezza header, aggiusta se cambia */
@@ -379,32 +371,40 @@ footer {
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
     padding: 2rem 0;
   }
-  .nav-menu.active { left: 0; }
-  .nav-item { margin: 1.5rem 0; }
+  .nav-menu.active {
+    left: 0;
+  }
+  .nav-item {
+    margin: 1.5rem 0;
+  }
 
   .service-detail-text-wrapper,
-.service-detail-image-wrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column; /* Per impilare immagine e box relativo */
-  padding: 0;
-}
+  .service-detail-image-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Per impilare immagine e box relativo */
+    padding: 0;
+  }
   .service-detail-text {
     order: 1;
     text-align: justify;
   }
-
 }
 
 @media (max-width: 576px) {
-
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.5rem; }
-  .btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
   .hero-main-title {
-  font-size: 1.5rem; /* NUOVA DIMENSIONE RIDOTTA PER MOBILE PICCOLO */
-
-}
+    font-size: 1.5rem; /* NUOVA DIMENSIONE RIDOTTA PER MOBILE PICCOLO */
+  }
 
   /* ... altri stili mobile ... */
 }

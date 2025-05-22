@@ -19,24 +19,24 @@ const setIframeRef = (el, projectId) => {
 }
 
 const beforeIframeUnmount = (projectId) => {
-  delete iframeRefs.value[projectId];
+  delete iframeRefs.value[projectId]
 }
 
 const openModal = (projectId) => {
-  const item = allPortfolioItems.value.find(i => i.id === projectId);
+  const item = allPortfolioItems.value.find((i) => i.id === projectId)
   if (item) {
     openModals.value[projectId] = true
     document.body.style.overflow = 'hidden'
 
     if (item.youtubeLink) {
       nextTick(() => {
-        const iframe = iframeRefs.value[projectId];
+        const iframe = iframeRefs.value[projectId]
         if (iframe && iframe.dataset.originalSrc && iframe.src !== iframe.dataset.originalSrc) {
-          iframe.src = iframe.dataset.originalSrc;
+          iframe.src = iframe.dataset.originalSrc
         } else if (iframe && !iframe.dataset.originalSrc) {
-           iframe.dataset.originalSrc = iframe.src;
+          iframe.dataset.originalSrc = iframe.src
         }
-      });
+      })
     }
   } else {
     console.warn(`Tentativo di aprire un modale per un ID non esistente: ${projectId}`)
@@ -44,15 +44,15 @@ const openModal = (projectId) => {
 }
 
 const closeModal = (projectId) => {
-  const item = allPortfolioItems.value.find(i => i.id === projectId);
+  const item = allPortfolioItems.value.find((i) => i.id === projectId)
 
   if (item && item.youtubeLink) {
-    const iframe = iframeRefs.value[projectId];
+    const iframe = iframeRefs.value[projectId]
     if (iframe) {
       if (!iframe.dataset.originalSrc) {
-        iframe.dataset.originalSrc = iframe.src;
+        iframe.dataset.originalSrc = iframe.src
       }
-      iframe.src = ''; 
+      iframe.src = ''
     }
   }
 
@@ -104,8 +104,10 @@ const allPortfolioItems = computed(() => {
       <!-- Il contenuto di .page-hero deve avere z-index > 1 per stare sopra l'overlay -->
       <div class="container page-hero-content">
         <!-- h1 e p erediteranno colore bianco e text-shadow dal CSS globale -->
-        <h1 class = "space-up-down hero-main-title">PORTFOLIO</h1>
-        <p class="space-up-down hero-main-description">Alcuni progetti a cui ho avuto il piacere di contribuire.</p>
+        <h1 class="space-up-down hero-main-title">PORTFOLIO</h1>
+        <p class="space-up-down hero-main-description">
+          Alcuni progetti a cui ho avuto il piacere di contribuire.
+        </p>
       </div>
     </section>
 
@@ -113,7 +115,7 @@ const allPortfolioItems = computed(() => {
     <section class="portfolio-section">
       <div class="container">
         <!-- .service-detail-title sarà scuro su sfondo chiaro -->
-        <h2 class="section-title service-detail-title">Artisti</h2>
+        <h2 class="section-title-on-light service-detail-title">Artisti</h2>
         <div class="portfolio-grid">
           <div
             v-for="artist in artists"
@@ -127,10 +129,7 @@ const allPortfolioItems = computed(() => {
                 :alt="artist.name"
                 v-if="artist.thumbnailImage"
               />
-              <div
-                v-else
-                class="portfolio-item-placeholder"
-              >
+              <div v-else class="portfolio-item-placeholder">
                 <i class="fas fa-user" style="font-size: 3rem"></i>
               </div>
               <div class="portfolio-item-overlay">
@@ -146,7 +145,7 @@ const allPortfolioItems = computed(() => {
     <!-- Soundtracks Portfolio Section -->
     <section class="portfolio-section soundtrack-section">
       <div class="container">
-        <h2 class="section-title service-detail-title">Spettacoli / Soundtrack</h2>
+        <h2 class="section-title-on-light service-detail-title">Spettacoli / Soundtrack</h2>
         <div class="portfolio-grid">
           <div
             v-for="soundtrack in soundtracks"
@@ -160,10 +159,7 @@ const allPortfolioItems = computed(() => {
                 :alt="soundtrack.name"
                 v-if="soundtrack.thumbnailImage"
               />
-              <div
-                v-else
-                class="portfolio-item-placeholder"
-              >
+              <div v-else class="portfolio-item-placeholder">
                 <i class="fas fa-film" style="font-size: 3rem"></i>
               </div>
               <div class="portfolio-item-overlay">
@@ -174,7 +170,6 @@ const allPortfolioItems = computed(() => {
         </div>
       </div>
     </section>
-
 
     <!-- Portfolio Modals Renderizzati Dinamicamente -->
     <div v-for="itemData in allPortfolioItems" :key="itemData.id + 'ModalContainer'">
@@ -187,7 +182,7 @@ const allPortfolioItems = computed(() => {
           <div class="portfolio-modal-media">
             <div v-if="itemData.youtubeLink" class="youtube-embed-container">
               <iframe
-                :ref="el => setIframeRef(el, itemData.id)"
+                :ref="(el) => setIframeRef(el, itemData.id)"
                 @vue:before-unmount="beforeIframeUnmount(itemData.id)"
                 width="100%"
                 height="100%"
@@ -235,19 +230,6 @@ const allPortfolioItems = computed(() => {
 /* Stile per il contenuto della page-hero per assicurare che sia sopra l'overlay */
 
 
-/* Stile generale per i titoli h2 delle sezioni portfolio e servizi */
-.section-title {
-  /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); Ereditato dal globale se non sovrascritto */
-  /* font-size, margin-bottom, text-transform ereditati dal globale per h2 */
-}
-
-.service-detail-title { /* Usato per "Artisti" e "Spettacoli / Soundtrack" */
-  color: var(--color-dark-gray); /* Testo scuro su sfondi chiari (.portfolio-section) */
-  text-shadow: none; /* Rimuove l'ombra del testo globale su sfondo chiaro */
-  text-align: center;
-  margin-bottom: 3rem; /* Come da stile globale per .benefits-title o .service-detail-title */
-}
-
 /* Stile per i titoli h2 nelle CTA (già gestito dal globale con .cta-primary .section-title) */
 .cta-primary .section-title {
   color: var(--color-white);
@@ -256,10 +238,8 @@ const allPortfolioItems = computed(() => {
 }
 
 
-.portfolio-section {
-  /* padding: 5rem 0; Ereditato da 'section' nel CSS globale */
-}
-.portfolio-section:nth-child(odd) { /* Questo odd/even si basa sulla posizione in <main> */
+.portfolio-section:nth-child(odd) {
+  /* Questo odd/even si basa sulla posizione in <main> */
   background-color: var(--color-light-gray);
 }
 .portfolio-section:nth-child(even) {
@@ -276,12 +256,6 @@ const allPortfolioItems = computed(() => {
 */
 
 
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Force 3 columns */
-  gap: 2rem;
-  margin-top: 3rem; /* Spazio dal titolo della sezione */
-}
 .portfolio-item {
   background-color: var(--color-white); /* Sfondo della card */
   border-radius: 10px;
@@ -312,7 +286,8 @@ const allPortfolioItems = computed(() => {
   object-fit: cover;
 }
 .portfolio-item-placeholder,
-.portfolio-modal-placeholder { /* Stile unificato per i placeholder */
+.portfolio-modal-placeholder {
+  /* Stile unificato per i placeholder */
   width: 100%;
   height: 100%;
   display: flex;
@@ -333,7 +308,8 @@ const allPortfolioItems = computed(() => {
   padding: 1.5rem;
   box-sizing: border-box;
 }
-.portfolio-item-title { /* Titolo dentro la card portfolio */
+.portfolio-item-title {
+  /* Titolo dentro la card portfolio */
   color: var(--color-white);
   margin: 0;
   font-size: 1.5rem;
@@ -388,7 +364,7 @@ const allPortfolioItems = computed(() => {
   transition: background-color 0.3s ease;
 }
 .portfolio-modal-close:hover {
-    background-color: #cc0000; /* Rosso più scuro */
+  background-color: #cc0000; /* Rosso più scuro */
 }
 
 .portfolio-modal-media {
@@ -434,7 +410,7 @@ const allPortfolioItems = computed(() => {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Force 3 columns */
   gap: 2rem;
-  margin-top: 3rem; /* Spazio dal titolo della sezione */
+  margin-top: 2rem; /* Spazio dal titolo della sezione */
 }
 
 /* Add styles for empty grid spaces */
@@ -460,12 +436,13 @@ const allPortfolioItems = computed(() => {
   .portfolio-modal-content {
     max-height: none; /* Remove max-height constraint */
   }
-  
+
+
   .portfolio-modal-media {
     flex: none; /* Remove flex sizing */
     height: auto;
   }
-  
+
   .portfolio-modal-details {
     flex: none; /* Remove flex sizing */
   }
@@ -483,13 +460,14 @@ const allPortfolioItems = computed(() => {
   .portfolio-modal-title {
     font-size: 1.8rem; /* Slightly smaller on mobile but keeping proportions */
   }
-  
+
   .portfolio-modal-details {
     padding: 1.5rem;
   }
 
   .portfolio-grid {
     grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    margin-top: 0;
   }
 }
 </style>

@@ -1,43 +1,63 @@
 <script setup>
 import { ref } from 'vue'
 // Importa Swiper Vue components e stili
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 
 // Importa i moduli Swiper
-import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules'
 
-const swiperModules = [Pagination, Navigation, Autoplay];
+const swiperModules = [Pagination, Navigation, Autoplay]
 
 // Dati per le recensioni
 const reviewsData = ref([
-  { id: 1, author_name: 'Camilla Gainotti', rating: 5, text: 'Esperienza super quella in studio con Elia! È molto creativo, professionale, preciso e ha un gran gusto musicale! Abbiamo finora prodotto un paio di canzoni con lui e sicuramente andremo avanti a produrne altre!' },
-  { id: 2, author_name: 'Giovanni Licari', rating: 5, text: 'Abbiamo collaborato con "Ancora" un progetto musicale, produzione mix e master di livello, organizzazione di un live a Milano, con uno shot personalizzato per l\'occasione! Che dire ... Una persona rara ed un artista che mi ha permesso di produrre e far conoscere la mia musica anche fuori dalla mia città!' },
-  { id: 3, author_name: 'Tommaso Ottocento', rating: 5, text: 'Elia è molto professionale e simpatico. Ti fa sentire a tuo agio e cerca di capire il tuo progetto. Lavorare con lui è sempre stimolante e appassionante.' },
-  { id: 4, author_name: 'Davide Bussolino', rating: 5, text: 'Sono arrivato in studio senza realmente sapere come fare le cose, Elia mi ha guidato nel migliore dei modi, davvero! È uscito un prodotto che non solo mia ha soddisfatto ma non mi sarei aspettato suonasse in quel modo, quindi davvero grazie ad Elia! Ve lo consiglio di cuore, oltre ad essere un professionista impeccabile, e a lavorare in un ambiente con attrezzatura iper professionale, è una gran persona!' },
-]);
+  {
+    id: 1,
+    author_name: 'Camilla Gainotti',
+    rating: 5,
+    text: 'Esperienza super quella in studio con Elia! È molto creativo, professionale, preciso e ha un gran gusto musicale! Abbiamo finora prodotto un paio di canzoni con lui e sicuramente andremo avanti a produrne altre!',
+  },
+  {
+    id: 2,
+    author_name: 'Giovanni Licari',
+    rating: 5,
+    text: 'Abbiamo collaborato con "Ancora" un progetto musicale, produzione mix e master di livello, organizzazione di un live a Milano, con uno shot personalizzato per l\'occasione! Che dire ... Una persona rara ed un artista che mi ha permesso di produrre e far conoscere la mia musica anche fuori dalla mia città!',
+  },
+  {
+    id: 3,
+    author_name: 'Tommaso Ottocento',
+    rating: 5,
+    text: 'Elia è molto professionale e simpatico. Ti fa sentire a tuo agio e cerca di capire il tuo progetto. Lavorare con lui è sempre stimolante e appassionante.',
+  },
+  {
+    id: 4,
+    author_name: 'Davide Bussolino',
+    rating: 5,
+    text: 'Sono arrivato in studio senza realmente sapere come fare le cose, Elia mi ha guidato nel migliore dei modi, davvero! È uscito un prodotto che non solo mia ha soddisfatto ma non mi sarei aspettato suonasse in quel modo, quindi davvero grazie ad Elia! Ve lo consiglio di cuore, oltre ad essere un professionista impeccabile, e a lavorare in un ambiente con attrezzatura iper professionale, è una gran persona!',
+  },
+])
 
-const starEmoji = '⭐';
+const starEmoji = '⭐'
 </script>
 
 <template>
   <main>
     <!-- HERO SECTION -->
     <!-- Applica la classe globale .section-gradient-overlay per lo sfondo -->
-    <section class=" hero section-gradient-overlay">
+    <section class="hero section-gradient-overlay">
       <div class="container hero-content-wrapper">
         <div class="hero-text-column">
           <!-- h1 usa .section-title per coerenza, ma è un h1 -->
-          <h1 class=" space-up-down section-title hero-main-title">PRODUTTORE MUSICALE</h1>
+          <h1 class="space-up-down section-title hero-main-title">PRODUTTORE MUSICALE</h1>
           <div class="space-up-down hero-main-description">
             Se il tuo obbiettivo non è quello di "acquistare un servizio", ma di sviluppare il tuo
             progetto musicale, sono il produttore giusto per te.
             <br /><br />
-            Il mio impegno è quello di essere il professionista che avrei voluto avere al
-            mio fianco quando ho iniziato. <br /><br />Quello a cui avrei affidato il mio progetto musicale ad
-            occhi chiusi.
+            <i>Il mio impegno è quello di essere il professionista che avrei voluto avere al mio fianco
+            quando ho iniziato. <br /><br />Quello a cui avrei affidato il mio progetto musicale ad
+            occhi chiusi.</i>
           </div>
         </div>
         <div class="space-up-down hero-image-column">
@@ -46,6 +66,30 @@ const starEmoji = '⭐';
             alt="Elia Pirrello - Produttore Musicale"
             class="hero-main-image"
           />
+        </div>
+      </div>
+    </section>
+
+    <!-- CHI SONO SECTION -->
+    <section class="about-me section-bg-white">
+      <div class="container">
+        <h2 class="section-title section-title-on-light">CHI SONO</h2>
+        <div class="about-me-content">
+                    <p>
+            Ciao, sono Elia, <strong>produttore musicale</strong> con base a <strong>Milano</strong>, specializzato in <strong>Urban</strong> ed <strong>Elettronica</strong>. La mia passione è scovare e amplificare le caratteristiche più <strong>originali</strong> degli artisti con cui collaboro, curando ogni aspetto della <strong>creazione musicale</strong>: dal <strong>songwriting</strong> alla <strong>produzione</strong>, dalla <strong>registrazione</strong> fino al <strong>mixaggio</strong> e al <strong>mastering</strong>.
+          </p>
+          <p>Un po' di contesto su di me:</p>
+          <p>
+            Sono di Torino, dove mi sono laureato in Ingegneria Informatica al Politecnico e ho frequentato un corso di Produzione Musicale. Mi sono reso conto abbastanza in fretta, però, che quello non fosse l'ambiente giusto per me.<br />
+            Così mi sono trasferito a Milano, con la geniale scusa dell'università ("Music Engineering", sempre al Politecnico, per non farmi mancare nulla...).<br />Ovviamente, al posto di studiare, ho passato le giornate a produrre musica, frequentare eventi (almeno quattro a settimana) e rischiare di perdere i sensi un paio di volte per colpa dei Gin Tonic. Fortunatamente, queste scorribande sono anche servite a qualcosa.
+          </p>
+          <p>
+            Ho lavorato a tanta musica, ho stretto <strong>amicizie meravigliose</strong> e, con alcune di queste, ho dato vita a <a href="https://www.instagram.com/discovery.ita/" target="_blank" rel="noopener noreferrer" class="text-link-arrow"><strong>discovery</strong></a>.<br />
+            "discovery" è l'ambiente che sognavo quando ho iniziato: un <strong>hub social</strong> attraverso cui io e il mio team supportiamo e aiutiamo <strong>gratuitamente</strong> gli <strong>artisti indipendenti</strong>.
+          </p>
+          <p>
+            Ora sto anche finendo la magistrale e finalmente ho il tempo necessario per dedicarmi ad <strong>artisti come te</strong>.<br />Creo molti <strong>contenuti gratuiti</strong> per aiutarti a far crescere la tua musica e spero, un giorno, di lavorare con i <strong>migliori artisti del mondo</strong>.
+          </p>
         </div>
       </div>
     </section>
@@ -59,7 +103,8 @@ const starEmoji = '⭐';
           href="https://wa.me/393661980944?text=Ciao%20Elia%2C%20vorrei%20raccontarti%20del%20mio%20progetto%20musicale%21"
           class="btn btn-primary"
           target="_blank"
-        >RACCONTAMI DEL TUO PROGETTO</a>
+          >RACCONTAMI DEL TUO PROGETTO</a
+        >
       </div>
     </section>
 
@@ -67,10 +112,10 @@ const starEmoji = '⭐';
     <!-- Classe .section-bg-light per sfondo chiaro e testo scuro (definita nello scoped CSS) -->
     <section class="reviews section-bg-light">
       <div class="container">
-        <h2 class="section-title">COSA DICONO GLI ARTISTI DI ME</h2>
-         <div class="google-link-container">
+        <h2 class="section-title-on-light">COSA DICONO GLI ARTISTI DI ME</h2>
+        <div class="google-link-container">
           <a href="https://g.co/kgs/yNMLUtt" target="_blank" class="google-reviews-link">
-              Visualizza tutte le recensioni su Google
+            Visualizza tutte le recensioni su Google
           </a>
         </div>
         <swiper
@@ -92,7 +137,7 @@ const starEmoji = '⭐';
               slidesPerView: 3,
               spaceBetween: 30,
               centeredSlides: reviewsData.length > 3,
-            }
+            },
           }"
           class="reviews-swiper"
         >
@@ -113,47 +158,33 @@ const starEmoji = '⭐';
         </swiper>
       </div>
     </section>
-
   </main>
 </template>
 
 <style scoped>
-/* Stili generali di SEZIONE per questo componente (sovrascrivono o specificano il globale) */
-.section-title {
-  /* Per desktop, il titolo della hero e CTA sono allineati a sinistra,
-     mentre quello delle reviews è centrato. */
-  /* Il CSS globale per h1/h2 imposta colore bianco e text-shadow.
-     Questo viene sovrascritto per sezioni con sfondo chiaro. */
+.hero .section-title {
+  /* Titolo H1 della hero section */
+  text-align: left;
+  /* font-size: ... gestito da h1 globale o media query */
 }
-.hero .section-title { /* Titolo H1 della hero section */
-    text-align: left;
-    /* font-size: ... gestito da h1 globale o media query */
+.cta-primary .section-title {
+  /* Titolo H2 della CTA */
+  text-align: center; /* Centriamo il titolo della CTA */
+  /* Colore bianco e text-shadow da .cta-primary globale */
 }
-.cta-primary .section-title { /* Titolo H2 della CTA */
-    text-align: center; /* Centriamo il titolo della CTA */
-    /* Colore bianco e text-shadow da .cta-primary globale */
+.reviews .section-title {
+  /* Titolo H2 delle Reviews */
+  text-align: center;
+  color: var(--color-dark-gray); /* Testo scuro su sfondo chiaro */
+  text-shadow: none; /* Rimuove ombra su sfondo chiaro */
+  margin-bottom: 1.5rem;
 }
-.reviews .section-title { /* Titolo H2 delle Reviews */
-    text-align: center;
-    color: var(--color-dark-gray); /* Testo scuro su sfondo chiaro */
-    text-shadow: none; /* Rimuove ombra su sfondo chiaro */
-    margin-bottom: 1.5rem;
-}
-
-.section-intro {
-  /* Il CSS globale per .cta-primary e .cta-secondary gestisce colore e allineamento.
-     Per le reviews non c'è un .section-intro, ma il link a Google. */
-}
-
-
 
 .hero-text-column {
   flex: 1 1 55%;
   max-width: 650px;
   padding: 0.5rem;
 }
-
-
 
 .hero-image-column {
   flex: 1 1 40%;
@@ -169,11 +200,12 @@ const starEmoji = '⭐';
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* REVIEWS SECTION (Sfondo chiaro) */
-.reviews.section-bg-light { /* Classe per gestire lo sfondo chiaro */
+.reviews.section-bg-light {
+  /* Classe per gestire lo sfondo chiaro */
   background-color: var(--color-light-gray);
 }
 .reviews.section-bg-light .google-link-container {
@@ -205,7 +237,7 @@ const starEmoji = '⭐';
   color: var(--color-dark-gray);
   border-radius: 10px;
   padding: 1.5rem;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 380px;
   display: flex;
@@ -264,21 +296,23 @@ const starEmoji = '⭐';
   font-size: 16px;
 }
 :deep(.reviews.section-bg-light .reviews-swiper .swiper-pagination-bullet) {
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 :deep(.reviews.section-bg-light .reviews-swiper .swiper-pagination-bullet-active) {
   background-color: var(--color-red);
 }
 
-
 /* RESPONSIVE ADJUSTMENTS */
-@media (max-width: 992px) { /* Tablet */
+@media (max-width: 992px) {
+  /* Tablet */
 
-  .hero-image-column { max-width: 320px; }
+  .hero-image-column {
+    max-width: 320px;
+  }
 }
 
-@media (max-width: 768px) { /* Mobile */
-  
+@media (max-width: 768px) {
+  /* Mobile */
 
   /* Tutti i .section-title (h1, h2) su mobile */
   .section-title {
@@ -287,19 +321,20 @@ const starEmoji = '⭐';
   }
 
   .hero-text-column {
-    display: contents; /* Permette l'ordinamento dei figli diretti */
+    order: 2;
+    text-align: justify;
   }
 
   /* Ordine e stili per gli elementi della Hero su mobile */
 
   .hero-image-column {
-    order: 2;
+    order: 1;
     width: 70vw;
     max-width: 280px;
   }
 
-  
-  .review-author-info { /* Su mobile, nome e rating uno sopra l'altro */
+  .review-author-info {
+    /* Su mobile, nome e rating uno sopra l'altro */
     flex-direction: column;
     align-items: flex-start;
   }

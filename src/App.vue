@@ -2,16 +2,16 @@
 import { RouterLink, RouterView, useRouter } from 'vue-router'
 import { ref, watch } from 'vue'
 
-const router = useRouter();
+const router = useRouter()
 
 const isMobileMenuOpen = ref(false)
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
   if (isMobileMenuOpen.value) {
     isServicesDropdownOpen.value = false
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden'
   } else {
-    document.body.style.overflow = '';
+    document.body.style.overflow = ''
   }
 }
 
@@ -20,10 +20,10 @@ let servicesTimeout = null
 
 const toggleServicesDropdown = (event) => {
   if (window.innerWidth <= 768) {
-    isServicesDropdownOpen.value = !isServicesDropdownOpen.value;
+    isServicesDropdownOpen.value = !isServicesDropdownOpen.value
   } else {
-    event.preventDefault();
-    isServicesDropdownOpen.value = !isServicesDropdownOpen.value;
+    event.preventDefault()
+    isServicesDropdownOpen.value = !isServicesDropdownOpen.value
   }
 }
 
@@ -50,98 +50,107 @@ const currentYear = ref(new Date().getFullYear())
 
 const handleNavLinkClick = () => {
   if (isMobileMenuOpen.value) {
-    toggleMobileMenu();
+    toggleMobileMenu()
   }
   isServicesDropdownOpen.value = false
 }
 
-watch(() => router.currentRoute.value.path, () => {
-  if (isMobileMenuOpen.value) {
-    isMobileMenuOpen.value = false;
-    document.body.style.overflow = '';
-  }
-  isServicesDropdownOpen.value = false;
-});
-
+watch(
+  () => router.currentRoute.value.path,
+  () => {
+    if (isMobileMenuOpen.value) {
+      isMobileMenuOpen.value = false
+      document.body.style.overflow = ''
+    }
+    isServicesDropdownOpen.value = false
+  },
+)
 </script>
 
 <template>
   <header>
-    <div class= container>
-    <div class="header-container">
-      
-      <RouterLink to="/" class="header-logo-link desktop-only" @click="handleNavLinkClick">
-        ELIA PIRRELLO
-      </RouterLink>
-      <RouterLink to="/" class="header-logo-link mobile-only" @click="handleNavLinkClick">
-        ELIA PIRRELLO
-      </RouterLink>
-      <button class="mobile-menu-btn" @click="toggleMobileMenu" aria-label="Apri menu" :aria-expanded="isMobileMenuOpen">
-        <i class="fas fa-bars"></i>
-      </button>
-      <ul class="nav-menu" :class="{ active: isMobileMenuOpen }">
-        <li
-          class="nav-item nav-item-dropdown"
-          @mouseenter="openServicesDropdownDesktop"
-          @mouseleave="closeServicesDropdownDesktop()"
+    <div class="container">
+      <div class="header-container">
+        <RouterLink to="/" class="header-logo-link desktop-only" @click="handleNavLinkClick">
+          ELIA PIRRELLO
+        </RouterLink>
+        <RouterLink to="/" class="header-logo-link mobile-only" @click="handleNavLinkClick">
+          ELIA PIRRELLO
+        </RouterLink>
+        <button
+          class="mobile-menu-btn"
+          @click="toggleMobileMenu"
+          aria-label="Apri menu"
+          :aria-expanded="isMobileMenuOpen"
         >
-          <a
-            href="#"
-            class="nav-link nav-link-servizi"
-            @click.prevent="toggleServicesDropdown"
-            aria-haspopup="true"
-            :aria-expanded="isServicesDropdownOpen"
-          >
-            Servizi
-            <i
-              class="fas fa-chevron-down dropdown-arrow"
-              :class="{ 'rotate-arrow': isServicesDropdownOpen }"
-            ></i>
-          </a>
-          <ul
-            class="dropdown-menu"
-            v-show="isServicesDropdownOpen"
-            @mouseenter="openServicesDropdownDesktop" 
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu" :class="{ active: isMobileMenuOpen }">
+          <li
+            class="nav-item nav-item-dropdown"
+            @mouseenter="openServicesDropdownDesktop"
             @mouseleave="closeServicesDropdownDesktop()"
           >
-            <li>
-              <RouterLink to="/produzione" class="dropdown-link" @click="handleNavLinkClick"
-                >Produzione Musicale</RouterLink
-              >
-            </li>
-            <li>
-              <RouterLink
-                to="/recording-mix-master"
-                class="dropdown-link"
-                @click="handleNavLinkClick"
-                >Recording, Mix & Master</RouterLink
-              >
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <RouterLink
-            to="/portfolio"
-            class="nav-link nav-link-portfolio"
-            @click="handleNavLinkClick"
-            >Portfolio</RouterLink
-          >
-        </li>
-        <li class="nav-item">
-          <RouterLink
-            to="/contenuti"
-            class="nav-link nav-link-contenuti"
-            @click="handleNavLinkClick"
-            >Contenuti</RouterLink
-          >
-        </li>
-        <li class="nav-item">
-          <RouterLink to="/contatti" class="nav-link nav-link-contatti" @click="handleNavLinkClick"
-            >Contatti</RouterLink
-          >
-        </li>
-      </ul>
-    </div>
+            <a
+              href="#"
+              class="nav-link nav-link-servizi"
+              @click.prevent="toggleServicesDropdown"
+              aria-haspopup="true"
+              :aria-expanded="isServicesDropdownOpen"
+            >
+              Servizi
+              <i
+                class="fas fa-chevron-down dropdown-arrow"
+                :class="{ 'rotate-arrow': isServicesDropdownOpen }"
+              ></i>
+            </a>
+            <ul
+              class="dropdown-menu"
+              v-show="isServicesDropdownOpen"
+              @mouseenter="openServicesDropdownDesktop"
+              @mouseleave="closeServicesDropdownDesktop()"
+            >
+              <li>
+                <RouterLink to="/produzione" class="dropdown-link" @click="handleNavLinkClick"
+                  >Produzione Musicale</RouterLink
+                >
+              </li>
+              <li>
+                <RouterLink
+                  to="/recording-mix-master"
+                  class="dropdown-link"
+                  @click="handleNavLinkClick"
+                  >Recording, Mix & Master</RouterLink
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <RouterLink
+              to="/portfolio"
+              class="nav-link nav-link-portfolio"
+              @click="handleNavLinkClick"
+              >Portfolio</RouterLink
+            >
+          </li>
+          <li class="nav-item">
+            <RouterLink
+              to="/contenuti"
+              class="nav-link nav-link-contenuti"
+              @click="handleNavLinkClick"
+              >Contenuti</RouterLink
+            >
+          </li>
+          <li class="nav-item">
+            <RouterLink
+              to="/contatti"
+              class="nav-link nav-link-contatti"
+              @click="handleNavLinkClick"
+              >Contatti</RouterLink
+            >
+          </li>
+        </ul>
+      </div>
     </div>
   </header>
 
@@ -170,25 +179,37 @@ watch(() => router.currentRoute.value.path, () => {
           <ul class="footer-nav">
             <li class="footer-nav-item">
               <!-- Aggiunta classe specifica per hover -->
-              <RouterLink to="/" class="footer-nav-link footer-nav-link-home" @click="handleNavLinkClick"
+              <RouterLink
+                to="/"
+                class="footer-nav-link footer-nav-link-home"
+                @click="handleNavLinkClick"
                 >Home</RouterLink
               >
             </li>
             <li class="footer-nav-item">
               <!-- Aggiunta classe specifica per hover -->
-              <RouterLink to="/portfolio" class="footer-nav-link footer-nav-link-portfolio" @click="handleNavLinkClick"
+              <RouterLink
+                to="/portfolio"
+                class="footer-nav-link footer-nav-link-portfolio"
+                @click="handleNavLinkClick"
                 >Portfolio</RouterLink
               >
             </li>
             <li class="footer-nav-item">
               <!-- Aggiunta classe specifica per hover -->
-              <RouterLink to="/contenuti" class="footer-nav-link footer-nav-link-contenuti" @click="handleNavLinkClick"
+              <RouterLink
+                to="/contenuti"
+                class="footer-nav-link footer-nav-link-contenuti"
+                @click="handleNavLinkClick"
                 >Contenuti</RouterLink
               >
             </li>
             <li class="footer-nav-item">
               <!-- Aggiunta classe specifica per hover -->
-              <RouterLink to="/contatti" class="footer-nav-link footer-nav-link-contatti" @click="handleNavLinkClick"
+              <RouterLink
+                to="/contatti"
+                class="footer-nav-link footer-nav-link-contatti"
+                @click="handleNavLinkClick"
                 >Contatti</RouterLink
               >
             </li>
@@ -200,7 +221,10 @@ watch(() => router.currentRoute.value.path, () => {
           <ul class="footer-nav">
             <li class="footer-nav-item">
               <!-- Aggiunta classe specifica per hover -->
-              <RouterLink to="/produzione" class="footer-nav-link footer-nav-link-servizi" @click="handleNavLinkClick"
+              <RouterLink
+                to="/produzione"
+                class="footer-nav-link footer-nav-link-servizi"
+                @click="handleNavLinkClick"
                 >Produzione Musicale</RouterLink
               >
             </li>
@@ -208,7 +232,7 @@ watch(() => router.currentRoute.value.path, () => {
               <!-- Aggiunta classe specifica per hover (può usare la stessa di servizi o una sua) -->
               <RouterLink
                 to="/recording-mix-master"
-                class="footer-nav-link footer-nav-link-servizi" 
+                class="footer-nav-link footer-nav-link-servizi"
                 @click="handleNavLinkClick"
                 >Recording, Mix & Master</RouterLink
               >
@@ -245,7 +269,6 @@ header {
   height: 2rem;
 }
 
-
 /* Logo/Nome Link per Desktop */
 .header-logo-link {
   font-weight: bold;
@@ -278,18 +301,27 @@ header {
   transition: color 0.3s ease;
   padding: 0rem 0;
   position: relative;
-
 }
 
-.nav-link.nav-link-servizi:hover { color: var(--color-green); }
-.nav-link.nav-link-portfolio:hover { color: var(--color-red); }
-.nav-link.nav-link-contenuti:hover { color: var(--color-yellow); }
-.nav-link.nav-link-contatti:hover { color: var(--color-blue); }
+.nav-link.nav-link-servizi:hover {
+  color: var(--color-green);
+}
+.nav-link.nav-link-portfolio:hover {
+  color: var(--color-red);
+}
+.nav-link.nav-link-contenuti:hover {
+  color: var(--color-yellow);
+}
+.nav-link.nav-link-contatti:hover {
+  color: var(--color-blue);
+}
 
-
-.mobile-only { display: none !important; }
-.desktop-only { display: block !important; }
-
+.mobile-only {
+  display: none !important;
+}
+.desktop-only {
+  display: block !important;
+}
 
 /* Dropdown Menu (Desktop) */
 .nav-item-dropdown {
@@ -320,18 +352,23 @@ header {
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease;
 }
 .nav-item-dropdown:hover .dropdown-menu,
 .dropdown-menu:hover,
-.nav-item-dropdown .dropdown-menu[style*="display: block;"],
-.nav-item-dropdown .nav-link[aria-expanded="true"] + .dropdown-menu {
+.nav-item-dropdown .dropdown-menu[style*='display: block;'],
+.nav-item-dropdown .nav-link[aria-expanded='true'] + .dropdown-menu {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-.dropdown-menu li { padding: 0; }
+.dropdown-menu li {
+  padding: 0;
+}
 .dropdown-link {
   display: block;
   padding: 0.75rem 1.5rem;
@@ -347,17 +384,18 @@ header {
   color: var(--color-green);
 }
 
-
 /* Stili per Mobile (<= 768px) */
 @media (max-width: 768px) {
-  .desktop-only { display: none !important; }
-  .mobile-only { display: block !important; }
+  .desktop-only {
+    display: none !important;
+  }
+  .mobile-only {
+    display: block !important;
+  }
 
   .header-container {
     justify-content: center;
-
   }
-
 
   .header-logo-link-mobile:hover {
     color: var(--color-light-gray); /* MODIFICATO: Hover grigio chiaro */
@@ -388,7 +426,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top:4rem;
+    padding-top: 4rem;
     transition: left 0.3s ease-in-out;
     z-index: 1001;
     overflow-y: auto;
@@ -400,7 +438,7 @@ header {
     display: flex;
     left: 0;
   }
-  
+
   .nav-menu .nav-item {
     margin: 1rem 0;
     width: 100%;
@@ -409,9 +447,8 @@ header {
     display: block;
 
     text-align: center;
-    
   }
-  
+
   .nav-menu.active .dropdown-menu {
     position: static;
     background-color: transparent;
@@ -445,34 +482,53 @@ footer {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 3rem;
 }
-.footer-col h3 { /* Titoli nel footer */
-    color: var(--color-white);
-    margin-bottom: 1rem; /* Assicura spazio sotto i titoli */
-    /* text-shadow ereditato dal globale per h3 */
+.footer-col h3 {
+  /* Titoli nel footer */
+  color: var(--color-white);
+  margin-bottom: 1rem; /* Assicura spazio sotto i titoli */
+  /* text-shadow ereditato dal globale per h3 */
 }
-.footer-nav { list-style: none; padding-left: 0; } /* Rimuovi padding di default della lista */
-.footer-nav-item { margin-bottom: 0.8rem; }
+.footer-nav {
+  list-style: none;
+  padding-left: 0;
+} /* Rimuovi padding di default della lista */
+.footer-nav-item {
+  margin-bottom: 0.8rem;
+}
 .footer-nav-link {
   color: var(--color-white);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 /* Hover colorati per i link di navigazione del footer */
-.footer-nav-link.footer-nav-link-home:hover { color: var(--color-light-gray); }
-.footer-nav-link.footer-nav-link-servizi:hover { color: var(--color-green); }
-.footer-nav-link.footer-nav-link-portfolio:hover { color: var(--color-red); }
-.footer-nav-link.footer-nav-link-contenuti:hover { color: var(--color-yellow); }
-.footer-nav-link.footer-nav-link-contatti:hover { color: var(--color-blue); }
+.footer-nav-link.footer-nav-link-home:hover {
+  color: var(--color-light-gray);
+}
+.footer-nav-link.footer-nav-link-servizi:hover {
+  color: var(--color-green);
+}
+.footer-nav-link.footer-nav-link-portfolio:hover {
+  color: var(--color-red);
+}
+.footer-nav-link.footer-nav-link-contenuti:hover {
+  color: var(--color-yellow);
+}
+.footer-nav-link.footer-nav-link-contatti:hover {
+  color: var(--color-blue);
+}
 
-
-.social-links { display: flex; gap: 1rem; margin-top: 1rem; }
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
 .social-link {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
   height: 40px;
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   color: var(--color-white);
   border-radius: 50%;
   text-decoration: none;
@@ -486,13 +542,22 @@ footer {
   margin-top: 3rem;
   text-align: center;
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 @media (max-width: 576px) {
-  .footer-container { grid-template-columns: 1fr; text-align: center; }
-  .social-links { justify-content: center; }
-  .footer-col h3 { text-align: center; } /* Centra titoli footer su mobile molto piccolo */
-  .footer-nav { text-align: center; } /* Centra link nav footer su mobile molto piccolo */
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .social-links {
+    justify-content: center;
+  }
+  .footer-col h3 {
+    text-align: center;
+  } /* Centra titoli footer su mobile molto piccolo */
+  .footer-nav {
+    text-align: center;
+  } /* Centra link nav footer su mobile molto piccolo */
 }
 </style>

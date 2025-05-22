@@ -39,7 +39,7 @@ onUnmounted(() => {
     <!-- Page Hero Section -->
     <section class="page-hero section-gradient-overlay">
       <div class="container page-hero-content">
-        <h1 class = "space-up-down hero-main-title">RECORDING, MIX & MASTER:</h1>
+        <h1 class="space-up-down hero-main-title">RECORDING, MIX & MASTER:</h1>
         <p class="space-up-down hero-main-description">
           Per ottenere la performance perfetta in studio e un suono impeccabile su ogni piattaforma.
         </p>
@@ -59,13 +59,13 @@ onUnmounted(() => {
                 professionale e consigli tecnici.
               </p>
               <div class="btn-wrapper">
-              <button
-                @click="openEquipmentModal"
-                class="btn btn-secondary"
-                style="margin-bottom: 1.5rem"
-              >
-                SCHEDA TECNICA STUDIO
-              </button>
+                <button
+                  @click="openEquipmentModal"
+                  class="btn btn-secondary"
+                  style="margin-bottom: 1.5rem"
+                >
+                  SCHEDA TECNICA STUDIO
+                </button>
               </div>
             </div>
           </div>
@@ -164,13 +164,8 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-
-
-
-
 /* Titoli h2 specifici se necessario, altrimenti .section-title-on-light è sufficiente */
 /* .service-detail-title è ridondante se si usa .section-title-on-light */
-
 
 /* Classi esplicite per lo sfondo */
 .service-detail-section.bg-light {
@@ -186,11 +181,6 @@ onUnmounted(() => {
 
   align-items: flex-start;
 }
-
-
-
-
-
 
 .service-detail-image {
   position: relative;
@@ -208,7 +198,6 @@ onUnmounted(() => {
   object-fit: cover;
 }
 
-
 .guarantee-box {
   background-color: var(--color-green); /* Sfondo verde per guarantee box */
   color: var(--color-white); /* Testo di default bianco */
@@ -216,11 +205,12 @@ onUnmounted(() => {
   border-radius: 10px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   order: 2;
-      margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
-.guarantee-box::before { /* Stile nastro GARANZIA */
+.guarantee-box::before {
+  /* Stile nastro GARANZIA */
   content: 'GARANZIA';
   position: absolute;
   top: 10px;
@@ -232,10 +222,11 @@ onUnmounted(() => {
   font-weight: bold;
   font-size: 0.75rem;
   transform-origin: top right;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.guarantee-title { /* Titolo H3 nel guarantee box */
+.guarantee-title {
+  /* Titolo H3 nel guarantee box */
   color: var(--color-white); /* Testo bianco, ombra da h3 globale */
   margin-bottom: 1rem;
   font-size: 1.3rem;
@@ -264,7 +255,8 @@ onUnmounted(() => {
 }
 
 /* Stili per il Modale dell'Attrezzatura */
-.portfolio-modal { /* Stile backdrop */
+.portfolio-modal {
+  /* Stile backdrop */
   position: fixed;
   top: 0;
   left: 0;
@@ -278,7 +270,8 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
 }
-.equipment-modal-content { /* Specifico per il contenuto del modale attrezzatura */
+.equipment-modal-content {
+  /* Specifico per il contenuto del modale attrezzatura */
   background-color: var(--color-white);
   max-width: 550px; /* Adattato per la lista */
   width: 100%; /* Occupa la larghezza disponibile fino a max-width */
@@ -309,10 +302,11 @@ onUnmounted(() => {
   transition: background-color 0.3s ease;
 }
 .portfolio-modal-close:hover {
-    background-color: #cc0000; /* Rosso più scuro */
+  background-color: #cc0000; /* Rosso più scuro */
 }
 
-.portfolio-modal-title { /* Titolo H2 nel modale */
+.portfolio-modal-title {
+  /* Titolo H2 nel modale */
   color: var(--color-dark-gray); /* Testo scuro */
   text-shadow: none; /* No ombra su sfondo bianco */
   margin-bottom: 2rem; /* Più spazio prima della lista */
@@ -334,28 +328,28 @@ onUnmounted(() => {
   line-height: 1.5;
 }
 .equipment-list li:first-child {
-    padding-top: 0; /* Rimuovi padding sopra il primo elemento */
+  padding-top: 0; /* Rimuovi padding sopra il primo elemento */
 }
 .equipment-list li:last-child {
   border-bottom: none;
   padding-bottom: 0; /* Rimuovi padding sotto l'ultimo elemento */
 }
 
-.cta-primary .section-title { /* Titolo H2 nella CTA */
-    text-align: center;
+.cta-primary .section-title {
+  /* Titolo H2 nella CTA */
+  text-align: center;
 }
-.cta-primary .section-intro { /* Paragrafo nella CTA */
-    text-align: center;
+.cta-primary .section-intro {
+  /* Paragrafo nella CTA */
+  text-align: center;
 }
 
-
-@media (max-width: 768px) { /* Mobile */
+@media (max-width: 768px) {
+  /* Mobile */
   .service-detail-content {
     flex-direction: column;
     align-items: center;
   }
-
-
 
   /* Titoli di sezione H2 */
   .section-title-on-light,
@@ -364,7 +358,7 @@ onUnmounted(() => {
   }
   /* Titolo H3 */
   .guarantee-title {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 
   .equipment-modal-content {
@@ -372,7 +366,8 @@ onUnmounted(() => {
     padding: 2rem;
     padding-top: 3rem;
   }
-  .portfolio-modal-title { /* Titolo H2 nel modale su mobile */
+  .portfolio-modal-title {
+    /* Titolo H2 nel modale su mobile */
     font-size: 1.5rem;
   }
   .equipment-list li {

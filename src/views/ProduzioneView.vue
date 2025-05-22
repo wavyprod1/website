@@ -7,7 +7,7 @@
     <!-- Page Hero Section -->
     <section class="page-hero section-gradient-overlay">
       <div class="container page-hero-content">
-        <h1 class = "space-up-down hero-main-title">PRODUZIONE MUSICALE:</h1>
+        <h1 class="space-up-down hero-main-title">PRODUZIONE MUSICALE:</h1>
         <p class="space-up-down hero-main-description">
           Per trasformare la tua visione artistica in un brano che ti rispecchi al 100%
         </p>
@@ -123,7 +123,6 @@
       </div>
     </section>
 
-
     <!-- CTA Section -->
     <section class="cta cta-primary">
       <div class="container">
@@ -144,12 +143,8 @@
 <style scoped>
 /* Stile per il contenuto della page-hero */
 
-
-
-
 /* Titoli h2 specifici se necessario, altrimenti .section-title-on-light è sufficiente */
 /* .service-detail-title è ridondante se si usa .section-title-on-light */
-
 
 .service-detail-section {
   padding: 1rem 0;
@@ -163,20 +158,16 @@
 }
 /* La sezione case study non ha bisogno di bg-light/bg-white perché il .case-study div ha il suo sfondo */
 .section-case-study {
-    background-color: var(--color-white); /* Sfondo della section che contiene il box scuro .case-study */
+  background-color: var(
+    --color-white
+  ); /* Sfondo della section che contiene il box scuro .case-study */
 }
-
 
 .service-detail-content {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start; /* Allinea gli item all'inizio del loro asse trasversale */
 }
-
-
-
-
-
 
 .service-detail-image,
 .case-study-image {
@@ -261,7 +252,8 @@
   overflow: hidden;
 }
 
-.case-study-title { /* Titolo H3 nel case study */
+.case-study-title {
+  /* Titolo H3 nel case study */
   color: var(--color-white); /* Testo bianco, ombra da h3 globale */
   margin-bottom: 2rem; /* Aumentato spazio sotto il titolo */
   text-align: center;
@@ -334,7 +326,8 @@
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Ombra più sottile */
 }
-.bonus-box::before { /* Stile nastro BONUS */
+.bonus-box::before {
+  /* Stile nastro BONUS */
   content: 'BONUS';
   position: absolute;
   top: 10px;
@@ -346,10 +339,11 @@
   font-weight: bold;
   font-size: 0.75rem; /* Leggermente più piccolo */
   transform-origin: top right;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Ombra per il nastro */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombra per il nastro */
 }
 
-.bonus-title { /* Titolo H3 nel bonus box */
+.bonus-title {
+  /* Titolo H3 nel bonus box */
   color: var(--color-dark-gray); /* Testo scuro */
   text-shadow: none; /* No ombra su sfondo giallo */
   margin-bottom: 1rem;
@@ -364,28 +358,34 @@
   font-weight: 700;
 }
 
-.cta-primary .section-title { /* Titolo H2 nella CTA */
-    text-align: center;
-    /* Colore bianco e ombra da .cta-primary globale */
+.cta-primary .section-title {
+  /* Titolo H2 nella CTA */
+  text-align: center;
+  /* Colore bianco e ombra da .cta-primary globale */
 }
-.cta-primary .section-intro { /* Paragrafo nella CTA */
-    text-align: center;
-    /* Colore bianco da .cta-primary globale */
+.cta-primary .section-intro {
+  /* Paragrafo nella CTA */
+  text-align: center;
+  /* Colore bianco da .cta-primary globale */
 }
 
-@media (max-width: 992px) { /* Tablet */
-    .service-detail-image-wrapper,
-    .case-study-image-wrapper {
-        /* Su tablet, potrebbero ancora stare affiancati o iniziare ad impilarsi
+@media (max-width: 992px) {
+  /* Tablet */
+  .service-detail-image-wrapper,
+  .case-study-image-wrapper {
+    /* Su tablet, potrebbero ancora stare affiancati o iniziare ad impilarsi
            a seconda dello spazio. flex-wrap si occuperà di questo. */
-    }
+  }
 }
 
-@media (max-width: 768px) { /* Mobile */
+@media (max-width: 768px) {
+  /* Mobile */
   .service-detail-content {
     flex-direction: column;
   }
-  .service-detail-text-wrapper { order: 1; }
+  .service-detail-text-wrapper {
+    order: 1;
+  }
   .service-detail-image-wrapper {
     order: 2;
     width: 100%;
@@ -396,22 +396,22 @@
     width: 100%;
     min-width: none;
   }
-  
+
   .case-study-content {
     flex-direction: column;
     align-items: center;
   }
-  .case-study-image-wrapper { /* Immagine prima del testo su mobile nel case study */
+  .case-study-image-wrapper {
+    /* Immagine prima del testo su mobile nel case study */
     order: -1;
     width: 100%; /* Occupa tutta la larghezza */
   }
   .case-study-image {
-
-      margin-bottom: 1.5rem; /* Spazio tra immagine e testo */
+    margin-bottom: 1.5rem; /* Spazio tra immagine e testo */
   }
   .case-study-text {
-      order: 2;
-      line-height: 1.7;
+    order: 2;
+    line-height: 1.7;
   }
 
   /* Titoli di sezione H2 */
@@ -422,7 +422,7 @@
   }
   /* Titoli H3 */
   .bonus-title {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
   /* Titoli H4 */
   .service-detail-text h4 {

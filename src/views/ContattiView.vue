@@ -37,7 +37,7 @@ onMounted(() => {
     <section class="page-hero section-gradient-overlay">
       <div class="container page-hero-content">
         <!-- h1 e p erediteranno colore bianco e text-shadow dal CSS globale -->
-        <h1 class = "space-up-down hero-main-title">CONTATTI</h1>
+        <h1 class="space-up-down hero-main-title">CONTATTI</h1>
         <p class="space-up-down hero-main-description">
           Hai un'idea, un progetto, o semplicemente vuoi fare due chiacchiere sulla tua musica? Non
           vedo l'ora di sentirti.
@@ -126,9 +126,6 @@ onMounted(() => {
 
 <style scoped>
 
-.contact-section {
-  /* padding: 5rem 0; Ereditato da 'section' nel CSS globale */
-}
 /* Classi esplicite per lo sfondo */
 .contact-section.bg-light {
   background-color: var(--color-light-gray);
@@ -163,11 +160,18 @@ onMounted(() => {
   font-size: 3rem;
   margin-bottom: 1.5rem;
 }
-.contact-icon.icon-green { color: var(--color-green); }
-.contact-icon.icon-blue { color: var(--color-blue); }
-.contact-icon.icon-red { color: var(--color-red); }
+.contact-icon.icon-green {
+  color: var(--color-green);
+}
+.contact-icon.icon-blue {
+  color: var(--color-blue);
+}
+.contact-icon.icon-red {
+  color: var(--color-red);
+}
 
-.contact-title { /* Titolo H2 dentro la card di contatto */
+.contact-title {
+  /* Titolo H2 dentro la card di contatto */
   color: var(--color-dark-gray); /* Testo scuro */
   text-shadow: none; /* Rimuove l'ombra del testo globale */
   margin-bottom: 1rem;
@@ -192,7 +196,8 @@ onMounted(() => {
   box-shadow: 0 5px 15px rgba(52, 199, 89, 0.3);
 }
 
-.btn.btn-red { /* .btn-primary è già rosso, questa è una ridondanza se hanno lo stesso effetto */
+.btn.btn-red {
+  /* .btn-primary è già rosso, questa è una ridondanza se hanno lo stesso effetto */
   background-color: var(--color-red);
   color: var(--color-white);
 }
@@ -203,7 +208,6 @@ onMounted(() => {
 }
 /* .btn-secondary è già blu, quindi non serve una classe .btn-blue dedicata a meno di stili diversi */
 
-
 .newsletter-section {
   background-color: var(--color-dark-gray); /* Sfondo scuro */
   padding: 3rem 1.5rem; /* Aggiunto padding laterale */
@@ -213,7 +217,8 @@ onMounted(() => {
   color: var(--color-white); /* Testo di default bianco */
   text-align: center;
 }
-.newsletter-title { /* Titolo H3 nella newsletter */
+.newsletter-title {
+  /* Titolo H3 nella newsletter */
   color: var(--color-white); /* Testo bianco, ombra da h3 globale */
   margin-bottom: 1rem;
   font-size: 1.6rem; /* Leggermente più grande per H3 */
@@ -240,8 +245,9 @@ onMounted(() => {
   font-size: 1rem;
   color: var(--color-dark-gray); /* Testo scuro nell'input */
 }
-.newsletter-form .btn-primary { /* Bottone Iscriviti */
-    flex-shrink: 0; /* Evita che il bottone si restringa troppo */
+.newsletter-form .btn-primary {
+  /* Bottone Iscriviti */
+  flex-shrink: 0; /* Evita che il bottone si restringa troppo */
 }
 
 @media (max-width: 768px) {
@@ -255,9 +261,6 @@ onMounted(() => {
     max-width: 100%; /* Sovrascrive max-width precedente */
     min-width: unset; /* Rimuove min-width */
     padding: 2rem; /* Padding leggermente ridotto */
-  }
-  .newsletter-form {
-    
   }
   .newsletter-input,
   .newsletter-form .btn-primary {
