@@ -150,6 +150,7 @@ const starEmoji = '⭐';
 .hero-text-column {
   flex: 1 1 55%;
   max-width: 650px;
+  padding: 0.5rem;
 }
 
 
@@ -160,6 +161,7 @@ const starEmoji = '⭐';
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0.5rem;
 }
 .hero-main-image {
   width: 100%;
