@@ -1,0 +1,96 @@
+{
+  "artists": [
+    {
+      "id": "tommiottocento",
+      "name": "TommiOttocento",
+      "thumbnailImage": "/images/portfolio/tommiottocento_thumb.jpg",
+      "modalImage": "/images/portfolio/tommiottocento_modal.jpg",
+      "youtubeLink": "https://www.youtube.com/embed/sqQdDUBh8G8?si=V8gPe5bPAtUubQOy",
+      "story": "Con tommiottocento è nato tutto da una chiacchiera al bar. Dopo varie sessioni di esperimenti, abbiamo creato un genere unico che unisce l'hyperpop all'indie italiano. Ora seguiamo Tommi a 360 gradi come team: Nella produzione musicale, la direzione creativa, il social media management e come band live.",
+      "roles": ["Produzione", "Recording", "Mixing e Mastering", "Direzione Creativa", "Band Live"]
+    },
+    {
+      "id": "camilla",
+      "name": "Camilla",
+      "thumbnailImage": "/images/portfolio/camilla_thumb.jpg",
+      "modalImage": "/images/portfolio/camilla_modal.jpg",
+      "youtubeLink": "https://www.youtube.com/embed/LnHuDOHXKQY?si=8MYV6OvXOQwMwWX_",
+      "story": "I Camilla sono un duo incredibile: Una voce meravigliosa delle chitarre veramente viscerali. Abbiamo lavorato insieme per produrre, registrare, mixare e masterizzare alcuni loro singoli (tra cui un feat con tommiottocento).",
+      "roles": ["Produzione Musicale", "Recording", "Mixing e Mastering"]
+    },
+    {
+      "id": "cass",
+      "name": "Cass",
+      "thumbnailImage": "/images/portfolio/cass_thumb.jpg",
+      "modalImage": "/images/portfolio/giovanni_modal.jpg",
+      "youtubeLink": "https://www.youtube.com/embed/bKHGMSEcWyI?si=hna1s4SOnimjw3dx",
+      "story": "Ho avuto il piacere di collaborare con Cass al suo brano \"Ancora\", curando produzione, affiancamento nel songwriting, mixing e mastering. Come team abbiamo poi supportato l'organizzazione di un suo live a Milano, seguito la release strategy e curato i social media.",
+      "roles": ["Produzione", "Songwriting", "Mixing e Mastering"]
+    },
+    {
+      "id": "sheffer",
+      "name": "Sheffer",
+      "thumbnailImage": "/images/portfolio/sheffer_thumb.jpg",
+      "modalImage": "/images/portfolio/sheffer_modal.jpg",
+      "youtubeLink": "https://www.youtube.com/embed/G8H2gjkr-Ro?si=5wb4T7DSDgZg6Nrr",
+      "story": "Dopo la prima sessione conoscitiva con Sheffer abbiamo capito subito che c'era grande intesa. Abbiamo lavorato insieme alla produzione e al mix di diversi inediti, tra cui mixing e mastering dell'inno ufficiale della squadra della Kings Laeague \"FC Caesar\". Prodotto da lui e cantato da lui e AleB",
+      "roles": ["Mixing e Mastering"]
+    },
+    {
+      "id": "johnfreedom",
+      "name": "John Freedom",
+      "thumbnailImage": "/images/portfolio/johnFreedom_thumb.png",
+      "modalImage": "/images/portfolio/johnFreedom_modal.jpg",
+      "youtubeLink": "https://www.youtube.com/embed/RVcGAB6NWH0?si=lMghKzdaqr-YWLGP",
+      "story": "John Freedom è un artista ed un musicista con una visione chiara della sua musica. Abbiamo lavorato insieme per la recording, il mix e il mastering del suo brano \"Immigrato in America\"",
+      "roles": ["Recording", "Mixing e Mastering"]
+    },
+    {
+      "id": "virginia",
+      "name": "Virginia",
+      "thumbnailImage": "/images/portfolio/virginia_thumb.jpg",
+      "modalImage": "/images/portfolio/virginia_modal.jpg",
+      "youtubeLink": "https://www.youtube.com/embed/VCplu7-79es?si=m_iZLJs9zLQb8PXp",
+      "story": "Virginia mi ha contattato per realizzare il suo singolo \"Libera\". Abbiamo curato insieme la produzione, la registrazione, il mix e il mastering. Creando un interessante ibrido tra il pop e la musica orchestrale",
+      "roles": ["Produzione Musicale", "Recording", "Mixing e Mastering"]
+    },
+    {
+      "id": "dissid",
+      "name": "Dissid",
+      "thumbnailImage": "/images/portfolio/dissid_thumb.jpg",
+      "modalImage": "/images/portfolio/dissid_modal.jpg",
+      "youtubeLink": "https://www.youtube.com/embed/48iP5dAh--4?si=Xf3RQJsiOkdcKZQf",
+      "story": "Dissid ha iniziato da poco il suo percorso musicale. Si è affidato a me per comprendere il risultato che si poteva raggiungere con una registrazione e un mix professionale. Abbiamo lavorato insieme a diversi suoi singoli e continuo a seguirlo consigliandogli i migliori passi da fare nella sua carriera musicale.",
+      "roles": ["Produzione Musicale", "Recording", "Mixing e Mastering"]
+    },
+    {
+      "id": "alvarAaltissimo",
+      "name": "Alvar Aaltissimo",
+      "thumbnailImage": "/images/portfolio/alvarAaltissimo_thumb.jpg",
+      "modalImage": "/images/portfolio/alvarAaltissimo_modal.jpg",
+      "youtubeLink": "https://www.youtube.com/embed/vhOpZjA_n0c?si=VtTVwekj8yQ0ag3e",
+      "story": "La mia collaborazione con Alvar Aaltissimo perdura da tempi non sospetti. Le nostre follie sono sfociate in un singolo che unisce la commedia, la techno e i messaggi vocali. Il tutto con una velatissima critica allo stato del lavoro in Italia.",
+      "roles": ["Produzione Musicale"]
+    }
+  ],
+  "soundtracks": [
+    {
+      "id": "cittaUrgenti",
+      "name": "Città Urgenti",
+      "thumbnailImage": "/images/portfolio/cittaUrgenti_thumb.jpg",
+      "modalImage": "/images/portfolio/cittaUrgenti_modal.jpg",
+      "youtubeLink": null,
+      "story": "Una meravigliosa collaborazione con Alvar Aaltissimo e Filosofia Coatta per la colonna sonora del nostro spettacolo teatrale \"Città Urgenti\". 7 Città, ognuna che risolve un tema dell'abitare contemporaneo. Ogni città è presentata attraverso una storia, ed ogni storia ha la sua colonna sonora performata da me dal vivo. Il tutto accompagnato da immagini generate con l'AI \nIn tour per l'Italia da più di un anno.",
+      "roles": ["Composizione", "Produzione", "Orchestrazione", "Sound Design", "Performing"]
+    },
+    {
+      "id": "pondBand",
+      "name": "Pond Band",
+      "thumbnailImage": "/images/portfolio/pondBand_thumb.jpg",
+      "modalImage": "/images/portfolio/pondBand_modal.jpg",
+      "youtubeLink": "https://www.youtube.com/embed/c9E2MgB09rY?si=sOtUklCtkfZ0qKQg",
+      "story": "Ho avuto il piacere di curare, in collaborazione con Natalia Meyer e Guglielmo Fratticioli, la soundtrack del libro per bambini \"Pond Band\" di Rita Sponzilli. Un viaggio visivo e sonoro che accompagna i bambini alla scoperta della musica Dixieland e del Jazz.",
+      "roles": ["Produzione", "Sound Design", "Mixing e Mastering"]
+    }
+  ]
+}
