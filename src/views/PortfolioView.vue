@@ -371,14 +371,14 @@ const allPortfolioItems = computed(() => {
 }
 .portfolio-modal-content {
   background-color: var(--color-white);
-  width: 90%; /* Più flessibile */
+  width: 90%;
   max-width: 900px;
-  margin: 2rem auto; /* Auto per centrare orizzontalmente, 2rem per top/bottom */
+  margin: 2rem auto;
   border-radius: 10px;
-  overflow: hidden; /* Per il border-radius sui figli */
-  position: relative; /* Per il bottone di chiusura */
-  display: flex; /* Layout a due colonne per media e dettagli */
-  flex-direction: column; /* Default per mobile */
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column; /* Always stack vertically */
 }
 
 .portfolio-modal-close {
@@ -405,10 +405,11 @@ const allPortfolioItems = computed(() => {
 }
 
 .portfolio-modal-media {
-  width: 100%; /* Prende la larghezza del .portfolio-modal-content */
-  background-color: var(--color-black); /* Sfondo per video/immagini */
+  width: 100%;
+  background-color: var(--color-black);
   position: relative;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio per video e immagini landscape */
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  max-height: 600px; /* Optional: limit maximum height */
 }
 .portfolio-modal-media iframe,
 .portfolio-modal-media .portfolio-modal-image {
@@ -425,55 +426,36 @@ const allPortfolioItems = computed(() => {
   object-fit: contain; /* 'contain' per vedere tutta l'immagine, 'cover' per riempire */
 }
 
+.portfolio-modal-title {
+  color: var(--color-dark-gray);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  /* Removing text-align: center to keep original left alignment */
+}
+
 .portfolio-modal-details {
   padding: 2rem;
-  color: var(--color-dark-gray); /* Testo di default scuro */
-}
-.portfolio-modal-title { /* Titolo H2 dentro il modale */
-  color: var(--color-dark-gray); /* Già scuro */
-  text-shadow: none; /* No ombra su sfondo bianco */
-  margin-bottom: 1rem;
-  /* text-transform: uppercase; Ereditato da h2 globale */
-}
-.portfolio-modal-description {
-  margin-bottom: 2rem;
-  line-height: 1.7;
-  /* white-space: pre-line; è già nel template con v-html */
-}
-.portfolio-modal-services {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem; /* Ridotto leggermente */
-}
-.portfolio-modal-service {
-  background-color: var(--color-light-gray);
-  padding: 0.5rem 1rem;
-  border-radius: 50px; /* Pill shape */
-  font-size: 0.85rem; /* Leggermente più piccolo */
-  font-weight: bold;
   color: var(--color-dark-gray);
+  width: 100%;
+  /* Removing max-width and margin auto to keep original full-width layout */
 }
 
-.soundtrack-section {
-  /* margin-top: 5rem; Rimosso, lo spazio tra sezioni è gestito dal padding di 'section' */
-}
-
-@media (min-width: 769px) { /* Layout a due colonne per modale su schermi più grandi */
-    .portfolio-modal-content {
-        flex-direction: row;
-        max-height: 90vh; /* Limita altezza massima */
-    }
-    .portfolio-modal-media {
-        flex: 0 0 55%; /* Media occupa il 55% */
-        padding-top: 0; /* Rimuovi padding-top quando flex direction è row */
-        height: auto; /* L'altezza sarà determinata dal contenuto o dal max-height del parent */
-        min-height: 400px; /* Altezza minima per la parte media */
-    }
-    .portfolio-modal-details {
-        flex: 0 0 45%; /* Dettagli occupano il 45% */
-        overflow-y: auto; /* Scroll solo per i dettagli se necessario */
-    }
+/* Remove or update the desktop media query */
+@media (min-width: 769px) {
+  .portfolio-modal-content {
+    max-height: none; /* Remove max-height constraint */
+  }
+  
+  .portfolio-modal-media {
+    flex: none; /* Remove flex sizing */
+    height: auto;
+  }
+  
+  .portfolio-modal-details {
+    flex: none; /* Remove flex sizing */
+  }
 }
 
 @media (max-width: 768px) {
@@ -485,11 +467,12 @@ const allPortfolioItems = computed(() => {
     width: calc(100% - 2rem); /* Occupa quasi tutto lo schermo */
     max-width: calc(100% - 2rem);
   }
-  .portfolio-modal-details {
-    padding: 1.5rem; /* Riduci padding interno */
-  }
   .portfolio-modal-title {
-    font-size: 1.5rem; /* Riduci dimensione titolo nel modale */
+    font-size: 1.8rem; /* Slightly smaller on mobile but keeping proportions */
+  }
+  
+  .portfolio-modal-details {
+    padding: 1.5rem;
   }
 }
 </style>

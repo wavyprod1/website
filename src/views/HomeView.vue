@@ -26,17 +26,17 @@ const starEmoji = '⭐';
   <main>
     <!-- HERO SECTION -->
     <!-- Applica la classe globale .section-gradient-overlay per lo sfondo -->
-    <section class="container hero section-gradient-overlay">
-      <div class=" hero-content-wrapper">
+    <section class=" hero section-gradient-overlay">
+      <div class="container hero-content-wrapper">
         <div class="hero-text-column">
           <!-- h1 usa .section-title per coerenza, ma è un h1 -->
-          <h1 class="section-title hero-main-title">IL TUO PRODUTTORE MUSICALE DI FIDUCIA</h1>
+          <h1 class="section-title hero-main-title">PRODUTTORE MUSICALE</h1>
           <p class="hero-main-description">
             Se il tuo obbiettivo non è quello di "acquistare un servizio", ma di sviluppare il tuo
             progetto musicale, sono il produttore giusto per te.
             <br /><br />
             Il mio impegno è quello di essere il professionista che avrei voluto avere al
-            mio fianco quando ho iniziato. <br />Quello a cui avrei affidato il mio progetto musicale ad
+            mio fianco quando ho iniziato. <br /><br />Quello a cui avrei affidato il mio progetto musicale ad
             occhi chiusi.
           </p>
         </div>
@@ -158,7 +158,7 @@ const starEmoji = '⭐';
   z-index: 2;       /* Sopra l'overlay ::before della classe .section-gradient-overlay */
   width: 100%;
   min-height: calc(100vh - 120px); /* Considera padding-top/bottom della section .hero e header */
-  padding: 2rem 0; /* Padding interno al content wrapper */
+
 }
 
 .hero-text-column {
@@ -293,7 +293,7 @@ const starEmoji = '⭐';
   .hero-content-wrapper {
     gap: 2rem;
     min-height: 0; /* Rimuovi min-height specifico per tablet */
-    padding: 1rem 0;
+  
   }
   .hero-image-column { max-width: 320px; }
 }

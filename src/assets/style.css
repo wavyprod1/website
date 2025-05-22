@@ -237,6 +237,11 @@ header {
   padding: 2rem 1.5rem;
 }
 
+  .hero-main-title {
+  font-size: 3rem; /* NUOVA DIMENSIONE RIDOTTA PER MOBILE PICCOLO */
+  margin-bottom: 1.5rem; /* Più spazio per H1 */
+}
+
 .page-intro {
   color: var(--color-white);
   font-size: 1.2rem;
@@ -324,6 +329,8 @@ footer {
   padding: 4rem 0 2rem;
 }
 /* ... stili footer ... */
+
+
 
 
 /* Responsive Design */
