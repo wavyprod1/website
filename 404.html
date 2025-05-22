@@ -1,0 +1,44 @@
+<!-- public/404.html -->
+<!DOCTYPE html>
+<html lang="it"> <!-- Assicurati che lang sia corretto -->
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/src/assets/logo.png"> <!-- Aggiorna il percorso del favicon se base è '/website/' -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reindirizzamento... - Elia Pirrello</title> <!-- Titolo appropriato -->
+    <script>
+      // Il nome del tuo repository, che è la base del path su GitHub Pages
+      const repoName = '/website'; // <<<=== ASSICURATI CHE SIA CORRETTO!
+
+      // Ottieni il path corrente che ha causato il 404 e la query string
+      const fullPath = window.location.pathname + window.location.search + window.location.hash;
+
+      // Rimuovi il nome del repository dal path se presente, per ottenere il path della SPA
+      let spaPath = fullPath;
+      if (fullPath.startsWith(repoName + '/')) {
+        // spaPath = fullPath.substring(repoName.length); // Dovrebbe essere solo il path dopo repoName
+         // es. se fullPath è /website/portfolio?id=1, spaPath diventa /portfolio?id=1
+         spaPath = fullPath.slice(repoName.length);
+
+      } else if (fullPath === repoName) { // Caso in cui si accede a /website senza slash finale
+        spaPath = '/';
+      }
+
+
+      // Salva il path corretto in sessionStorage per il recupero in main.js
+      sessionStorage.redirect = spaPath;
+
+      // Reindirizza alla root dell'applicazione (includendo il nome del repository)
+      // Vue Router poi prenderà il path da sessionStorage
+      window.location.href = repoName + '/';
+    </script>
+  </head>
+  <body>
+    <!-- Potresti voler aggiungere un messaggio di reindirizzamento qui -->
+    <p>Se non vieni reindirizzato automaticamente, per favore <a id="redirect-link" href="/website/">clicca qui</a>.</p>
+    <script>
+      // Aggiorna il link di fallback dinamicamente
+      document.getElementById('redirect-link').href = repoName + '/';
+    </script>
+  </body>
+</html>
