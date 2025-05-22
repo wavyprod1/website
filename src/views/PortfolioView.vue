@@ -1,34 +1,81 @@
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue'
-import { useRoute } from 'vue-router' // Importa useRoute
-// Importa i dati dal file JSON
+import { ref, onMounted, onUnmounted, computed, nextTick } from 'vue' // Aggiungi nextTick
+import { useRoute } from 'vue-router'
 import portfolioData from '@/data/portfolioData.json'
 
 const publicPath = import.meta.env.BASE_URL
+const route = useRoute()
 
-const route = useRoute() // Istanzia useRoute
-
-// Stato per i modali
 const openModals = ref({})
-
-// Dati del portfolio
 const artists = ref(portfolioData.artists || [])
 const soundtracks = ref(portfolioData.soundtracks || [])
 
-// Funzione per aprire un modale
+// Ref per gli elementi iframe
+// Creeremo un oggetto per mappare gli ID dei progetti ai loro iframe
+const iframeRefs = ref({})
+
+// Funzione per impostare i ref dinamicamente
+// La useremo nel template con :ref="..."
+const setIframeRef = (el, projectId) => {
+  if (el) {
+    iframeRefs.value[projectId] = el
+  }
+}
+
+// Funzione per pulire i ref quando un elemento viene smontato (opzionale ma buona pratica)
+const beforeIframeUnmount = (projectId) => {
+  delete iframeRefs.value[projectId];
+}
+
+
 const openModal = (projectId) => {
-  // Assicurati che projectId sia valido prima di aprirlo
-  const itemExists = allPortfolioItems.value.some((item) => item.id === projectId)
-  if (itemExists) {
+  const item = allPortfolioItems.value.find(i => i.id === projectId);
+  if (item) {
     openModals.value[projectId] = true
     document.body.style.overflow = 'hidden'
+
+    // Se il modale appena aperto ha un video, e c'era un src precedentemente "pausato",
+    // lo ripristiniamo. Questo aiuta se l'utente riapre lo stesso modale.
+    if (item.youtubeLink) {
+      nextTick(() => { // Assicura che l'iframe sia nel DOM
+        const iframe = iframeRefs.value[projectId];
+        if (iframe && iframe.dataset.originalSrc && iframe.src !== iframe.dataset.originalSrc) {
+          iframe.src = iframe.dataset.originalSrc;
+        } else if (iframe && !iframe.dataset.originalSrc) {
+          // Salva l'originale la prima volta, se non è già stato salvato
+           iframe.dataset.originalSrc = iframe.src;
+        }
+      });
+    }
+
   } else {
     console.warn(`Tentativo di aprire un modale per un ID non esistente: ${projectId}`)
   }
 }
 
-// Funzione per chiudere un modale
 const closeModal = (projectId) => {
+  const item = allPortfolioItems.value.find(i => i.id === projectId);
+
+  if (item && item.youtubeLink) {
+    const iframe = iframeRefs.value[projectId];
+    if (iframe) {
+      // Salva l'URL originale se non l'abbiamo già fatto
+      if (!iframe.dataset.originalSrc) {
+        iframe.dataset.originalSrc = iframe.src;
+      }
+      // "Interrompi" il video ricaricando l'iframe con un src vuoto o ricaricandolo
+      // Un modo semplice per interrompere è cambiare temporaneamente l'src
+      iframe.src = ''; // Questo dovrebbe interrompere la riproduzione
+      // Potresti volerlo reimpostare all'originale subito se vuoi che il video sia pronto per il play la prossima volta
+      // ma per "interrompere e basta", src='' è sufficiente finché non viene riaperto e gestito da openModal.
+      // Se si vuole che il video riparta da dove era stato interrotto, è necessaria l'API di YouTube.
+      // Per la semplicità richiesta, ricaricare l'iframe è il metodo più diretto.
+      // Per far sì che l'immagine di anteprima torni visibile e il video possa essere riavviato al prossimo open:
+      // if (originalSrc) iframe.src = originalSrc; // Questo ricaricherebbe il video, ma non lo farebbe ripartire
+      // Lasciarlo vuoto finché non viene riaperto va bene per "interrompere".
+    }
+  }
+
   openModals.value[projectId] = false
   const anyModalOpen = Object.values(openModals.value).some((status) => status === true)
   if (!anyModalOpen) {
@@ -36,13 +83,12 @@ const closeModal = (projectId) => {
   }
 }
 
-// Funzione per gestire il click esterno
 const handleClickOutside = (event) => {
   Object.keys(openModals.value).forEach((modalId) => {
     if (openModals.value[modalId]) {
       const modalElement = document.getElementById(modalId + 'Modal')
       if (modalElement && event.target === modalElement) {
-        closeModal(modalId)
+        closeModal(modalId) // closeModal ora gestirà l'interruzione del video
       }
     }
   })
@@ -50,15 +96,11 @@ const handleClickOutside = (event) => {
 
 onMounted(() => {
   window.addEventListener('click', handleClickOutside)
-
-  // Controlla i query parameters all'avvio del componente
   const modalToOpen = route.query.openModalId
   if (modalToOpen) {
-    // È una buona idea aggiungere un piccolo delay per assicurarsi che il DOM sia pronto,
-    // specialmente se i dati del portfolio sono caricati asincronamente (anche se qui sono sincroni da JSON)
     setTimeout(() => {
       openModal(modalToOpen)
-    }, 100) // Un piccolo delay, aggiusta se necessario
+    }, 100)
   }
 })
 
@@ -69,7 +111,6 @@ onUnmounted(() => {
   }
 })
 
-// Combina artisti e soundtrack
 const allPortfolioItems = computed(() => {
   return [...artists.value, ...soundtracks.value]
 })
@@ -189,10 +230,12 @@ const allPortfolioItems = computed(() => {
           <div class="portfolio-modal-media">
             <div v-if="itemData.youtubeLink" class="youtube-embed-container">
               <iframe
+                :ref="el => setIframeRef(el, itemData.id)"
+                @vue:before-unmount="beforeIframeUnmount(itemData.id)"
                 width="100%"
                 height="100%"
                 :src="itemData.youtubeLink"
-                title="YouTube video player"
+                :title="itemData.name + ' - YouTube video player'"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
@@ -241,7 +284,7 @@ const allPortfolioItems = computed(() => {
 </template>
 
 <style scoped>
-/* Gli stili rimangono invariati rispetto alla tua versione precedente */
+/* Gli stili rimangono invariati */
 .portfolio-section:nth-child(odd) {
   background-color: var(--color-light-gray);
 }
