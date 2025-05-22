@@ -37,7 +37,7 @@ onMounted(() => {
     <section class="page-hero section-gradient-overlay">
       <div class="container page-hero-content">
         <!-- h1 e p erediteranno colore bianco e text-shadow dal CSS globale -->
-        <h1>FACCIAMO MUSICA INSIEME?</h1>
+        <h1 class = "hero-main-title">CONTATTI</h1>
         <p class="page-intro">
           Hai un'idea, un progetto, o semplicemente vuoi fare due chiacchiere sulla tua musica? Non
           vedo l'ora di sentirti.

@@ -165,10 +165,7 @@ const starEmoji = '⭐';
   flex: 1 1 55%;
   max-width: 650px;
 }
-.hero-main-title {
-  /* Stili tipografici da h1 globale */
-  margin-bottom: 1.5rem; /* Più spazio per H1 */
-}
+
 .hero-main-description {
   font-size: 1.1rem;
   margin-bottom: 2rem;

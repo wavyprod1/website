@@ -39,7 +39,7 @@ onUnmounted(() => {
     <!-- Page Hero Section -->
     <section class="page-hero section-gradient-overlay">
       <div class="container page-hero-content">
-        <h1>RECORDING, MIX & MASTER:</h1>
+        <h1 class = "hero-main-title">RECORDING, MIX & MASTER:</h1>
         <p class="page-intro">
           Per ottenere la performance perfetta in studio e un suono impeccabile su ogni piattaforma.
         </p>

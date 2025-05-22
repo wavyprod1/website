@@ -9,7 +9,7 @@
     <section class="page-hero section-gradient-overlay">
       <div class="container page-hero-content">
         <!-- h1 e p erediteranno colore bianco e text-shadow dal CSS globale -->
-        <h1>I MIEI CONTENUTI</h1>
+        <h1 class = "hero-main-title">I MIEI CONTENUTI</h1>
         <p class="page-intro">
           Per migliorare la tua musica con le mie tecniche e trovare ispirazione.<br />Spero
           ti siano utili!

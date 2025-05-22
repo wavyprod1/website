@@ -346,6 +346,11 @@ footer {
   section {
     padding: 4rem 0; /* Riduci padding sezioni su mobile */
   }
+
+  .hero-main-title {
+  font-size: 2.2rem; /* NUOVA DIMENSIONE RIDOTTA PER MOBILE PICCOLO */
+  margin-bottom: 1.5rem; /* Più spazio per H1 */
+}
   
   .mobile-menu-btn { display: block; }
   .nav-menu {
@@ -372,5 +377,10 @@ footer {
   h1 { font-size: 2rem; }
   h2 { font-size: 1.5rem; }
   .btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
+  .hero-main-title {
+  font-size: 1.8rem; /* NUOVA DIMENSIONE RIDOTTA PER MOBILE PICCOLO */
+  margin-bottom: 1.5rem; /* Più spazio per H1 */
+}
+
   /* ... altri stili mobile ... */
 }

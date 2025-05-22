@@ -104,7 +104,7 @@ const allPortfolioItems = computed(() => {
       <!-- Il contenuto di .page-hero deve avere z-index > 1 per stare sopra l'overlay -->
       <div class="container page-hero-content">
         <!-- h1 e p erediteranno colore bianco e text-shadow dal CSS globale -->
-        <h1>PORTFOLIO</h1>
+        <h1 class = "hero-main-title">PORTFOLIO</h1>
         <p class="page-intro">Alcuni progetti a cui ho avuto il piacere di contribuire.</p>
       </div>
     </section>
