@@ -7,10 +7,9 @@
     <!-- Page Hero Section -->
     <section class="page-hero section-gradient-overlay">
       <div class="container page-hero-content">
-        <h1 class = "hero-main-title">PRODUZIONE MUSICALE:</h1>
-        <p class="page-intro">
-          Per trasformare la tua visione artistica in un brano che ti rispecchi al 100%,<br />originale
-          e autentico.
+        <h1 class = "space-up-down hero-main-title">PRODUZIONE MUSICALE:</h1>
+        <p class="space-up-down hero-main-description">
+          Per trasformare la tua visione artistica in un brano che ti rispecchi al 100%
         </p>
       </div>
     </section>

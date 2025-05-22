@@ -30,17 +30,17 @@ const starEmoji = '⭐';
       <div class="container hero-content-wrapper">
         <div class="hero-text-column">
           <!-- h1 usa .section-title per coerenza, ma è un h1 -->
-          <h1 class="section-title hero-main-title">PRODUTTORE MUSICALE</h1>
-          <p class="hero-main-description">
+          <h1 class=" space-up-down section-title hero-main-title">PRODUTTORE MUSICALE</h1>
+          <div class="space-up-down hero-main-description">
             Se il tuo obbiettivo non è quello di "acquistare un servizio", ma di sviluppare il tuo
             progetto musicale, sono il produttore giusto per te.
             <br /><br />
             Il mio impegno è quello di essere il professionista che avrei voluto avere al
             mio fianco quando ho iniziato. <br /><br />Quello a cui avrei affidato il mio progetto musicale ad
             occhi chiusi.
-          </p>
+          </div>
         </div>
-        <div class="hero-image-column">
+        <div class="space-up-down hero-image-column">
           <img
             src="/images/hero-profile-square.jpg"
             alt="Elia Pirrello - Produttore Musicale"
@@ -147,31 +147,13 @@ const starEmoji = '⭐';
 }
 
 
-/* HERO SECTION SPECIFICS (Layout e testo) */
-.hero-content-wrapper {
-  display: flex;
-  flex-direction: row; /* Desktop: testo a sinistra, immagine a destra */
-  align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-  position: relative; /* Essenziale per z-index */
-  z-index: 2;       /* Sopra l'overlay ::before della classe .section-gradient-overlay */
-  width: 100%;
-  min-height: calc(100vh - 120px); /* Considera padding-top/bottom della section .hero e header */
-
-}
 
 .hero-text-column {
   flex: 1 1 55%;
   max-width: 650px;
 }
 
-.hero-main-description {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: var(--color-light-gray); /* Testo descrizione chiaro su sfondo sfumato/scuro */
-  line-height: 1.7;
-}
+
 
 .hero-image-column {
   flex: 1 1 40%;
@@ -290,22 +272,12 @@ const starEmoji = '⭐';
 
 /* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 992px) { /* Tablet */
-  .hero-content-wrapper {
-    gap: 2rem;
-    min-height: 0; /* Rimuovi min-height specifico per tablet */
-  
-  }
+
   .hero-image-column { max-width: 320px; }
 }
 
 @media (max-width: 768px) { /* Mobile */
-  .hero-content-wrapper {
-    flex-direction: column;
-    text-align: center; /* Centra il testo dei figli ordinati */
-    padding-top: 2rem; /* Spazio dal top della section (già con padding per header globale) */
-    padding-bottom: 2rem;
-    gap: 1.5rem;
-  }
+  
 
   /* Tutti i .section-title (h1, h2) su mobile */
   .section-title {
@@ -318,24 +290,13 @@ const starEmoji = '⭐';
   }
 
   /* Ordine e stili per gli elementi della Hero su mobile */
-  .hero .hero-main-title { /* h1 nella hero */
-    order: 1;
-    margin-bottom: 1rem; /* Ridotto per mobile */
-    width: 100%;
-  }
+
   .hero-image-column {
     order: 2;
     width: 70vw;
     max-width: 280px;
-    margin: 0 auto 1.5rem auto; /* Centra e aggiunge spazio sotto */
   }
-  .hero-main-description {
-    order: 3;
-    font-size: 1rem;
-    max-width: 90%; /* Mantiene max-width */
-    margin: 0 auto 2rem auto;
 
-  }
   
   .review-author-info { /* Su mobile, nome e rating uno sopra l'altro */
     flex-direction: column;

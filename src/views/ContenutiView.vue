@@ -9,10 +9,9 @@
     <section class="page-hero section-gradient-overlay">
       <div class="container page-hero-content">
         <!-- h1 e p erediteranno colore bianco e text-shadow dal CSS globale -->
-        <h1 class = "hero-main-title">I MIEI CONTENUTI</h1>
-        <p class="page-intro">
-          Per migliorare la tua musica con le mie tecniche e trovare ispirazione.<br />Spero
-          ti siano utili!
+        <h1 class = "space-up-down hero-main-title">I MIEI CONTENUTI</h1>
+        <p class="space-up-down hero-main-description">
+          Per migliorare la tua musica e trovare ispirazione.
         </p>
       </div>
     </section>
@@ -67,10 +66,7 @@
         <div class="instagram-cta-section">
           <!-- h3 erediterà colore bianco e ombra dal CSS globale su sfondo scuro -->
           <h3>SEGUIMI SU INSTAGRAM PER ALTRI CONSIGLI!</h3>
-          <p>
-            Scopri nuovi reel, stories e post con trucchi e ispirazioni per far crescere la tua
-            musica e migliorare le tue produzioni.
-          </p>
+
           <a href="https://www.instagram.com/wavyprod1" class="btn btn-secondary" target="_blank">
             <i class="fab fa-instagram"></i> VAI AL PROFILO INSTAGRAM
           </a>
@@ -89,7 +85,7 @@
   color: var(--color-dark-gray);
   text-shadow: none; /* Rimuove l'ombra del testo globale */
   text-align: center;
-  margin-bottom: 3rem; /* Spazio standard sotto i titoli di sezione */
+
   /* font-size e text-transform ereditati da h2 globale */
 }
 
@@ -113,12 +109,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(326px, 1fr));
   gap: 2rem;
-  margin-top: 3rem; /* Spazio dal titolo "Reel Instagram" */
+  margin-top: 2rem; /* Spazio dal titolo "Reel Instagram" */
 }
 
 .instagram-embed-wrapper {
   max-width: 540px;
-  min-width: 326px; /* Larghezza minima embed Instagram */
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -175,9 +170,7 @@
   .instagram-embed-wrapper iframe {
     height: 600px; /* Altezza leggermente ridotta per mobile, se necessario */
   }
-  .section-title-on-light {
-    margin-bottom: 2rem;
-  }
+
   .instagram-cta-section {
     margin-top: 3rem;
   }

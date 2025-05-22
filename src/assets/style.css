@@ -68,11 +68,11 @@ p {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 1rem 1.5rem;
 }
 
 section {
-  padding: 5rem 0;
+  padding: 1.5rem 0;
   position: relative; /* Utile per eventuali figli posizionati assolutamente */
   overflow: hidden;  /* Utile per ::before/::after overlays */
 }
@@ -114,23 +114,7 @@ section {
   box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3); /* Ombra con il nuovo blu */
 }
 
-/* Header & Navigation */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: var(--color-dark-gray);
-  padding: 1rem 0;
-  transition: background-color 0.3s ease;
-}
 
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 .logo {
   font-weight: bold;
@@ -204,27 +188,35 @@ header {
 /* Hero Section Specifics (se non coperte da .section-gradient-overlay) */
 .hero {
   /* position, height, display, align-items, overflow sono già in section o qui */
-  height: 100vh;
+  
+  min-height: calc(100vh - 4rem); /* Subtract header height */
+  margin-top: 4rem;
   display: flex;
   align-items: center;
   /* background-color: var(--color-dark-gray); /* Fallback se .section-gradient-overlay non è usato */
 }
 
-/* .hero-bg rimosso perché ora usiamo .section-gradient-overlay */
+.hero-content-wrapper {
+  display: flex;
+  flex-direction: row; /* Desktop: testo a sinistra, immagine a destra */
+  align-items: center;
+  justify-content: space-between;
+  position: relative; /* Essenziale per z-index */
+  z-index: 2;       /* Sopra l'overlay ::before della classe .section-gradient-overlay */
+  width: 100%;
+}
 
-/* .hero-content era un wrapper generico, .hero-content-wrapper è usato nel componente */
-/* Assicurarsi che il wrapper del contenuto nella hero section abbia z-index > 1 */
+.space-up-down{
+  margin: 1rem 0 1rem 0;
+}
 
 
 /* Page Hero Section (per pagine interne, es. "Chi Sono", "Servizi") */
 .page-hero {
-  /* position: relative; padding, text-align sono già in section o qui */
-  padding: 8rem 0 4rem; /* Padding specifico per page-hero */
+  margin-top: 4rem;
   background-color: var(--color-dark-gray); /* Sfondo standard per page-hero */
   text-align: center;
 }
-/* Se vuoi usare il gradiente anche per page-hero, aggiungi .section-gradient-overlay */
-/* <section class="page-hero section-gradient-overlay"> */
 
 .page-hero h1 {
   margin-bottom: 1.5rem;
@@ -234,12 +226,19 @@ header {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 2rem 1.5rem;
+  padding: 0rem 1.5rem;
 }
 
   .hero-main-title {
   font-size: 3rem; /* NUOVA DIMENSIONE RIDOTTA PER MOBILE PICCOLO */
-  margin-bottom: 1.5rem; /* Più spazio per H1 */
+
+
+}
+
+.hero-main-description {
+  font-size: 1.1rem;
+  color: var(--color-light-gray); /* Testo descrizione chiaro su sfondo sfumato/scuro */
+  line-height: 1.7;
 }
 
 .page-intro {
@@ -249,43 +248,10 @@ header {
   margin: 0 auto;
 }
 
-/* Benefits Section (esempio, se la riutilizzi) */
-.benefits {
-  background-color: var(--color-light-gray);
-}
-.benefits .section-title, /* Titolo specifico per sezione benefits */
-.benefits .benefit-title,
-.benefits .benefit-text {
-  color: var(--color-dark-gray);
-  text-shadow: none;
-}
-.benefits .section-title {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-.benefits .benefits-intro { /* Intro specifico per sezione benefits */
-  color: var(--color-dark-gray);
-  text-shadow: none;
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 3rem;
-}
-/* ... altri stili benefits ... */
-
-
-/* Services Section */
-/* ... stili services ... */
-
-
-/* Reviews Section */
-/* .reviews è gestito nello scoped CSS per lo sfondo chiaro.
-   Se volessi una versione scura di default, la definiresti qui. */
-
 
 /* CTA Sections */
 .cta {
   text-align: center;
-  /* padding: 5rem 0; già in section */
 }
 
 .cta-primary {
@@ -337,13 +303,10 @@ footer {
 @media (max-width: 992px) {
   h1 { font-size: 3rem; }
   h2 { font-size: 2.2rem; }
-
-  .hero {
-    min-height: 90vh;
-    height: auto;
-    padding-top: 70px; /* Altezza header */
-    padding-bottom: 2rem;
+  section {
+    padding: 0;
   }
+
 }
 
 @media (max-width: 768px) {
@@ -351,13 +314,23 @@ footer {
   h2 { font-size: 1.8rem; }
 
   section {
-    padding: 4rem 0; /* Riduci padding sezioni su mobile */
+    padding: 0;
   }
+
 
   .hero-main-title {
   font-size: 2.2rem; /* NUOVA DIMENSIONE RIDOTTA PER MOBILE PICCOLO */
-  margin-bottom: 1.5rem; /* Più spazio per H1 */
+
 }
+.hero-content-wrapper {
+    flex-direction: column;
+    text-align: center; /* Centra il testo dei figli ordinati */
+
+  }
+  .hero-main-description {
+    order: 3;
+    font-size: 1rem;
+  }
   
   .mobile-menu-btn { display: block; }
   .nav-menu {
@@ -375,18 +348,16 @@ footer {
   .nav-menu.active { left: 0; }
   .nav-item { margin: 1.5rem 0; }
 
-  /* .hero-content era nel tuo globale, ora il contenuto è in .hero-content-wrapper */
-  /* .hero-description era nel tuo globale, ora è .hero-main-description */
 }
 
 @media (max-width: 576px) {
-  section { padding: 3rem 0; }
+
   h1 { font-size: 2rem; }
   h2 { font-size: 1.5rem; }
   .btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
   .hero-main-title {
-  font-size: 1.8rem; /* NUOVA DIMENSIONE RIDOTTA PER MOBILE PICCOLO */
-  margin-bottom: 1.5rem; /* Più spazio per H1 */
+  font-size: 1.5rem; /* NUOVA DIMENSIONE RIDOTTA PER MOBILE PICCOLO */
+
 }
 
   /* ... altri stili mobile ... */

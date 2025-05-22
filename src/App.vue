@@ -67,11 +67,13 @@ watch(() => router.currentRoute.value.path, () => {
 
 <template>
   <header>
-    <div class="container header-container">
+    <div class= container>
+    <div class="header-container">
+      
       <RouterLink to="/" class="header-logo-link desktop-only" @click="handleNavLinkClick">
         ELIA PIRRELLO
       </RouterLink>
-      <RouterLink to="/" class="header-logo-link-mobile mobile-only" @click="handleNavLinkClick">
+      <RouterLink to="/" class="header-logo-link mobile-only" @click="handleNavLinkClick">
         ELIA PIRRELLO
       </RouterLink>
       <button class="mobile-menu-btn" @click="toggleMobileMenu" aria-label="Apri menu" :aria-expanded="isMobileMenuOpen">
@@ -139,6 +141,7 @@ watch(() => router.currentRoute.value.path, () => {
           >
         </li>
       </ul>
+    </div>
     </div>
   </header>
 
@@ -223,6 +226,8 @@ watch(() => router.currentRoute.value.path, () => {
 
 <style scoped>
 /* Stili Header */
+
+/* Header & Navigation */
 header {
   position: fixed;
   top: 0;
@@ -230,25 +235,28 @@ header {
   width: 100%;
   z-index: 1000;
   background-color: var(--color-dark-gray);
-  padding: 1rem 0;
   transition: background-color 0.3s ease;
 }
 
 .header-container {
+  justify-content: space-between;
   display: flex;
   align-items: center;
+  height: 2rem;
 }
+
 
 /* Logo/Nome Link per Desktop */
 .header-logo-link {
-  font-size: 1.7rem;
   font-weight: bold;
+  font-size: 1.6rem;
   color: var(--color-white);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: color 0.3s ease; /* Aggiunta transizione */
 }
+
 .header-logo-link:hover {
   color: var(--color-light-gray); /* MODIFICATO: Hover grigio chiaro */
 }
@@ -268,9 +276,9 @@ header {
   font-weight: bold;
   text-transform: uppercase;
   transition: color 0.3s ease;
-  padding: 0.5rem 0;
+  padding: 0rem 0;
   position: relative;
-  font-size: 1.1rem;  /* Esempio: leggermente più grande del default, se vuoi. Il default è spesso 1rem per <p> */
+
 }
 
 .nav-link.nav-link-servizi:hover { color: var(--color-green); }
@@ -347,18 +355,10 @@ header {
 
   .header-container {
     justify-content: center;
-    position: relative;
+
   }
 
-  .header-logo-link-mobile {
-    font-size: 1.7rem;
-    font-weight: bold;
-    color: var(--color-white);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color 0.3s ease; /* Aggiunta transizione */
-  }
+
   .header-logo-link-mobile:hover {
     color: var(--color-light-gray); /* MODIFICATO: Hover grigio chiaro */
   }
@@ -388,11 +388,12 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 70px;
+    padding-top:4rem;
     transition: left 0.3s ease-in-out;
     z-index: 1001;
     overflow-y: auto;
     box-sizing: border-box;
+    font-size: 1.6rem;
   }
 
   .nav-menu.active {
@@ -406,8 +407,7 @@ header {
   }
   .nav-menu .nav-link {
     display: block;
-    padding: 1rem 0;
-    font-size: 1.5rem;
+
     text-align: center;
     
   }
@@ -492,8 +492,6 @@ footer {
 @media (max-width: 576px) {
   .footer-container { grid-template-columns: 1fr; text-align: center; }
   .social-links { justify-content: center; }
-  .header-logo-link-mobile { font-size: 1.7rem; }
-  .mobile-menu-btn { font-size: 1.6rem; }
   .footer-col h3 { text-align: center; } /* Centra titoli footer su mobile molto piccolo */
   .footer-nav { text-align: center; } /* Centra link nav footer su mobile molto piccolo */
 }

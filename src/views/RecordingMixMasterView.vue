@@ -39,15 +39,13 @@ onUnmounted(() => {
     <!-- Page Hero Section -->
     <section class="page-hero section-gradient-overlay">
       <div class="container page-hero-content">
-        <h1 class = "hero-main-title">RECORDING, MIX & MASTER:</h1>
-        <p class="page-intro">
+        <h1 class = "space-up-down hero-main-title">RECORDING, MIX & MASTER:</h1>
+        <p class="space-up-down hero-main-description">
           Per ottenere la performance perfetta in studio e un suono impeccabile su ogni piattaforma.
         </p>
       </div>
     </section>
 
-    <!-- Recording Section -->
-    <!-- Applico bg-light esplicitamente -->
     <section class="service-detail-section bg-light">
       <div class="container">
         <h2 class="section-title section-title-on-light">Recording</h2>
@@ -179,9 +177,6 @@ onUnmounted(() => {
 /* .service-detail-title è ridondante se si usa .section-title-on-light */
 
 
-.service-detail-section {
-  /* padding: 5rem 0; Ereditato da 'section' nel CSS globale */
-}
 /* Classi esplicite per lo sfondo */
 .service-detail-section.bg-light {
   background-color: var(--color-light-gray);

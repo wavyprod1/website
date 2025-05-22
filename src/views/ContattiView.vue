@@ -37,8 +37,8 @@ onMounted(() => {
     <section class="page-hero section-gradient-overlay">
       <div class="container page-hero-content">
         <!-- h1 e p erediteranno colore bianco e text-shadow dal CSS globale -->
-        <h1 class = "hero-main-title">CONTATTI</h1>
-        <p class="page-intro">
+        <h1 class = "space-up-down hero-main-title">CONTATTI</h1>
+        <p class="space-up-down hero-main-description">
           Hai un'idea, un progetto, o semplicemente vuoi fare due chiacchiere sulla tua musica? Non
           vedo l'ora di sentirti.
         </p>
@@ -153,18 +153,11 @@ onMounted(() => {
   padding: 2.5rem;
   text-align: center;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
   flex: 1;
   min-width: 280px; /* Aumentato leggermente per dare più respiro */
   max-width: 360px; /* Aumentato leggermente */
   display: flex;
   flex-direction: column;
-}
-.contact-method:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 .contact-icon {
@@ -216,7 +209,8 @@ onMounted(() => {
   background-color: var(--color-dark-gray); /* Sfondo scuro */
   padding: 3rem 1.5rem; /* Aggiunto padding laterale */
   border-radius: 10px;
-  margin-top: 4rem; /* Spazio dalla sezione metodi di contatto */
+  margin-top: 3rem; /* Spazio dalla sezione metodi di contatto */
+  margin-bottom: 3rem;
   color: var(--color-white); /* Testo di default bianco */
   text-align: center;
 }

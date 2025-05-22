@@ -104,8 +104,8 @@ const allPortfolioItems = computed(() => {
       <!-- Il contenuto di .page-hero deve avere z-index > 1 per stare sopra l'overlay -->
       <div class="container page-hero-content">
         <!-- h1 e p erediteranno colore bianco e text-shadow dal CSS globale -->
-        <h1 class = "hero-main-title">PORTFOLIO</h1>
-        <p class="page-intro">Alcuni progetti a cui ho avuto il piacere di contribuire.</p>
+        <h1 class = "space-up-down hero-main-title">PORTFOLIO</h1>
+        <p class="space-up-down hero-main-description">Alcuni progetti a cui ho avuto il piacere di contribuire.</p>
       </div>
     </section>
 
@@ -175,19 +175,6 @@ const allPortfolioItems = computed(() => {
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <!-- .cta-primary e .cta-title sono gestiti dal CSS globale -->
-    <section class="cta cta-primary">
-      <div class="container">
-        <h2 class="section-title cta-title">VUOI AFFIDARMI IL TUO PROSSIMO BRANO?</h2>
-        <a
-          href="https://wa.me/393661980944?text=Ciao%20Elia%2C%20vorrei%20raccontarti%20del%20mio%20progetto%20musicale%21"
-          class="btn btn-primary"
-          target="_blank"
-          >RACCONTAMI DEL TUO PROGETTO</a
-        >
-      </div>
-    </section>
 
     <!-- Portfolio Modals Renderizzati Dinamicamente -->
     <div v-for="itemData in allPortfolioItems" :key="itemData.id + 'ModalContainer'">
@@ -291,7 +278,8 @@ const allPortfolioItems = computed(() => {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr)); /* Ensures max 3 columns */
+  
   gap: 2rem;
   margin-top: 3rem; /* Spazio dal titolo della sezione */
 }
@@ -473,6 +461,10 @@ const allPortfolioItems = computed(() => {
   
   .portfolio-modal-details {
     padding: 1.5rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
   }
 }
 </style>
