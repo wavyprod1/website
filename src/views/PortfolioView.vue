@@ -246,12 +246,7 @@ const allPortfolioItems = computed(() => {
 
 <style scoped>
 /* Stile per il contenuto della page-hero per assicurare che sia sopra l'overlay */
-.page-hero-content {
-  position: relative;
-  z-index: 2; /* Sopra l'overlay ::before di .section-gradient-overlay */
-  text-align: center; /* Centra il testo all'interno del container */
-  padding: 2rem 0; /* Aggiungi un po' di padding verticale se necessario */
-}
+
 
 /* Stile generale per i titoli h2 delle sezioni portfolio e servizi */
 .section-title {

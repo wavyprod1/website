@@ -124,39 +124,6 @@
       </div>
     </section>
 
-    <!-- Case Study Section -->
-    <!-- Questa sezione non ha bisogno di classe bg-light/bg-white perché .case-study ha il suo sfondo scuro -->
-    <section class="service-detail-section section-case-study">
-      <div class="container">
-        <div class="case-study">
-          <!-- .case-study-title (h3) sarà bianco con ombra su sfondo scuro -->
-          <h3 class="case-study-title">DALL'IDEA AL GENERE UNICO: LA STORIA DI TOMMIOTTOCENTO</h3>
-          <div class="case-study-content">
-            <div class="case-study-text">
-              <p>
-                Con Tommiottocento è nato tutto da una chiacchiera al bar. Attraverso sessioni di
-                esperimenti per trovare il sound giusto, abbiamo creato un genere unico che unisce
-                l'hyperpop all'indie italiano. Oggi, questa collaborazione si è evoluta in un
-                supporto completo, che va dalla produzione musicale alla direzione creativa, fino
-                all'accompagnamento live come tastierista.
-              </p>
-              <RouterLink
-                :to="{ path: '/portfolio', query: { openModalId: 'tommiottocento' } }"
-                class="text-link-arrow"
-              >
-                Scopri di più sul progetto <i class="fas fa-arrow-right"></i>
-              </RouterLink>
-            </div>
-            <div class="case-study-image">
-              <img
-                src="/images/produzione/tommiottocento-performance.jpg"
-                alt="Tommiottocento in una performance live con Elia Pirrello"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- CTA Section -->
     <section class="cta cta-primary">
@@ -177,12 +144,7 @@
 
 <style scoped>
 /* Stile per il contenuto della page-hero */
-.page-hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 2rem 0;
-}
+
 
 /* Stile per i titoli di sezione (H2) su sfondi chiari */
 .section-title-on-light {
@@ -326,6 +288,7 @@
   padding: 2.5rem; /* Padding interno */
   border-radius: 10px;
   margin: 0; /* Il margine è sulla section-case-study se necessario */
+  overflow: hidden;
 }
 
 .case-study-title { /* Titolo H3 nel case study */
@@ -349,15 +312,29 @@
 .case-study-text p {
   color: var(--color-light-gray); /* Testo paragrafo chiaro */
   line-height: 1.7;
+  margin-bottom: 1rem;
 }
 
-.case-study-image-wrapper { /* Nuovo wrapper per l'immagine del case study */
-    flex: 1 1 40%;
-    min-width: 250px;
+.case-study-image-wrapper {
+  flex: 1 1 40%;
+  min-width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.case-study-image img {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
 }
 
 .text-link-arrow {
-  display: inline-block;
+  display: block;
   margin-top: 1.5rem;
   color: var(--color-yellow);
   text-decoration: none;
@@ -443,22 +420,24 @@
   .service-detail-image,
   .image-related-box {
     width: 100%;
-    max-width: none; /* Immagine e box prendono tutta la larghezza */
+    min-width: none;
   }
   
   .case-study-content {
     flex-direction: column;
+    align-items: center;
   }
   .case-study-image-wrapper { /* Immagine prima del testo su mobile nel case study */
     order: -1;
     width: 100%; /* Occupa tutta la larghezza */
   }
   .case-study-image {
-      max-width: none; /* Immagine del case study prende tutta la larghezza */
+
       margin-bottom: 1.5rem; /* Spazio tra immagine e testo */
   }
   .case-study-text {
       order: 2;
+      line-height: 1.7;
   }
 
   /* Titoli di sezione H2 */

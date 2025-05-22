@@ -164,13 +164,7 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* Stile per il contenuto della page-hero */
-.page-hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 2rem 0;
-}
+
 
 /* Stile per i titoli di sezione (H2) su sfondi chiari */
 .section-title-on-light {

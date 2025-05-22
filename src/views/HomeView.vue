@@ -26,8 +26,8 @@ const starEmoji = '⭐';
   <main>
     <!-- HERO SECTION -->
     <!-- Applica la classe globale .section-gradient-overlay per lo sfondo -->
-    <section class="hero section-gradient-overlay">
-      <div class="container hero-content-wrapper">
+    <section class="container hero section-gradient-overlay">
+      <div class=" hero-content-wrapper">
         <div class="hero-text-column">
           <!-- h1 usa .section-title per coerenza, ma è un h1 -->
           <h1 class="section-title hero-main-title">IL TUO PRODUTTORE MUSICALE DI FIDUCIA</h1>
@@ -36,7 +36,7 @@ const starEmoji = '⭐';
             progetto musicale, sono il produttore giusto per te.
             <br /><br />
             Il mio impegno è quello di essere il professionista che avrei voluto avere al
-            mio fianco quando ho iniziato. Quello a cui avrei affidato il mio progetto musicale ad
+            mio fianco quando ho iniziato. <br />Quello a cui avrei affidato il mio progetto musicale ad
             occhi chiusi.
           </p>
         </div>
@@ -335,8 +335,9 @@ const starEmoji = '⭐';
   .hero-main-description {
     order: 3;
     font-size: 1rem;
-    max-width: 90%;
-    margin: 0 auto 2rem auto; /* Centra e aggiunge spazio sotto */
+    max-width: 90%; /* Mantiene max-width */
+    margin: 0 auto 2rem auto;
+
   }
   
   .review-author-info { /* Su mobile, nome e rating uno sopra l'altro */

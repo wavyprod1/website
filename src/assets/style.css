@@ -230,6 +230,13 @@ header {
   margin-bottom: 1.5rem;
 }
 
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
 .page-intro {
   color: var(--color-white);
   font-size: 1.2rem;

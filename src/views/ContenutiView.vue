@@ -82,13 +82,7 @@
 </template>
 
 <style scoped>
-/* Stile per il contenuto della page-hero per assicurare che sia sopra l'overlay */
-.page-hero-content {
-  position: relative;
-  z-index: 2; /* Sopra l'overlay ::before di .section-gradient-overlay */
-  text-align: center;
-  padding: 2rem 0; /* Padding verticale per distanziare dal bordo della hero */
-}
+
 
 /* Stile per i titoli di sezione (H2) su sfondi chiari */
 .section-title-on-light {

@@ -215,7 +215,7 @@ watch(() => router.currentRoute.value.path, () => {
       </div>
 
       <div class="copyright">
-        © <span>{{ currentYear }}</span> Elia Pirrello. P.IVA [P.IVA_PLACEHOLDER]
+        © <span>{{ currentYear }}</span> Elia Pirrello. P.IVA 13196910015
       </div>
     </div>
   </footer>
@@ -241,7 +241,7 @@ header {
 
 /* Logo/Nome Link per Desktop */
 .header-logo-link {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: bold;
   color: var(--color-white);
   text-decoration: none;
@@ -270,6 +270,7 @@ header {
   transition: color 0.3s ease;
   padding: 0.5rem 0;
   position: relative;
+  font-size: 1.1rem;  /* Esempio: leggermente più grande del default, se vuoi. Il default è spesso 1rem per <p> */
 }
 
 .nav-link.nav-link-servizi:hover { color: var(--color-green); }
@@ -350,7 +351,7 @@ header {
   }
 
   .header-logo-link-mobile {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: bold;
     color: var(--color-white);
     text-decoration: none;
@@ -406,8 +407,9 @@ header {
   .nav-menu .nav-link {
     display: block;
     padding: 1rem 0;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-align: center;
+    
   }
   
   .nav-menu.active .dropdown-menu {
@@ -422,7 +424,7 @@ header {
   }
   .nav-menu.active .dropdown-link {
     padding: 0.75rem 1rem;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     color: var(--color-light-gray);
   }
   .nav-menu.active .dropdown-link:hover {
@@ -490,7 +492,7 @@ footer {
 @media (max-width: 576px) {
   .footer-container { grid-template-columns: 1fr; text-align: center; }
   .social-links { justify-content: center; }
-  .header-logo-link-mobile { font-size: 1.3rem; }
+  .header-logo-link-mobile { font-size: 1.7rem; }
   .mobile-menu-btn { font-size: 1.6rem; }
   .footer-col h3 { text-align: center; } /* Centra titoli footer su mobile molto piccolo */
   .footer-nav { text-align: center; } /* Centra link nav footer su mobile molto piccolo */
