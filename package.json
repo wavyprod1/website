@@ -9,11 +9,14 @@
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
-    "deploy": "npm run build && gh-pages -d dist" 
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
+    "swiper": "^11.2.7",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "vue3-carousel": "^0.15.1",
+    "vue3-carousel-nuxt": "^1.1.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",

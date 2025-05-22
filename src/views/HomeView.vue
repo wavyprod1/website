@@ -1,51 +1,36 @@
 <script setup>
-import { onMounted } from 'vue'
-import { RouterLink } from 'vue-router' // Aggiunto RouterLink per il CTA
+import { onMounted, ref } from 'vue'
+import { RouterLink } from 'vue-router'
+
+// Importa Swiper Vue components e stili
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/pagination'; // Già presente per i puntini
+import 'swiper/css/navigation'; // Necessario per i pulsanti di navigazione
+
+// Importa i moduli specifici che userai
+import { Pagination, Navigation } from 'swiper/modules'; // <<<<<<< MODIFICA QUI
+
+// Array di moduli da passare a Swiper
+const swiperModules = [Pagination, Navigation]; // <<<<<<< MODIFICA QUI
 
 onMounted(() => {
-  // Google Reviews Integration (codice invariato)
+  // Google Reviews Integration
   const reviewsContainer = document.querySelector('.google-reviews-container')
-
   if (reviewsContainer) {
     const reviews = [
-      {
-        author_name: 'Camilla Gainotti',
-        rating: 5,
-        text: 'Esperienza super quella in studio con Elia! È molto creativo, professionale, preciso e ha un gran gusto musicale! Abbiamo finora prodotto un paio di canzoni con lui e sicuramente andremo avanti a produrne altre!',
-        time: '',
-      },
-      {
-        author_name: 'Giovanni Licari',
-        rating: 5,
-        text: 'Abbiamo collaborato con "Ancora" un progetto musicale, produzione mix e master di livello, organizzazione di un live a Milano, con uno shot personalizzato per l\'occasione! Che dire ... Una persona rara ed un artista che mi ha permesso di produrre e far conoscere la mia musica anche fuori dalla mia città!',
-        time: '',
-      },
-      {
-        author_name: 'Tommaso Ottocento',
-        rating: 5,
-        text: 'Elia è molto professionale e simpatico. Ti fa sentire a tuo agio e cerca di capire il tuo progetto. Lavorare con lui è sempre stimolante e appassionante.',
-        time: '',
-      },
-      {
-        author_name: 'Davide Bussolino',
-        rating: 5,
-        text: 'Sono arrivato in studio senza realmente sapere come fare le cose, Elia mi ha guidato nel migliore dei modi, davvero! È uscito un prodotto che non solo mia ha soddisfatto ma non mi sarei aspettato suonasse in quel modo, quindi davvero grazie ad Elia! Ve lo consiglio di cuore, oltre ad essere un professionista impeccabile, e a lavorare in un ambiente con attrezzatura iper professionale, è una gran persona!',
-        time: '',
-      },
-    ]
+      { author_name: 'Camilla Gainotti', rating: 5, text: 'Esperienza super quella in studio con Elia! È molto creativo, professionale, preciso e ha un gran gusto musicale! Abbiamo finora prodotto un paio di canzoni con lui e sicuramente andremo avanti a produrne altre!', time: '' },
+      { author_name: 'Giovanni Licari', rating: 5, text: 'Abbiamo collaborato con "Ancora" un progetto musicale, produzione mix e master di livello, organizzazione di un live a Milano, con uno shot personalizzato per l\'occasione! Che dire ... Una persona rara ed un artista che mi ha permesso di produrre e far conoscere la mia musica anche fuori dalla mia città!', time: '' },
+      { author_name: 'Tommaso Ottocento', rating: 5, text: 'Elia è molto professionale e simpatico. Ti fa sentire a tuo agio e cerca di capire il tuo progetto. Lavorare con lui è sempre stimolante e appassionante.', time: '' },
+      { author_name: 'Davide Bussolino', rating: 5, text: 'Sono arrivato in studio senza realmente sapere come fare le cose, Elia mi ha guidato nel migliore dei modi, davvero! È uscito un prodotto che non solo mia ha soddisfatto ma non mi sarei aspettato suonasse in quel modo, quindi davvero grazie ad Elia! Ve lo consiglio di cuore, oltre ad essere un professionista impeccabile, e a lavorare in un ambiente con attrezzatura iper professionale, è una gran persona!', time: '' },
+    ];
 
     const loadingMessage = reviewsContainer.querySelector('.reviews-loading')
-    if (loadingMessage) {
-      loadingMessage.remove()
-    } else {
-      reviewsContainer.innerHTML = ''
-    }
+    if (loadingMessage) loadingMessage.remove();
+    else reviewsContainer.innerHTML = '';
 
     const reviewsWrapper = document.createElement('div')
     reviewsWrapper.className = 'reviews-wrapper'
-    reviewsWrapper.style.display = 'grid'
-    reviewsWrapper.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))'
-    reviewsWrapper.style.gap = '2rem'
 
     const googleLink = document.createElement('div')
     googleLink.className = 'google-link'
@@ -55,7 +40,7 @@ onMounted(() => {
       <a href="https://g.co/kgs/yNMLUtt" target="_blank" style="color: var(--color-blue); text-decoration: none; font-weight: bold;">
           Visualizza tutte le recensioni su Google
       </a>
-    `
+    `;
     reviewsContainer.appendChild(googleLink)
 
     reviews.forEach((review) => {
@@ -73,7 +58,7 @@ onMounted(() => {
 
       reviewCard.innerHTML = `
         <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #4285f4; color: white; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-weight: bold;">
+            <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #4285f4; color: white; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-weight: bold; flex-shrink: 0;">
                 ${review.author_name.charAt(0)}
             </div>
             <div>
@@ -82,8 +67,8 @@ onMounted(() => {
             </div>
         </div>
         <div style="margin-bottom: 0.5rem;">${stars}</div>
-        <p style="color: #333; line-height: 1.5;">${review.text}</p>
-      `
+        <p style="color: #333; line-height: 1.5; font-size: 0.9rem;">${review.text}</p>
+      `;
       reviewsWrapper.appendChild(reviewCard)
     })
     reviewsContainer.appendChild(reviewsWrapper)
@@ -93,23 +78,24 @@ onMounted(() => {
 
 <template>
   <main>
-    <!-- Hero Section with new layout -->
+    <!-- Hero Section -->
     <section class="hero">
       <div class="hero-bg"></div>
-      <div class="container">
-        <div class="hero-layout">
-          <div class="hero-text-content">
+      <div class="container hero-container-mobile-flex">
+        <!-- Layout per Desktop -->
+        <div class="hero-layout-desktop">
+          <div class="hero-text-content-desktop">
             <h1>ELIA PIRRELLO</h1>
             <h2 class="hero-subtitle">Il Tuo Produttore Musicale Di Fiducia</h2>
             <p class="hero-description">
+              Dalla scrittura alla produzione, dalla registrazione alla release.
+              <br /><br />
               Se il tuo obbiettivo non è quello di "acquistare un servizio", ma di sviluppare un
               progetto musicale, sei nel posto giusto.
               <br /><br />
               Il mio impegno è quello di essere l'artista ed il produttore che avrei voluto avere al
               mio fianco quando ho iniziato. Quello a cui avrei affidato il mio progetto musicale ad
               occhi chiusi.
-              <br /><br />
-              Dalla scrittura alla produzione, dalla registrazione alla release.
             </p>
             <a
               href="https://wa.me/393661980944?text=Ciao%20Elia%2C%20vorrei%20raccontarti%20del%20mio%20progetto%20musicale%21"
@@ -118,13 +104,42 @@ onMounted(() => {
               >RACCONTAMI DEL TUO PROGETTO</a
             >
           </div>
-          <div class="hero-image-container">
+          <div class="hero-image-container-desktop">
             <img
               src="/images/hero-profile.jpg"
               alt="Elia Pirrello - Produttore Musicale"
               class="hero-profile-img"
             />
           </div>
+        </div>
+
+        <!-- Contenuto specifico per Mobile -->
+        <h1 class="hero-title-mobile">ELIA PIRRELLO</h1>
+        <h2 class="hero-subtitle-mobile">Il Tuo Produttore Musicale Di Fiducia</h2>
+        <div class="hero-image-container-mobile">
+          <img
+            src="/images/hero-profile-square.jpg"
+            alt="Elia Pirrello - Produttore Musicale"
+            class="hero-profile-img-mobile"
+          />
+        </div>
+        <div class="hero-description-cta-mobile">
+            <p class="hero-description">
+              Dalla scrittura alla produzione, dalla registrazione alla release.
+              <br /><br />
+              Se il tuo obbiettivo non è quello di "acquistare un servizio", ma di sviluppare un
+              progetto musicale, sei nel posto giusto.
+              <br /><br />
+              Il mio impegno è quello di essere l'artista ed il produttore che avrei voluto avere al
+              mio fianco quando ho iniziato. Quello a cui avrei affidato il mio progetto musicale ad
+              occhi chiusi.
+            </p>
+            <a
+              href="https://wa.me/393661980944?text=Ciao%20Elia%2C%20vorrei%20raccontarti%20del%20mio%20progetto%20musicale%21"
+              class="btn btn-primary"
+              target="_blank"
+              >RACCONTAMI DEL TUO PROGETTO</a
+            >
         </div>
       </div>
     </section>
@@ -135,71 +150,84 @@ onMounted(() => {
         <h2 class="benefits-title">COSA ASPETTARTI FACENDO MUSICA INSIEME</h2>
         <p class="benefits-intro">Non solo un servizio, ma un percorso.</p>
 
-        <div class="benefits-grid">
+        <!-- Carosello per Mobile -->
+        <div class="benefits-carousel-mobile">
+          <swiper
+            :slides-per-view="1.2"
+            :space-between="15"
+            :centered-slides="true"
+            :pagination="{ clickable: true }"
+            :navigation="true"           
+            :modules="swiperModules"           
+            class="mySwiper"
+          >
+            <swiper-slide>
+              <div class="benefit-item">
+                <div class="benefit-icon icon-blue"><i class="fas fa-lightbulb"></i></div>
+                <h3 class="benefit-title">Massima Attenzione</h3>
+                <p class="benefit-text">Per comprendere la tua unicità.<br />Dall'idea al suono personalizzato.</p>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="benefit-item">
+                <div class="benefit-icon icon-green"><i class="fas fa-chart-line"></i></div>
+                <h3 class="benefit-title">Crescita Artistica</h3>
+                <p class="benefit-text">Acquisirai più consapevolezza per la tua carriera artistica:<br />Da metodi di scrittura unici a nozioni di marketing.</p>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="benefit-item">
+                <div class="benefit-icon icon-red"><i class="fas fa-users"></i></div>
+                <h3 class="benefit-title">Un Team al Tuo Fianco</h3>
+                <p class="benefit-text">Accesso a professionisti fidati (come SMM e Vocal Coach) per sviluppare ogni lato del tuo progetto artistico.</p>
+              </div>
+            </swiper-slide>
+            <!-- Aggiungi gli slot per i pulsanti di navigazione se vuoi posizionarli manualmente
+                 o lascia che Swiper li aggiunga automaticamente con :navigation="true" -->
+            <!--
+            <template #container-end>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </template>
+            -->
+          </swiper>
+        </div>
+
+        <!-- Griglia per Desktop -->
+        <div class="benefits-grid-desktop">
           <div class="benefit-item">
-            <!-- MODIFICA: Aggiunta classe icon-blue -->
-            <div class="benefit-icon icon-blue">
-              <i class="fas fa-lightbulb"></i>
-            </div>
+            <div class="benefit-icon icon-blue"><i class="fas fa-lightbulb"></i></div>
             <h3 class="benefit-title">Massima Attenzione</h3>
-            <p class="benefit-text">
-              Per comprendere la tua unicità.<br />Dall'idea al suono personalizzato.
-            </p>
+            <p class="benefit-text">Per comprendere la tua unicità.<br />Dall'idea al suono personalizzato.</p>
           </div>
-
           <div class="benefit-item">
-            <!-- MODIFICA: Aggiunta classe icon-green -->
-            <div class="benefit-icon icon-green">
-              <i class="fas fa-chart-line"></i>
-            </div>
+            <div class="benefit-icon icon-green"><i class="fas fa-chart-line"></i></div>
             <h3 class="benefit-title">Crescita Artistica</h3>
-            <p class="benefit-text">
-              Acquisirai più consapevolezza per la tua carriera artistica:<br />Da metodi di
-              scrittura unici a nozioni di marketing.
-            </p>
+            <p class="benefit-text">Acquisirai più consapevolezza per la tua carriera artistica:<br />Da metodi di scrittura unici a nozioni di marketing.</p>
           </div>
-
           <div class="benefit-item">
-            <!-- MODIFICA: Aggiunta classe icon-red -->
-            <div class="benefit-icon icon-red">
-              <i class="fas fa-users"></i>
-            </div>
+            <div class="benefit-icon icon-red"><i class="fas fa-users"></i></div>
             <h3 class="benefit-title">Un Team al Tuo Fianco</h3>
-            <p class="benefit-text">
-              Accesso a professionisti fidati (come SMM e Vocal Coach) per sviluppare ogni lato del
-              tuo progetto artistico.
-            </p>
+            <p class="benefit-text">Accesso a professionisti fidati (come SMM e Vocal Coach) per sviluppare ogni lato del tuo progetto artistico.</p>
           </div>
-
-          <!-- Se avessi altri benefit items, potresti continuare ad assegnare classi di colore
-               o usare una logica più dinamica se i colori dovessero cambiare spesso.
-               Per 3-5 items, le classi dirette vanno benissimo.
-          <div class="benefit-item">
-            <div class="benefit-icon icon-yellow"> // Esempio per il giallo
-              <i class="fas fa-music"></i>
-            </div>
-            <h3 class="benefit-title">Suono Unico</h3>
-            <p class="benefit-text">Creiamo insieme un sound design che parli solo di te.</p>
-          </div>
-           -->
         </div>
       </div>
     </section>
 
-    <!-- Reviews Section with Google Reviews (codice invariato) -->
+    <!-- Reviews Section -->
     <section class="reviews">
       <div class="container reviews-container">
         <h2>COSA DICONO GLI ARTISTI CHE HANNO SCELTO DI AFFIDARSI A ME</h2>
         <div id="google-reviews" style="width: 100%; margin-top: 3rem">
           <div class="google-reviews-container">
             <div class="reviews-loading">Caricamento recensioni...</div>
+            <!-- Il JS popolerà .reviews-wrapper qui -->
           </div>
         </div>
-        <div class="inline-styles-for-reviews-placeholder"></div>
       </div>
     </section>
 
-    <!-- Second CTA Section (codice invariato) -->
+    <!-- Second CTA Section -->
     <section class="cta cta-primary">
       <div class="container">
         <h2 class="cta-title">SEI GIÀ PRONTO A SVILUPPARE LA TUA MUSICA?</h2>
@@ -213,7 +241,7 @@ onMounted(() => {
       </div>
     </section>
 
-    <!-- Optional Soft CTA to Content (codice invariato) -->
+    <!-- Optional Soft CTA to Content -->
     <section class="cta cta-secondary">
       <div class="container">
         <h3 class="cta-title">SE INVECE STAI ANCORA LAVORANDO SUI TUOI BRANI</h3>
@@ -232,93 +260,229 @@ onMounted(() => {
   color: #70757a;
 }
 
-/* MODIFICA: Aggiunta stili per le icone colorate */
-.benefit-icon {
-  /* Gli stili base per .benefit-icon sono già nel CSS globale (src/assets/style.css)
-     font-size: 2.5rem;
-     margin-bottom: 1rem;
-     Potremmo rimuovere il color: var(--color-red); dal globale se qui lo sovrascriviamo sempre
-     o lasciarlo come default se non tutti gli icon avranno un colore specifico.
-     Per ora, assumiamo che il CSS globale abbia:
-     .benefit-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        color: var(--color-red); // Questo sarà il default o il colore per le icone non specificate
-     }
-  */
-}
+/* Icone colorate per Benefits section */
+.benefit-icon.icon-blue { color: var(--color-blue); }
+.benefit-icon.icon-green { color: var(--color-green); }
+.benefit-icon.icon-red { color: var(--color-red); }
+.benefit-icon.icon-yellow { color: var(--color-yellow); }
 
-.benefit-icon.icon-blue {
-  color: var(--color-blue);
-}
 
-.benefit-icon.icon-green {
-  color: var(--color-green);
-}
-
-.benefit-icon.icon-red {
-  color: var(--color-red); /* Già il default, ma esplicito per chiarezza se vuoi cambiarlo*/
-}
-
-.benefit-icon.icon-yellow {
-  /* Esempio se vuoi usare anche il giallo */
-  color: var(--color-yellow);
-}
-
-/* Updated hero layout styles */
-.hero-layout {
+/* HERO SECTION STYLES */
+.hero-layout-desktop {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Changed from default to space-between */
-  gap: 4rem; /* Increased gap for better spacing */
+  justify-content: space-between;
+  gap: 4rem;
   position: relative;
   z-index: 2;
-  max-width: 1200px; /* Added max-width for larger screens */
-  margin: 0 auto; /* Center the layout */
-  padding: 0 2rem; /* Add padding to prevent content touching edges */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.hero-text-content-desktop { flex: 0 1 60%; max-width: 650px; }
+.hero-image-container-desktop { flex: 0 1 40%; max-width: 400px; min-width: 270px; }
+.hero-profile-img { width: 100%; height: auto; max-height: 580px; object-fit: cover; border-radius: 10px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); }
+
+.hero-title-mobile,
+.hero-subtitle-mobile,
+.hero-image-container-mobile,
+.hero-description-cta-mobile {
+  display: none; /* Nascosti di default */
 }
 
-.hero-text-content {
-  flex: 0 1 60%; /* Changed from flex: 1 to specific ratio */
-  max-width: 650px;
+
+/* BENEFITS SECTION STYLES */
+.benefits-grid-desktop {
+  display: grid; /* Questo è lo stile per desktop */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+.benefits-carousel-mobile {
+  display: none; /* Nascosto di default su desktop */
+  position: relative; /* Necessario per posizionare i pulsanti di navigazione custom */
+}
+.benefits-carousel-mobile .benefit-item {
+  width: 260px;
+  min-width: 260px;
+  max-width: 260px;
+  height: 320px;
+  min-height: 320px;
+  max-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  padding: 2rem 1rem 1rem 1rem;
 }
 
-.hero-image-container {
-  flex: 0 1 40%; /* Added flex ratio for image container */
-  max-width: 400px; /* Increased max-width for better proportion */
-  min-width: 270px; /* Maintains minimum width */
+/* Stili per i pulsanti di navigazione di Swiper */
+/* Puoi personalizzare questi stili come preferisci */
+:deep(.swiper-button-next),
+:deep(.swiper-button-prev) {
+  color: var(--color-red); /* Colore delle frecce */
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  width: 30px; /* Riduci dimensione dei pulsanti */
+  height: 30px;
+  margin-top: -15px; /* Per centrarli verticalmente rispetto allo slide */
+}
+:deep(.swiper-button-next::after),
+:deep(.swiper-button-prev::after) {
+  font-size: 14px; /* Riduci dimensione dell'icona della freccia */
+  font-weight: bold;
+}
+:deep(.swiper-button-prev) {
+  left: 5px; /* Avvicina i pulsanti ai bordi del carosello */
+}
+:deep(.swiper-button-next) {
+  right: 5px;
 }
 
-.hero-profile-img {
-  width: 100%;
-  height: auto;
-  max-height: 580px; /* Increased max-height */
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+/* Stili per la paginazione (puntini) di Swiper */
+:deep(.swiper-pagination-bullet) {
+  background-color: var(--color-dark-gray);
+  opacity: 0.5;
+}
+:deep(.swiper-pagination-bullet-active) {
+  background-color: var(--color-red);
+  opacity: 1;
 }
 
-/* Updated responsive styles */
-@media (max-width: 992px) {
-  .hero-layout {
+
+/* REVIEWS SECTION STYLES */
+:deep(.reviews-wrapper) {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+
+/* Mobile Layout (<= 768px) */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding-top: 70px;
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+  }
+
+  .hero .container.hero-container-mobile-flex {
+    display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     text-align: center;
-    padding: 0 1rem; /* Reduced padding for mobile */
-    gap: 2rem; /* Reduced gap for mobile */
-  }
-
-  .hero-text-content {
-    flex: 1 1 auto;
-    max-width: 100%;
-    margin-bottom: 2rem;
-  }
-
-  .hero-image-container {
-    flex: 0 1 auto;
     width: 100%;
-    max-width: 320px; /* Adjusted for mobile */
-    margin: 0 auto;
-    order: 2;
+    height: calc(100vh - 70px - 2rem - 2rem);
+    padding: 1rem 0;
+    gap: 0.5rem;
+  }
+
+  .hero-layout-desktop { display: none; }
+
+  .hero-title-mobile,
+  .hero-subtitle-mobile,
+  .hero-image-container-mobile,
+  .hero-description-cta-mobile {
+    display: block;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .hero-title-mobile { order: 1; font-size: 2.2rem; margin-bottom: 0.25rem; }
+  .hero-subtitle-mobile { order: 2; font-size: 1.3rem; margin-bottom: 1rem; }
+
+  .hero-image-container-mobile {
+    order: 3;
+    width: 60vw;
+    max-width: 220px;
+    height: 60vw;
+    max-height: 220px;
+    min-width: 120px;
+    min-height: 120px;
+    margin: 0 auto 1rem auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    padding: 0;
+    aspect-ratio: 1 / 1;
+  }
+  .hero-profile-img-mobile {
+    width: 100%;
+    height: 100%;
+    min-width: 120px;
+    min-height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    aspect-ratio: 1 / 1;
+  }
+
+  .hero-description-cta-mobile { order: 4; }
+  .hero-description-cta-mobile .hero-description {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Benefits Carousel su Mobile */
+  .benefits-grid-desktop { display: none; }
+  .benefits-carousel-mobile {
+    display: block;
+    padding: 0 0 2.5rem 0; /* Aumentato padding per i puntini e un po' di spazio sotto */
+  }
+  .benefit-item {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .benefit-item p.benefit-text { font-size: 0.9rem; }
+
+  /* Reviews Grid su Mobile */
+  :deep(.reviews-wrapper) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  :deep(.review-card) { padding: 1rem; }
+  :deep(.review-card p) { font-size: 0.85rem; }
+  :deep(.review-card div[style*="font-weight: bold"]) { font-size: 0.9rem; }
+}
+
+/* Per schermi molto piccoli, potresti volere una singola colonna per le recensioni */
+@media (max-width: 480px) {
+  :deep(.reviews-wrapper) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .hero-title-mobile { font-size: 2rem; }
+  .hero-subtitle-mobile { font-size: 1.1rem; }
+  .hero-image-container-mobile {
+    width: 55vw;
+    height: 55vw;
+    max-width: 180px; /* Riduci ulteriormente se necessario */
+    max-height: 180px;
+  }
+  .hero-description-cta-mobile .hero-description { font-size: 0.85rem; }
+
+  /* Riduci ulteriormente la dimensione dei pulsanti di navigazione Swiper */
+  :deep(.swiper-button-next),
+  :deep(.swiper-button-prev) {
+    width: 25px;
+    height: 25px;
+    margin-top: -12.5px;
+  }
+  :deep(.swiper-button-next::after),
+  :deep(.swiper-button-prev::after) {
+    font-size: 12px;
   }
 }
 </style>
