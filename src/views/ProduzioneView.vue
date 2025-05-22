@@ -1,25 +1,12 @@
 <script setup>
-// Placeholder for modal logic if you implement it later
-// import { ref } from 'vue';
-// const isTommiModalOpen = ref(false);
-// const openTommiModal = () => {
-//   isTommiModalOpen.value = true;
-//   // Add logic to show modal
-// };
-// const closeTommiModal = () => {
-//   isTommiModalOpen.value = false;
-//   // Add logic to hide modal
-// };
-
-// If using RouterLink for the case study, import it:
-// import { RouterLink } from 'vue-router';
+// import { RouterLink } from 'vue-router'; // Assicurati che sia importato se lo usi
 </script>
 
 <template>
   <main>
     <!-- Page Hero Section -->
-    <section class="page-hero">
-      <div class="container">
+    <section class="page-hero section-gradient-overlay">
+      <div class="container page-hero-content">
         <h1>PRODUZIONE MUSICALE:</h1>
         <p class="page-intro">
           Per trasformare la tua visione artistica in un brano che ti rispecchi al 100%,<br />originale
@@ -29,24 +16,21 @@
     </section>
 
     <!-- Come Lavoro Section (COME NASCONO LE TUE PRODUZIONI) -->
-    <section class="service-detail-section">
+    <!-- Applico bg-light esplicitamente -->
+    <section class="service-detail-section bg-light">
       <div class="container">
-        <h2 class="benefits-title">COME NASCONO LE PRODUZIONI</h2>
+        <h2 class="section-title section-title-on-light">COME NASCONO LE PRODUZIONI</h2>
 
         <div class="service-detail-content">
           <div class="service-detail-text-wrapper">
-            <!-- Wrapper for text to manage order on mobile -->
             <div class="service-detail-text">
               <p>
                 La tua musica è più di semplici note e parole: è la tua storia. Per questo, ogni
                 produzione inizia da te. Non ti chiederò di adattarti a un genere, ma costruiremo
                 insieme un suono che sia solo tuo.
               </p>
-
               <div style="margin-top: 2rem">
-                <h4>
-                  <strong>Step 1: La Nostra Sessione Conoscitiva</strong>
-                </h4>
+                <h4><strong>Step 1: La Nostra Sessione Conoscitiva</strong></h4>
                 <p>
                   Tutto parte da una chiacchierata gratuita e senza impegno.<br />Voglio capire chi
                   sei: i tuoi obiettivi, le tue reference musicali e il messaggio che vuoi
@@ -54,7 +38,6 @@
                   concentrarti solo sulla tua musica, senza stress.
                 </p>
               </div>
-
               <div style="margin-top: 1.5rem">
                 <h4><strong>Step 2: Costruiamo Insieme, Sessione Dopo Sessione</strong></h4>
                 <p>
@@ -63,7 +46,6 @@
                   essenziali, dai suoni agli arrangiamenti.
                 </p>
               </div>
-
               <div style="margin-top: 1.5rem">
                 <h4><strong>Step 3: Dalla Demo al Suono Professionale</strong></h4>
                 <p>
@@ -74,9 +56,7 @@
               </div>
             </div>
           </div>
-
           <div class="service-detail-image-wrapper">
-            <!-- Wrapper for image and infobox -->
             <div class="service-detail-image">
               <img
                 src="/images/produzione/processo-creativo.jpg"
@@ -96,13 +76,12 @@
     </section>
 
     <!-- Un Percorso su Misura Section -->
-    <section class="service-detail-section">
+    <!-- Applico bg-white esplicitamente -->
+    <section class="service-detail-section bg-white">
       <div class="container">
-        <h2 class="benefits-title">UN PERCORSO SU MISURA PER TE</h2>
-
+        <h2 class="section-title section-title-on-light">UN PERCORSO SU MISURA PER TE</h2>
         <div class="service-detail-content">
           <div class="service-detail-text-wrapper">
-            <!-- Wrapper for text -->
             <div class="service-detail-text">
               <p>
                 Ogni artista ha esigenze diverse.<br />
@@ -114,41 +93,17 @@
                 finalmente iniziare a lavorare a progetto!<br />Questo ci permetterà di includere
                 uno o più di questi extra:
               </p>
-
               <ul class="service-detail-list">
-                <li>
-                  Esplorazione Creativa con più Demo Beat Iniziali: Per fornirti più di un punto di
-                  partenza, così da scegliere con più precisione o avere materiale per scrivere
-                  nuovi brani.
-                </li>
-                <li>
-                  Sessioni di Songwriting Collaborative: Se senti che il tuo brano ha bisogno di
-                  quel 'qualcosa in più' a livello di testo o melodia.
-                </li>
-                <li>
-                  Vocal Coaching: Sessione 1 a 1 con il nostro vocal coach di fiducia, che ti
-                  aiuterà a prepararti per la registrazione definitiva del brano e la performance
-                  live!
-                </li>
-                <li>
-                  Registrazione Vocale Guidata e Professionale: Ti supporto in studio per ottenere
-                  la tua migliore performance, curando ogni sfumatura.
-                </li>
-                <li>
-                  Mixing e Mastering di Livello Radiofonico: Finalizziamo il tuo brano perché suoni
-                  incredibile su ogni piattaforma e possa competere con le grandi hit.
-                </li>
-                <li>
-                  Social Media Strategy: Sessione 1 a 1 con la nostra Social Media Manager di
-                  fiducia per realizzare la release strategy perfetta per te, per arrivare a più
-                  persone pianificando contenuti veramente tuoi.
-                </li>
+                <li>Esplorazione Creativa con più Demo Beat Iniziali</li>
+                <li>Sessioni di Songwriting Collaborative</li>
+                <li>Vocal Coaching</li>
+                <li>Registrazione Vocale Guidata e Professionale</li>
+                <li>Mixing e Mastering di Livello Radiofonico</li>
+                <li>Social Media Strategy</li>
               </ul>
             </div>
           </div>
-
           <div class="service-detail-image-wrapper">
-            <!-- Wrapper for image and bonus box -->
             <div class="service-detail-image">
               <img
                 src="/images/produzione/steps-produzione.jpg"
@@ -156,6 +111,7 @@
               />
             </div>
             <div class="bonus-box image-related-box">
+              <!-- .bonus-title (h3) sarà scuro su sfondo giallo -->
               <h3 class="bonus-title">BONUS ESCLUSIVO:</h3>
               <p>
                 <strong>Sound Design Starter Kit Personale:</strong> Riceverai una mini-libreria di
@@ -169,11 +125,12 @@
     </section>
 
     <!-- Case Study Section -->
-    <section class="service-detail-section">
+    <!-- Questa sezione non ha bisogno di classe bg-light/bg-white perché .case-study ha il suo sfondo scuro -->
+    <section class="service-detail-section section-case-study">
       <div class="container">
         <div class="case-study">
+          <!-- .case-study-title (h3) sarà bianco con ombra su sfondo scuro -->
           <h3 class="case-study-title">DALL'IDEA AL GENERE UNICO: LA STORIA DI TOMMIOTTOCENTO</h3>
-
           <div class="case-study-content">
             <div class="case-study-text">
               <p>
@@ -190,7 +147,6 @@
                 Scopri di più sul progetto <i class="fas fa-arrow-right"></i>
               </RouterLink>
             </div>
-
             <div class="case-study-image">
               <img
                 src="/images/produzione/tommiottocento-performance.jpg"
@@ -205,8 +161,9 @@
     <!-- CTA Section -->
     <section class="cta cta-primary">
       <div class="container">
-        <h2 class="cta-title">PRONTO A DAR VITA ALLE TUE IDEE MUSICALI?</h2>
-        <p class="cta-text">Trasformiamole in brani veramente tuoi.</p>
+        <!-- .cta-title (h2) sarà bianco con ombra su sfondo blu -->
+        <h2 class="section-title cta-title">PRONTO A DAR VITA ALLE TUE IDEE MUSICALI?</h2>
+        <p class="section-intro cta-text">Trasformiamole in brani veramente tuoi.</p>
         <a
           href="https://wa.me/393661980944?text=Ciao%20Elia%2C%20vorrei%20parlarti%20del%20mio%20progetto%20di%20produzione%21"
           class="btn btn-primary"
@@ -219,82 +176,95 @@
 </template>
 
 <style scoped>
-/* Stili specifici per la pagina ProduzioneView. */
-
-.service-detail-section {
-  padding: 5rem 0;
+/* Stile per il contenuto della page-hero */
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem 0;
 }
 
-.service-detail-section:nth-child(odd) {
-  background-color: var(--color-light-gray);
-}
-
-.service-detail-section:nth-child(even) {
-  background-color: var(--color-white);
-}
-
-.service-detail-title {
+/* Stile per i titoli di sezione (H2) su sfondi chiari */
+.section-title-on-light {
   color: var(--color-dark-gray);
   text-shadow: none;
-  margin-bottom: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  /* font-size e text-transform ereditati da h2 globale */
 }
+
+/* Titoli h2 specifici se necessario, altrimenti .section-title-on-light è sufficiente */
+/* .service-detail-title è ridondante se si usa .section-title-on-light */
+
+
+.service-detail-section {
+  /* padding: 5rem 0; Ereditato da 'section' nel CSS globale */
+}
+/* Classi esplicite per lo sfondo */
+.service-detail-section.bg-light {
+  background-color: var(--color-light-gray);
+}
+.service-detail-section.bg-white {
+  background-color: var(--color-white);
+}
+/* La sezione case study non ha bisogno di bg-light/bg-white perché il .case-study div ha il suo sfondo */
+.section-case-study {
+    background-color: var(--color-white); /* Sfondo della section che contiene il box scuro .case-study */
+}
+
 
 .service-detail-content {
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
-  align-items: flex-start;
+  align-items: flex-start; /* Allinea gli item all'inizio del loro asse trasversale */
 }
 
-.service-detail-text-wrapper, /* New wrapper for text content */
+.service-detail-text-wrapper,
 .service-detail-image-wrapper {
-  /* New wrapper for image content + related box */
   flex: 1;
-  min-width: 300px; /* Ensure they take up space */
-  display: flex; /* Enable flex for internal alignment if needed */
-  flex-direction: column; /* Stack image and box */
+  min-width: 300px;
+  display: flex;
+  flex-direction: column; /* Per impilare immagine e box relativo */
 }
 
-.service-detail-text {
-  /* flex: 1; Removed, wrapper handles flex now */
-  /* min-width: 300px; Removed */
-}
 .service-detail-text h4 {
   color: var(--color-dark-gray);
   text-shadow: none;
-  text-transform: none;
+  text-transform: none; /* Come da stile originale */
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
+  font-weight: 700; /* Rende strong implicito */
 }
 .service-detail-text p {
-  color: var(--color-black);
+  color: var(--color-dark-gray); /* Testo scuro su sfondo chiaro/bianco */
   margin-bottom: 1rem;
+  line-height: 1.7;
+}
+.service-detail-text strong { /* Se vuoi dare uno stile diverso agli strong dentro i p */
+    font-weight: 700; /* Già default, ma per esplicitarlo */
 }
 
-/* Styling for image containers */
+
 .service-detail-image,
 .case-study-image {
-  /* flex: 1; Removed, wrapper handles flex now */
   position: relative;
-  background-color: var(--color-light-gray); /* Fallback background */
-  /* min-height: 250px;  Let image define height */
+  background-color: var(--color-light-gray); /* Fallback */
+  width: 100%; /* L'immagine prende la larghezza del suo wrapper */
 }
 
 .service-detail-image {
-  /* min-width: 300px;  Removed */
-  max-width: 500px;
-  width: 100%; /* Image container takes width of its wrapper */
-  /* min-height: 350px; Removed */
+  max-width: 500px; /* Limita la larghezza massima dell'immagine */
+  margin-left: auto; /* Centra se il wrapper è più largo */
+  margin-right: auto;
 }
 
 .case-study-image {
-  /* min-width: 250px; Removed */
-  max-width: 350px;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.05); /* Darker fallback for dark section */
+  max-width: 400px; /* Dimensione diversa per l'immagine del case study */
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Styling for actual images */
 .service-detail-image img,
 .case-study-image img {
   display: block;
@@ -305,19 +275,19 @@
   object-fit: cover;
 }
 
-/* Box related to an image (infobox, bonusbox) */
 .image-related-box {
-  margin-top: 1.5rem; /* Space between image and this box */
-  width: 100%; /* Takes full width of its wrapper */
-  max-width: 500px; /* Consistent with image max-width */
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 500px; /* Coerente con service-detail-image */
+  margin-left: auto; /* Centra se il wrapper è più largo */
+  margin-right: auto;
 }
 
 .info-box-produzione {
-  background-color: var(--color-light-gray);
+  background-color: var(--color-light-gray); /* Sfondo chiaro per la info box */
   border-left: 5px solid var(--color-blue);
   padding: 1.5rem;
-  /* margin-top: 2rem; Handled by .image-related-box or inline */
-  border-radius: 5px;
+  border-radius: 0 5px 5px 0; /* Arrotonda solo gli angoli a destra */
 }
 .info-box-produzione p {
   color: var(--color-dark-gray);
@@ -328,24 +298,22 @@
 }
 
 .service-detail-list {
-  margin: 2rem 0;
+  margin: 1.5rem 0; /* Ridotto margine */
   padding-left: 1.5rem;
   list-style: none;
 }
-
 .service-detail-list li {
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem; /* Ridotto spazio tra li */
   position: relative;
-  color: var(--color-dark-gray);
-  padding-left: 1rem;
+  color: var(--color-dark-gray); /* Testo scuro */
+  padding-left: 1rem; /* Spazio per il bullet */
+  line-height: 1.6;
 }
-
 .service-detail-list li::before {
   content: '';
   position: absolute;
-  left: -0.75rem;
-  top: 0.6em;
-  transform: translateY(-50%);
+  left: -0.75rem; /* Posiziona il bullet fuori dal testo */
+  top: 0.5em; /* Allinea verticalmente con il testo */
   width: 0.6rem;
   height: 0.6rem;
   background-color: var(--color-red);
@@ -353,45 +321,51 @@
 }
 
 .case-study {
-  background-color: var(--color-dark-gray);
-  color: var(--color-white);
-  padding: 3rem;
+  background-color: var(--color-dark-gray); /* Sfondo scuro per il box case study */
+  color: var(--color-white); /* Testo di default bianco */
+  padding: 2.5rem; /* Padding interno */
   border-radius: 10px;
-  margin: 3rem 0;
+  margin: 0; /* Il margine è sulla section-case-study se necessario */
 }
 
-.case-study-title {
-  color: var(--color-white);
-  margin-bottom: 1.5rem;
+.case-study-title { /* Titolo H3 nel case study */
+  color: var(--color-white); /* Testo bianco, ombra da h3 globale */
+  margin-bottom: 2rem; /* Aumentato spazio sotto il titolo */
   text-align: center;
+  font-size: 1.8rem; /* Dimensione specifica */
 }
 
 .case-study-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 2.5rem; /* Aumentato gap */
   align-items: center;
 }
 
 .case-study-text {
-  flex: 2;
-  min-width: 300px;
+  flex: 1 1 55%; /* Testo prende più spazio */
+  min-width: 280px;
 }
 .case-study-text p {
-  color: var(--color-light-gray);
+  color: var(--color-light-gray); /* Testo paragrafo chiaro */
+  line-height: 1.7;
 }
 
-/* Sober link for case study */
+.case-study-image-wrapper { /* Nuovo wrapper per l'immagine del case study */
+    flex: 1 1 40%;
+    min-width: 250px;
+}
+
 .text-link-arrow {
   display: inline-block;
   margin-top: 1.5rem;
-  color: var(--color-yellow); /* Or another accent color from your palette */
+  color: var(--color-yellow);
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 .text-link-arrow:hover {
-  color: var(--color-white); /* Brighter on hover */
+  color: var(--color-white);
 }
 .text-link-arrow .fas {
   margin-left: 0.5rem;
@@ -402,76 +376,104 @@
 }
 
 .bonus-box {
-  background-color: var(--color-yellow);
-  color: var(--color-dark-gray);
+  background-color: var(--color-yellow); /* Sfondo giallo per bonus box */
+  color: var(--color-dark-gray); /* Testo di default scuro */
   padding: 2rem;
   border-radius: 10px;
-  /* margin-top: 2rem; Handled by .image-related-box or inline */
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Same shadow as images */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Ombra più sottile */
 }
-
-.bonus-box::before {
+.bonus-box::before { /* Stile nastro BONUS */
   content: 'BONUS';
   position: absolute;
   top: 10px;
-  right: -30px;
+  right: -35px; /* Leggermente aggiustato */
   background-color: var(--color-red);
   color: var(--color-white);
-  padding: 0.3rem 3rem;
+  padding: 0.4rem 3.5rem; /* Leggermente aggiustato */
   transform: rotate(45deg);
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.75rem; /* Leggermente più piccolo */
   transform-origin: top right;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Ombra per il nastro */
 }
 
-.bonus-title {
-  color: var(--color-dark-gray);
+.bonus-title { /* Titolo H3 nel bonus box */
+  color: var(--color-dark-gray); /* Testo scuro */
+  text-shadow: none; /* No ombra su sfondo giallo */
   margin-bottom: 1rem;
+  font-size: 1.3rem; /* Dimensione specifica */
 }
 .bonus-box p {
-  color: var(--color-black);
+  color: var(--color-dark-gray); /* Testo paragrafo scuro */
+  line-height: 1.6;
 }
 .bonus-box strong {
-  color: var(--color-dark-gray);
+  color: var(--color-dark-gray); /* Anche lo strong scuro */
+  font-weight: 700;
 }
 
-@media (max-width: 768px) {
+.cta-primary .section-title { /* Titolo H2 nella CTA */
+    text-align: center;
+    /* Colore bianco e ombra da .cta-primary globale */
+}
+.cta-primary .section-intro { /* Paragrafo nella CTA */
+    text-align: center;
+    /* Colore bianco da .cta-primary globale */
+}
+
+@media (max-width: 992px) { /* Tablet */
+    .service-detail-image-wrapper,
+    .case-study-image-wrapper {
+        /* Su tablet, potrebbero ancora stare affiancati o iniziare ad impilarsi
+           a seconda dello spazio. flex-wrap si occuperà di questo. */
+    }
+}
+
+@media (max-width: 768px) { /* Mobile */
   .service-detail-content {
     flex-direction: column;
   }
-
-  .service-detail-text-wrapper {
-    /* Text comes first on mobile */
-    order: 1;
-  }
+  .service-detail-text-wrapper { order: 1; }
   .service-detail-image-wrapper {
-    /* Image and its related box come after text */
     order: 2;
-    width: 100%; /* Full width for image wrapper on mobile */
-  }
-
-  .service-detail-image,
-  .case-study-image,
-  .image-related-box {
-    /* Ensure related boxes also go full width and have consistent max-width */
     width: 100%;
-    max-width: none;
   }
-  .service-detail-image {
-    margin-bottom: 0; /* Remove margin if related box follows directly */
+  .service-detail-image,
+  .image-related-box {
+    width: 100%;
+    max-width: none; /* Immagine e box prendono tutta la larghezza */
+  }
+  
+  .case-study-content {
+    flex-direction: column;
+  }
+  .case-study-image-wrapper { /* Immagine prima del testo su mobile nel case study */
+    order: -1;
+    width: 100%; /* Occupa tutta la larghezza */
   }
   .case-study-image {
-    order: -1; /* For case study, image still comes before text on mobile */
-    margin-bottom: 2rem;
+      max-width: none; /* Immagine del case study prende tutta la larghezza */
+      margin-bottom: 1.5rem; /* Spazio tra immagine e testo */
+  }
+  .case-study-text {
+      order: 2;
   }
 
-  .service-detail-title {
-    font-size: 1.8rem;
+  /* Titoli di sezione H2 */
+  .section-title-on-light,
+  .case-study-title,
+  .cta-primary .section-title {
+    font-size: 1.6rem; /* Dimensione ridotta per mobile */
   }
+  /* Titoli H3 */
+  .bonus-title {
+      font-size: 1.2rem;
+  }
+  /* Titoli H4 */
   .service-detail-text h4 {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 }
 </style>

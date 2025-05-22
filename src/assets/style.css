@@ -8,10 +8,10 @@
 }
 
 :root {
-  /* Color palette as specified in the brief */
+  /* Color palette */
   --color-red: #ff3b30;
   --color-yellow: #ffcc00;
-  --color-blue: #007aff;
+  --color-blue: #0066CC; /* Blu leggermente scurito */
   --color-green: #34c759;
   --color-white: #ffffff;
   --color-black: #000000;
@@ -25,8 +25,8 @@
 body {
   font-family: var(--font-primary);
   line-height: 1.6;
-  color: var(--color-black);
-  background-color: var(--color-white);
+  color: var(--color-black); /* Default text color */
+  background-color: var(--color-white); /* Default page background */
 }
 
 /* Typography */
@@ -39,7 +39,7 @@ h6 {
   font-family: var(--font-primary);
   font-weight: bold;
   text-transform: uppercase;
-  color: var(--color-white);
+  color: var(--color-white); /* Default per titoli (spesso su sfondi scuri/colorati) */
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   margin-bottom: 1rem;
 }
@@ -60,6 +60,7 @@ h3 {
 p {
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
+  /* color: var(--color-dark-gray); Se il testo p è principalmente su sfondi chiari */
 }
 
 /* Layout */
@@ -72,6 +73,8 @@ p {
 
 section {
   padding: 5rem 0;
+  position: relative; /* Utile per eventuali figli posizionati assolutamente */
+  overflow: hidden;  /* Utile per ::before/::after overlays */
 }
 
 /* Buttons */
@@ -95,20 +98,20 @@ section {
 }
 
 .btn-primary:hover {
-  background-color: #e6352b;
+  background-color: #e6352b; /* Rosso più scuro per hover */
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(255, 59, 48, 0.3);
 }
 
 .btn-secondary {
-  background-color: var(--color-blue);
+  background-color: var(--color-blue); /* Userà il nuovo blu scuro */
   color: var(--color-white);
 }
 
 .btn-secondary:hover {
-  background-color: #0066d6;
+  background-color: #0052A3; /* Blu ancora più scuro per hover */
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 122, 255, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3); /* Ombra con il nuovo blu */
 }
 
 /* Header & Navigation */
@@ -118,9 +121,9 @@ header {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: var(--color-dark-gray); /* <-- MODIFICATO QUI */
+  background-color: var(--color-dark-gray);
   padding: 1rem 0;
-  transition: all 0.3s ease; /* Puoi mantenere la transizione o rimuoverla se non serve più con lo sfondo solido */
+  transition: background-color 0.3s ease;
 }
 
 .header-container {
@@ -166,55 +169,62 @@ header {
   cursor: pointer;
 }
 
-/* Hero Section */
-.hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  background-color: var(--color-dark-gray);
-  overflow: hidden;
+/* Reusable Gradient Overlay Background */
+.section-gradient-overlay {
+  background-image: linear-gradient(
+    60deg,
+    var(--color-red),
+    var(--color-yellow),
+    var(--color-green),
+    var(--color-blue) /* Userà il nuovo blu scuro */
+  );
+  /* Opzionale: animazione della sfumatura
+  background-size: 200% 200%;
+  animation: gradientFlow 10s ease infinite;
+  */
 }
 
-.hero-bg {
+.section-gradient-overlay::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/images/hero-bg-placeholder.jpg'); /* Vedremo come gestire le immagini dopo */
-  background-size: cover;
-  background-position: center;
-  opacity: 0.7;
-  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.65); /* Overlay nero al 65% di opacità */
+  z-index: 1; /* Sotto il contenuto della sezione */
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
+/* @keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+} */
+
+/* Hero Section Specifics (se non coperte da .section-gradient-overlay) */
+.hero {
+  /* position, height, display, align-items, overflow sono già in section o qui */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  /* background-color: var(--color-dark-gray); /* Fallback se .section-gradient-overlay non è usato */
 }
 
-.hero-subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: var(--color-white);
-}
+/* .hero-bg rimosso perché ora usiamo .section-gradient-overlay */
 
-.hero-description {
-  color: var(--color-white);
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  max-width: 600px;
-}
+/* .hero-content era un wrapper generico, .hero-content-wrapper è usato nel componente */
+/* Assicurarsi che il wrapper del contenuto nella hero section abbia z-index > 1 */
 
-/* Page Hero Section */
+
+/* Page Hero Section (per pagine interne, es. "Chi Sono", "Servizi") */
 .page-hero {
-  position: relative;
-  padding: 8rem 0 4rem;
-  background-color: var(--color-dark-gray);
+  /* position: relative; padding, text-align sono già in section o qui */
+  padding: 8rem 0 4rem; /* Padding specifico per page-hero */
+  background-color: var(--color-dark-gray); /* Sfondo standard per page-hero */
   text-align: center;
 }
+/* Se vuoi usare il gradiente anche per page-hero, aggiungi .section-gradient-overlay */
+/* <section class="page-hero section-gradient-overlay"> */
 
 .page-hero h1 {
   margin-bottom: 1.5rem;
@@ -227,184 +237,78 @@ header {
   margin: 0 auto;
 }
 
-/* Benefits Section */
+/* Benefits Section (esempio, se la riutilizzi) */
 .benefits {
   background-color: var(--color-light-gray);
 }
-
-.benefits-title {
+.benefits .section-title, /* Titolo specifico per sezione benefits */
+.benefits .benefit-title,
+.benefits .benefit-text {
   color: var(--color-dark-gray);
-  text-align: center;
-  margin-bottom: 3rem;
+  text-shadow: none;
 }
-
-.benefits-intro {
+.benefits .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.benefits .benefits-intro { /* Intro specifico per sezione benefits */
+  color: var(--color-dark-gray);
+  text-shadow: none;
   text-align: center;
   max-width: 700px;
   margin: 0 auto 3rem;
 }
+/* ... altri stili benefits ... */
 
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.benefit-item {
-  background-color: var(--color-white);
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.benefit-item:hover {
-  transform: translateY(-10px);
-}
-
-.benefit-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--color-red);
-}
-
-.benefit-title {
-  color: var(--color-dark-gray);
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-}
-
-.benefit-text {
-  color: var(--color-dark-gray);
-}
 
 /* Services Section */
-.service-detail-title {
-  color: var(--color-dark-gray);
-  text-align: center;
-  margin-bottom: 3rem;
-}
+/* ... stili services ... */
 
-.services {
-  padding: 5rem 0;
-  background-color: var(--color-white);
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
-  margin-top: 2rem;
-}
-
-.service-card {
-  background-color: var(--color-light-gray);
-  border-radius: 10px;
-  padding: 2.5rem;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-}
-
-.service-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  color: var(--color-red);
-}
-
-.service-title {
-  color: var(--color-dark-gray);
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-
-.service-description {
-  color: var(--color-dark-gray);
-  margin-bottom: 1.5rem;
-}
 
 /* Reviews Section */
-.reviews {
-  background-color: var(--color-dark-gray);
-  color: var(--color-white);
-  text-align: center;
-}
+/* .reviews è gestito nello scoped CSS per lo sfondo chiaro.
+   Se volessi una versione scura di default, la definiresti qui. */
 
-.reviews-container {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.review-item {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 10px;
-  text-align: left;
-}
-
-.review-text {
-  font-style: italic;
-  margin-bottom: 1rem;
-}
-
-.review-author {
-  font-weight: bold;
-}
-
-.google-reviews-container {
-  margin-top: 2rem;
-  width: 100%;
-}
 
 /* CTA Sections */
 .cta {
   text-align: center;
-  padding: 5rem 0;
+  /* padding: 5rem 0; già in section */
 }
 
 .cta-primary {
-  background-color: var(--color-blue);
+  background-color: var(--color-blue); /* Userà il nuovo blu scuro */
   color: var(--color-white);
+}
+.cta-primary .section-title, /* h2.cta-title */
+.cta-primary .section-intro { /* p.cta-text */
+  color: var(--color-white);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Ombra leggermente diversa per cta */
+}
+.cta-primary .section-title {
+    margin-bottom: 1.5rem;
+}
+.cta-primary .section-intro {
+    max-width: 600px;
+    margin: 0 auto 2rem;
 }
 
 .cta-secondary {
   background-color: var(--color-light-gray);
 }
-
-.cta-title {
-  margin-bottom: 1.5rem;
-}
-
-.cta-primary .cta-title {
-  color: var(--color-white);
-}
-
-.cta-secondary .cta-title {
+.cta-secondary .section-title,
+.cta-secondary .section-intro {
   color: var(--color-dark-gray);
+  text-shadow: none;
+}
+.cta-secondary .section-title {
+    margin-bottom: 1.5rem;
+}
+.cta-secondary .section-intro {
+    max-width: 600px;
+    margin: 0 auto 2rem;
 }
 
-.cta-text {
-  max-width: 600px;
-  margin: 0 auto 2rem;
-}
-
-.cta-primary .cta-text {
-  color: var(--color-white);
-}
 
 /* Footer */
 footer {
@@ -412,148 +316,54 @@ footer {
   color: var(--color-white);
   padding: 4rem 0 2rem;
 }
+/* ... stili footer ... */
 
-.footer-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 3rem;
-}
-
-.footer-nav {
-  list-style: none;
-}
-
-.footer-nav-item {
-  margin-bottom: 0.8rem;
-}
-
-.footer-nav-link {
-  color: var(--color-white);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-nav-link:hover {
-  color: var(--color-red);
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: var(--color-white);
-  border-radius: 50%;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.social-link:hover {
-  background-color: var(--color-red);
-  transform: translateY(-3px);
-}
-
-.copyright {
-  margin-top: 3rem;
-  text-align: center;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-}
 
 /* Responsive Design */
 @media (max-width: 992px) {
-  h1 {
-    font-size: 3rem;
-  }
-
-  h2 {
-    font-size: 2.2rem;
-  }
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.2rem; }
 
   .hero {
-    min-height: 90vh; /* Prova con min-height */
-    height: auto;     /* Permetti all'altezza di adattarsi al contenuto */
-    padding-top: 70px; /* Aggiungi padding-top per compensare l'header fisso */
-    padding-bottom: 2rem; /* Aggiungi un po' di padding in basso */
+    min-height: 90vh;
+    height: auto;
+    padding-top: 70px; /* Altezza header */
+    padding-bottom: 2rem;
   }
 }
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 2.5rem;
-  }
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.8rem; }
 
-  h2 {
-    font-size: 1.8rem;
+  section {
+    padding: 4rem 0; /* Riduci padding sezioni su mobile */
   }
-
-  .mobile-menu-btn {
-    display: block;
-  }
-
+  
+  .mobile-menu-btn { display: block; }
   .nav-menu {
     position: fixed;
-    top: 50px; /* Adjust based on your header height */
+    top: 60px; /* Altezza header, aggiusta se cambia */
     left: -100%;
     flex-direction: column;
     background-color: var(--color-dark-gray);
     width: 100%;
     text-align: center;
-    transition: 0.3s;
+    transition: left 0.3s ease-in-out;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
     padding: 2rem 0;
   }
+  .nav-menu.active { left: 0; }
+  .nav-item { margin: 1.5rem 0; }
 
-  .nav-menu.active {
-    left: 0;
-  }
-
-  .nav-item {
-    margin: 1.5rem 0;
-  }
-
-  .hero-content {
-    text-align: center;
-  }
-
-  .hero-description {
-    margin-left: auto;
-    margin-right: auto;
-  }
+  /* .hero-content era nel tuo globale, ora il contenuto è in .hero-content-wrapper */
+  /* .hero-description era nel tuo globale, ora è .hero-main-description */
 }
 
 @media (max-width: 576px) {
-  section {
-    padding: 3rem 0;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  .btn {
-    padding: 0.8rem 1.5rem;
-    font-size: 0.9rem;
-  }
-
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .social-links {
-    justify-content: center;
-  }
+  section { padding: 3rem 0; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  .btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
+  /* ... altri stili mobile ... */
 }
