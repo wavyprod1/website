@@ -229,14 +229,12 @@ const allPortfolioItems = computed(() => {
 <style scoped>
 /* Stile per il contenuto della page-hero per assicurare che sia sopra l'overlay */
 
-
 /* Stile per i titoli h2 nelle CTA (già gestito dal globale con .cta-primary .section-title) */
 .cta-primary .section-title {
   color: var(--color-white);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Ombra standard */
   /* text-align e margin-bottom sono già nel CSS globale per .cta-primary .cta-title */
 }
-
 
 .portfolio-section:nth-child(odd) {
   /* Questo odd/even si basa sulla posizione in <main> */
@@ -254,7 +252,6 @@ const allPortfolioItems = computed(() => {
 <section class="portfolio-section bg-white">...</section>
 <section class="portfolio-section bg-light soundtrack-section">...</section>
 */
-
 
 .portfolio-item {
   background-color: var(--color-white); /* Sfondo della card */
@@ -436,7 +433,6 @@ const allPortfolioItems = computed(() => {
   .portfolio-modal-content {
     max-height: none; /* Remove max-height constraint */
   }
-
 
   .portfolio-modal-media {
     flex: none; /* Remove flex sizing */

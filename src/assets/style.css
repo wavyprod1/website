@@ -177,7 +177,6 @@ section {
   z-index: 1; /* Sotto il contenuto della sezione */
 }
 
-
 /* Hero Section Specifics (se non coperte da .section-gradient-overlay) */
 .hero {
   /* position, height, display, align-items, overflow sono già in section o qui */
@@ -278,7 +277,8 @@ section {
   background-color: var(--color-blue); /* Userà il nuovo blu scuro */
   color: var(--color-white);
 }
-.cta-primary .section-title, .cta-title,
+.cta-primary .section-title,
+.cta-title,
 .cta-primary .section-intro {
   /* p.cta-text */
   color: var(--color-white);
@@ -405,6 +405,19 @@ footer {
   }
   .hero-main-title {
     font-size: 1.5rem; /* NUOVA DIMENSIONE RIDOTTA PER MOBILE PICCOLO */
+  }
+
+  @media (max-width: 375px) {
+    .hero {
+      /* position, height, display, align-items, overflow sono già in section o qui */
+
+      min-height: calc(100dvh - 4rem); /* Subtract header height */
+      margin-top: 4rem;
+
+      align-items: center;
+      align-content: flex-start;
+      /* background-color: var(--color-dark-gray); /* Fallback se .section-gradient-overlay non è usato */
+    }
   }
 
   /* ... altri stili mobile ... */

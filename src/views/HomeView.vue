@@ -42,11 +42,11 @@ const reviewsData = ref([
 const starEmoji = '⭐'
 
 const scrollDown = () => {
-  const heroHeight = window.innerHeight - 64; // 64px = 4rem
+  const heroHeight = window.innerHeight - 64 // 64px = 4rem
   window.scrollTo({
     top: heroHeight,
-    behavior: 'smooth'
-  });
+    behavior: 'smooth',
+  })
 }
 </script>
 
@@ -56,29 +56,27 @@ const scrollDown = () => {
     <!-- Applica la classe globale .section-gradient-overlay per lo sfondo -->
     <section class="hero section-gradient-overlay">
       <div class="main-hero-wrapper container">
-<div class=" hero-content-wrapper">
-        <div class="hero-text-column">
-          <!-- h1 usa .section-title per coerenza, ma è un h1 -->
-          <h1 class="space-up-down section-title hero-main-title">PRODUTTORE MUSICALE</h1>
-          <div class="space-up-down hero-main-description">
-            Se il tuo obbiettivo non è quello di "acquistare un servizio", ma di sviluppare il tuo
-            progetto musicale, sono la persona giusta per te.
-            <br /><br />
-            <i>Quella a cui avrei affidato la mia arte ad
-            occhi chiusi.</i>
+        <div class="hero-content-wrapper">
+          <div class="hero-text-column">
+            <!-- h1 usa .section-title per coerenza, ma è un h1 -->
+            <h1 class="space-up-down section-title hero-main-title">PRODUTTORE MUSICALE</h1>
+            <div class="space-up-down hero-main-description">
+              Se il tuo obbiettivo non è quello di "acquistare un servizio", ma di sviluppare il tuo
+              progetto musicale, sono la persona giusta per te.
+              <br /><br />
+              <i>Quella a cui avrei affidato la mia arte ad occhi chiusi.</i>
+            </div>
+          </div>
+          <div class="space-up-down hero-image-column">
+            <img
+              src="/images/hero-profile-square.jpg"
+              alt="Elia Pirrello - Produttore Musicale"
+              class="hero-main-image"
+            />
           </div>
         </div>
-        <div class="space-up-down hero-image-column">
-          <img
-            src="/images/hero-profile-square.jpg"
-            alt="Elia Pirrello - Produttore Musicale"
-            class="hero-main-image"
-          />
-        </div>
-      </div>
         <div class="fas fa-chevron-down my-arrow" @click="scrollDown"></div>
       </div>
-      
     </section>
 
     <!-- CHI SONO SECTION -->
@@ -86,20 +84,45 @@ const scrollDown = () => {
       <div class="container">
         <h2 class="section-title section-title-on-light">CHI SONO</h2>
         <div class="about-me-content">
-                    <p>
-            Ciao, sono Elia, <strong>produttore musicale</strong> con base a <strong>Milano</strong>, specializzato in <strong>Urban</strong> ed <strong>Elettronica</strong>. La mia passione è scovare e amplificare le caratteristiche più <strong>originali</strong> degli artisti con cui collaboro, curando ogni aspetto della <strong>creazione musicale</strong>: dal <strong>songwriting</strong> alla <strong>produzione</strong>, dalla <strong>registrazione</strong> fino al <strong>mixaggio</strong> e al <strong>mastering</strong>.
+          <p>
+            Ciao, sono Elia, <strong>produttore musicale</strong> con base a
+            <strong>Milano</strong>, specializzato in <strong>Urban</strong> ed
+            <strong>Elettronica</strong>. La mia passione è scovare e amplificare le caratteristiche
+            più <strong>originali</strong> degli artisti con cui collaboro, curando ogni aspetto
+            della <strong>creazione musicale</strong>: dal <strong>songwriting</strong> alla
+            <strong>produzione</strong>, dalla <strong>registrazione</strong> fino al
+            <strong>mixaggio</strong> e al <strong>mastering</strong>.
           </p>
           <p>Un po' di contesto su di me:</p>
           <p>
-            Sono di Torino, dove mi sono laureato in Ingegneria Informatica al Politecnico e ho frequentato un corso di Produzione Musicale. Mi sono reso conto abbastanza in fretta, però, che quello non fosse l'ambiente giusto per me.<br />
-            Così mi sono trasferito a Milano, con la geniale scusa dell'università ("Music Engineering", sempre al Politecnico, per non farmi mancare nulla...).<br />Ovviamente, al posto di studiare, ho passato le giornate a produrre musica, frequentare eventi (almeno quattro a settimana) e rischiare di perdere i sensi un paio di volte per colpa dei Gin Tonic. Fortunatamente, queste scorribande sono anche servite a qualcosa.
+            Sono di Torino, dove mi sono laureato in Ingegneria Informatica al Politecnico e ho
+            frequentato un corso di Produzione Musicale. Mi sono reso conto abbastanza in fretta,
+            però, che quello non fosse l'ambiente giusto per me.<br />
+            Così mi sono trasferito a Milano, con la geniale scusa dell'università ("Music
+            Engineering", sempre al Politecnico, per non farmi mancare nulla...).<br />Ovviamente,
+            al posto di studiare, ho passato le giornate a produrre musica, frequentare eventi
+            (almeno quattro a settimana) e rischiare di perdere i sensi un paio di volte per colpa
+            dei Gin Tonic. Fortunatamente, queste scorribande sono anche servite a qualcosa.
           </p>
           <p>
-            Ho lavorato a tanta musica, ho stretto <strong>amicizie meravigliose</strong> e, con alcune di queste, ho dato vita a <a href="https://www.instagram.com/discovery.ita/" target="_blank" rel="noopener noreferrer" class="text-link-arrow"><strong>discovery</strong></a>.<br />
-            "discovery" è l'ambiente che sognavo quando ho iniziato: un <strong>hub social</strong> attraverso cui io e il mio team supportiamo e aiutiamo <strong>gratuitamente</strong> gli <strong>artisti indipendenti</strong>.
+            Ho lavorato a tanta musica, ho stretto <strong>amicizie meravigliose</strong> e, con
+            alcune di queste, ho dato vita a
+            <a
+              href="https://www.instagram.com/discovery.ita/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-link-arrow"
+              ><strong>discovery</strong></a
+            >.<br />
+            "discovery" è l'ambiente che sognavo quando ho iniziato: un
+            <strong>hub social</strong> attraverso cui io e il mio team supportiamo e aiutiamo
+            <strong>gratuitamente</strong> gli <strong>artisti indipendenti</strong>.
           </p>
           <p>
-            Ora sto anche finendo la magistrale e finalmente ho il tempo necessario per dedicarmi ad <strong>artisti come te</strong>.<br />Creo molti <strong>contenuti gratuiti</strong> per aiutarti a far crescere la tua musica e spero, un giorno, di lavorare con i <strong>migliori artisti del mondo</strong>.
+            Ora sto anche finendo la magistrale e finalmente ho il tempo necessario per dedicarmi ad
+            <strong>artisti come te</strong>.<br />Creo molti
+            <strong>contenuti gratuiti</strong> per aiutarti a far crescere la tua musica e spero,
+            un giorno, di lavorare con i <strong>migliori artisti del mondo</strong>.
           </p>
         </div>
       </div>
@@ -173,11 +196,10 @@ const scrollDown = () => {
 </template>
 
 <style scoped>
-
-.main-hero-wrapper{
- width: 100%;
- height: 100%;
- display: grid;
+.main-hero-wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
 }
 
 .hero .section-title {
@@ -321,13 +343,14 @@ const scrollDown = () => {
 }
 
 .my-arrow {
-  margin: 0 auto 4rem;
+  margin: 0 auto 0;
   font-size: 1.5rem;
   color: white;
   z-index: 2;
   position: relative;
   cursor: pointer;
   transition: transform 0.3s ease;
+  padding-top: 1rem;
 }
 
 .my-arrow:hover {

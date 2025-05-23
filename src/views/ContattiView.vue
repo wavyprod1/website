@@ -125,7 +125,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
 /* Classi esplicite per lo sfondo */
 .contact-section.bg-light {
   background-color: var(--color-light-gray);
