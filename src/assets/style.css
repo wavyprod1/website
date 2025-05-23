@@ -411,7 +411,7 @@ footer {
     .hero {
       /* position, height, display, align-items, overflow sono già in section o qui */
 
-      min-height: calc(100dvh - 4rem); /* Subtract header height */
+      min-height: calc(100svh - 4rem); /* Subtract header height */
       margin-top: 4rem;
 
       align-items: center;
