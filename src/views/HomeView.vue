@@ -40,6 +40,14 @@ const reviewsData = ref([
 ])
 
 const starEmoji = '⭐'
+
+const scrollDown = () => {
+  const heroHeight = window.innerHeight - 64; // 64px = 4rem
+  window.scrollTo({
+    top: heroHeight,
+    behavior: 'smooth'
+  });
+}
 </script>
 
 <template>
@@ -68,7 +76,7 @@ const starEmoji = '⭐'
           />
         </div>
       </div>
-        <div class="fas fa-chevron-down my-arrow"></div>
+        <div class="fas fa-chevron-down my-arrow" @click="scrollDown"></div>
       </div>
       
     </section>
@@ -317,11 +325,14 @@ const starEmoji = '⭐'
   font-size: 1.5rem;
   color: white;
   z-index: 2;
-  position:relative;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-
-  
+.my-arrow:hover {
+  transform: translateY(5px);
+}
 
 /* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 992px) {
@@ -359,6 +370,7 @@ const starEmoji = '⭐'
     aspect-ratio: 1 / 1; /* Forces a perfect square for the circle */
     object-fit: cover;
     object-position: center; /* Centers the image content */
+    width: 12rem;
   }
 
   .review-author-info {
