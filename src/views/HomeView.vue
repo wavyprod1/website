@@ -323,6 +323,7 @@ const starEmoji = '⭐'
   .hero-text-column {
     order: 2;
     text-align: justify;
+    padding: 0; /* Aggiunto padding laterale per mobile */
   }
 
   /* Ordine e stili per gli elementi della Hero su mobile */
@@ -331,6 +332,12 @@ const starEmoji = '⭐'
     order: 1;
     width: 70vw;
     max-width: 280px;
+  }
+
+  .hero-main-image {
+    aspect-ratio: 1 / 1; /* Forces a perfect square for the circle */
+    object-fit: cover;
+    object-position: center; /* Centers the image content */
   }
 
   .review-author-info {
