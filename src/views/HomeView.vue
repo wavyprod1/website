@@ -55,8 +55,7 @@ const starEmoji = '⭐'
             Se il tuo obbiettivo non è quello di "acquistare un servizio", ma di sviluppare il tuo
             progetto musicale, sono il produttore giusto per te.
             <br /><br />
-            <i>Il mio impegno è quello di essere il professionista che avrei voluto avere al mio fianco
-            quando ho iniziato. <br /><br />Quello a cui avrei affidato il mio progetto musicale ad
+            <i>Quello a cui avrei affidato il mio progetto musicale ad
             occhi chiusi.</i>
           </div>
         </div>
