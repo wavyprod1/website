@@ -109,7 +109,7 @@
                 alt="Strumentazione professionale per produzione musicale avanzata"
               />
             </div>
-            <div class="bonus-box image-related-box">
+            <div class="bonus-box image-related-box" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);">
               <!-- .bonus-title (h3) sarà scuro su sfondo giallo -->
               <h3 class="bonus-title">BONUS ESCLUSIVO:</h3>
               <p>
@@ -345,7 +345,6 @@
 .bonus-title {
   /* Titolo H3 nel bonus box */
   color: var(--color-dark-gray); /* Testo scuro */
-  text-shadow: none; /* No ombra su sfondo giallo */
   margin-bottom: 1rem;
   font-size: 1.3rem; /* Dimensione specifica */
 }

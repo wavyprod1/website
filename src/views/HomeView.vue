@@ -100,9 +100,9 @@ const scrollDown = () => {
             però, che quello non fosse l'ambiente giusto per me.<br />
             Così mi sono trasferito a Milano, con la geniale scusa dell'università ("Music
             Engineering", sempre al Politecnico, per non farmi mancare nulla...).<br />Ovviamente,
-            al posto di studiare, ho passato le giornate a produrre musica, frequentare eventi
-            (almeno quattro a settimana) e rischiare di perdere i sensi un paio di volte per colpa
-            dei Gin Tonic. Fortunatamente, queste scorribande sono anche servite a qualcosa.
+            al posto di studiare, ho passato le giornate a produrre musica, frequentare mille eventi
+            e rischiare di perdere i sensi per i Gin Tonic. Fortunatamente, queste scorribande sono
+            anche servite a qualcosa.
           </p>
           <p>
             Ho lavorato a tanta musica, ho stretto <strong>amicizie meravigliose</strong> e, con

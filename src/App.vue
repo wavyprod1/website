@@ -263,10 +263,12 @@ header {
 }
 
 .header-container {
-  justify-content: space-between;
+  justify-content: center;
   display: flex;
   align-items: center;
   height: 2rem;
+  position: relative; /* Add this */
+  z-index: 1002; /* Make it higher than the mobile menu */
 }
 
 /* Logo/Nome Link per Desktop */
@@ -278,6 +280,8 @@ header {
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: color 0.3s ease; /* Aggiunta transizione */
+  position: relative; /* Add this */
+  z-index: 1003; /* Make it the highest z-index */
 }
 
 .header-logo-link:hover {
@@ -289,6 +293,7 @@ header {
   display: flex;
   list-style: none;
   margin-left: auto;
+  z-index: 1001; /* Keep this lower than the header container and logo */
 }
 .nav-item {
   margin-left: 2rem;
@@ -412,7 +417,7 @@ header {
     color: var(--color-white);
     font-size: 1.8rem;
     cursor: pointer;
-    z-index: 1002;
+    z-index: 1003; /* Match the logo's z-index */
   }
 
   .nav-menu {

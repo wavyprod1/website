@@ -96,7 +96,7 @@ onUnmounted(() => {
               </p>
               <p>Ed il mio lavoro di mixing e mastering te lo garantisce.</p>
             </div>
-            <div class="guarantee-box">
+            <div class="guarantee-box" style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);">
               <!-- .guarantee-title (h3) sarà bianco con ombra su sfondo verde -->
               <h3 class="guarantee-title">LE MIE GARANZIE PER TE:</h3>
               <ul class="guarantee-list">
