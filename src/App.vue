@@ -71,10 +71,7 @@ watch(
   <header>
     <div class="container">
       <div class="header-container">
-        <RouterLink to="/" class="header-logo-link desktop-only" @click="handleNavLinkClick">
-          ELIA PIRRELLO
-        </RouterLink>
-        <RouterLink to="/" class="header-logo-link mobile-only" @click="handleNavLinkClick">
+        <RouterLink to="/" class="header-logo-link" @click="handleNavLinkClick">
           ELIA PIRRELLO
         </RouterLink>
         <button
@@ -83,7 +80,7 @@ watch(
           aria-label="Apri menu"
           :aria-expanded="isMobileMenuOpen"
         >
-          <i class="fas fa-bars"></i>
+          <i class="fas" :class="{ 'fa-bars': !isMobileMenuOpen, 'fa-times': isMobileMenuOpen }"></i>
         </button>
         <ul class="nav-menu" :class="{ active: isMobileMenuOpen }">
           <li
@@ -273,12 +270,13 @@ header {
 
 /* Logo/Nome Link per Desktop */
 .header-logo-link {
+  display:contents;
   font-weight: bold;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   color: var(--color-white);
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  padding-top: 1px;
   transition: color 0.3s ease; /* Aggiunta transizione */
   position: relative; /* Add this */
   z-index: 1003; /* Make it the highest z-index */
@@ -321,12 +319,6 @@ header {
   color: var(--color-blue);
 }
 
-.mobile-only {
-  display: none !important;
-}
-.desktop-only {
-  display: block !important;
-}
 
 /* Dropdown Menu (Desktop) */
 .nav-item-dropdown {
@@ -399,7 +391,7 @@ header {
   }
 
   .header-container {
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .header-logo-link-mobile:hover {
@@ -407,17 +399,22 @@ header {
   }
 
   .mobile-menu-btn {
-    display: block;
-    position: absolute;
-    right: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
+    display: flex;
+    position: relative;
     background: none;
     border: none;
     color: var(--color-white);
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     cursor: pointer;
-    z-index: 1003; /* Match the logo's z-index */
+    z-index: 1003;
+  }
+
+  .mobile-menu-btn i {
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-menu-btn i.fa-times {
+    transform: rotate(180deg);
   }
 
   .nav-menu {
@@ -432,7 +429,6 @@ header {
     align-items: center;
     justify-content: flex-start;
     padding-top: 4rem;
-    transition: left 0.3s ease-in-out;
     z-index: 1001;
     overflow-y: auto;
     box-sizing: border-box;
