@@ -321,7 +321,7 @@ const scrollDown = () => {
 }
 
 .my-arrow {
-  margin: 2rem auto 4rem;
+  margin: 0 auto 4rem;
   font-size: 1.5rem;
   color: white;
   z-index: 2;
@@ -370,7 +370,7 @@ const scrollDown = () => {
     aspect-ratio: 1 / 1; /* Forces a perfect square for the circle */
     object-fit: cover;
     object-position: center; /* Centers the image content */
-    width: 12rem;
+    width: min(10rem, 20vh);
   }
 
   .review-author-info {
