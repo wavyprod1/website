@@ -47,15 +47,16 @@ const starEmoji = '⭐'
     <!-- HERO SECTION -->
     <!-- Applica la classe globale .section-gradient-overlay per lo sfondo -->
     <section class="hero section-gradient-overlay">
-      <div class="container hero-content-wrapper">
+      <div class="main-hero-wrapper container">
+<div class=" hero-content-wrapper">
         <div class="hero-text-column">
           <!-- h1 usa .section-title per coerenza, ma è un h1 -->
           <h1 class="space-up-down section-title hero-main-title">PRODUTTORE MUSICALE</h1>
           <div class="space-up-down hero-main-description">
             Se il tuo obbiettivo non è quello di "acquistare un servizio", ma di sviluppare il tuo
-            progetto musicale, sono il produttore giusto per te.
+            progetto musicale, sono la persona giusta per te.
             <br /><br />
-            <i>Quello a cui avrei affidato il mio progetto musicale ad
+            <i>Quella a cui avrei affidato la mia arte ad
             occhi chiusi.</i>
           </div>
         </div>
@@ -67,6 +68,9 @@ const starEmoji = '⭐'
           />
         </div>
       </div>
+        <div class="fas fa-chevron-down my-arrow"></div>
+      </div>
+      
     </section>
 
     <!-- CHI SONO SECTION -->
@@ -161,6 +165,13 @@ const starEmoji = '⭐'
 </template>
 
 <style scoped>
+
+.main-hero-wrapper{
+ width: 100%;
+ height: 100%;
+ display: grid;
+}
+
 .hero .section-title {
   /* Titolo H1 della hero section */
   text-align: left;
@@ -301,6 +312,17 @@ const starEmoji = '⭐'
   background-color: var(--color-red);
 }
 
+.my-arrow {
+  margin: 2rem auto 4rem;
+  font-size: 1.5rem;
+  color: white;
+  z-index: 2;
+  position:relative;
+}
+
+
+  
+
 /* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 992px) {
   /* Tablet */
@@ -321,7 +343,7 @@ const starEmoji = '⭐'
 
   .hero-text-column {
     order: 2;
-    text-align: justify;
+    text-align: center;
     padding: 0; /* Aggiunto padding laterale per mobile */
   }
 
