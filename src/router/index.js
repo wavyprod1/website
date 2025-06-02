@@ -11,11 +11,13 @@ const router = createRouter({
       component: HomeView,
     },
     // Placeholder per le altre pagine - creeremo i componenti e le routes complete dopo
+
     {
       path: '/portfolio',
       name: 'portfolio',
       component: () => import('../views/PortfolioView.vue'), // Creeremo PortfolioView.vue
     },
+    /*
     {
       path: '/contenuti',
       name: 'contenuti',
@@ -36,6 +38,12 @@ const router = createRouter({
       path: '/recording-mix-master',
       name: 'recording-mix-master',
       component: () => import('../views/RecordingMixMasterView.vue'), // Creeremo RecordingMixMasterView.vue
+    },
+    */
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('../views/AboutView.vue'),
     },
   ],
   // Aggiungi questo per far scrollare la pagina in alto quando si naviga

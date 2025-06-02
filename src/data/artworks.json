@@ -1,0 +1,10 @@
+[
+  { "id": 1, "coverUrl": "/images/artworks/Ancora.jpg", "title": "Ancora", "artist": "Cass" },
+  { "id": 2, "coverUrl": "/images/artworks/FC_Caesar.jpg", "title": "FC Caesar", "artist": "AleB ft. Sheffer" },
+  { "id": 3, "coverUrl": "/images/artworks/Caramelle.jpg", "title": "Caramelle", "artist": "tommiottocento" },
+  { "id": 4, "coverUrl": "/images/artworks/Libera.jpg", "title": "Libera", "artist": "Virginia" },
+  { "id": 5, "coverUrl": "/images/artworks/Galaxy.jpg", "title": "Galaxy", "artist": "DVNRAVE ft. Wavy" },
+  { "id": 6, "coverUrl": "/images/artworks/PondBand.jpg", "title": "Pond Band", "artist": "Rita Sponzilli" },
+  { "id": 7, "coverUrl": "/images/artworks/Ballo_fuori_scena.jpg", "title": "Ballo Fuori Scena", "artist": "Dissid"  },
+  { "id": 8, "coverUrl": "/images/artworks/Lontan9.jpg", "title": "Lontan9", "artist": "Danny Moraly" }
+]

@@ -8,41 +8,9 @@ const isMobileMenuOpen = ref(false)
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
   if (isMobileMenuOpen.value) {
-    isServicesDropdownOpen.value = false
     document.body.style.overflow = 'hidden'
   } else {
     document.body.style.overflow = ''
-  }
-}
-
-const isServicesDropdownOpen = ref(false)
-let servicesTimeout = null
-
-const toggleServicesDropdown = (event) => {
-  if (window.innerWidth <= 768) {
-    isServicesDropdownOpen.value = !isServicesDropdownOpen.value
-  } else {
-    event.preventDefault()
-    isServicesDropdownOpen.value = !isServicesDropdownOpen.value
-  }
-}
-
-const openServicesDropdownDesktop = () => {
-  if (window.innerWidth > 768) {
-    clearTimeout(servicesTimeout)
-    isServicesDropdownOpen.value = true
-  }
-}
-
-const closeServicesDropdownDesktop = (immediate = false) => {
-  if (window.innerWidth > 768) {
-    if (immediate) {
-      isServicesDropdownOpen.value = false
-    } else {
-      servicesTimeout = setTimeout(() => {
-        isServicesDropdownOpen.value = false
-      }, 200)
-    }
   }
 }
 
@@ -52,7 +20,6 @@ const handleNavLinkClick = () => {
   if (isMobileMenuOpen.value) {
     toggleMobileMenu()
   }
-  isServicesDropdownOpen.value = false
 }
 
 watch(
@@ -62,7 +29,6 @@ watch(
       isMobileMenuOpen.value = false
       document.body.style.overflow = ''
     }
-    isServicesDropdownOpen.value = false
   },
 )
 </script>
@@ -71,8 +37,8 @@ watch(
   <header>
     <div class="container">
       <div class="header-container">
-        <RouterLink to="/" class="header-logo-link" @click="handleNavLinkClick">
-          ELIA PIRRELLO
+        <RouterLink to="/" class="nav-link nav-link-home" @click="handleNavLinkClick">
+          HOME
         </RouterLink>
         <button
           class="mobile-menu-btn"
@@ -83,45 +49,6 @@ watch(
           <i class="fas" :class="{ 'fa-bars': !isMobileMenuOpen, 'fa-times': isMobileMenuOpen }"></i>
         </button>
         <ul class="nav-menu" :class="{ active: isMobileMenuOpen }">
-          <li
-            class="nav-item nav-item-dropdown"
-            @mouseenter="openServicesDropdownDesktop"
-            @mouseleave="closeServicesDropdownDesktop()"
-          >
-            <a
-              href="#"
-              class="nav-link nav-link-servizi"
-              @click.prevent="toggleServicesDropdown"
-              aria-haspopup="true"
-              :aria-expanded="isServicesDropdownOpen"
-            >
-              Servizi
-              <i
-                class="fas fa-chevron-down dropdown-arrow"
-                :class="{ 'rotate-arrow': isServicesDropdownOpen }"
-              ></i>
-            </a>
-            <ul
-              class="dropdown-menu"
-              v-show="isServicesDropdownOpen"
-              @mouseenter="openServicesDropdownDesktop"
-              @mouseleave="closeServicesDropdownDesktop()"
-            >
-              <li>
-                <RouterLink to="/produzione" class="dropdown-link" @click="handleNavLinkClick"
-                  >Produzione Musicale</RouterLink
-                >
-              </li>
-              <li>
-                <RouterLink
-                  to="/recording-mix-master"
-                  class="dropdown-link"
-                  @click="handleNavLinkClick"
-                  >Recording, Mix & Master</RouterLink
-                >
-              </li>
-            </ul>
-          </li>
           <li class="nav-item">
             <RouterLink
               to="/portfolio"
@@ -131,19 +58,12 @@ watch(
             >
           </li>
           <li class="nav-item">
+            <!-- MODIFIED: Link to /about, text is About -->
             <RouterLink
-              to="/contenuti"
-              class="nav-link nav-link-contenuti"
+              to="/about"
+              class="nav-link nav-link-about"
               @click="handleNavLinkClick"
-              >Contenuti</RouterLink
-            >
-          </li>
-          <li class="nav-item">
-            <RouterLink
-              to="/contatti"
-              class="nav-link nav-link-contatti"
-              @click="handleNavLinkClick"
-              >Contatti</RouterLink
+              >About</RouterLink
             >
           </li>
         </ul>
@@ -157,7 +77,6 @@ watch(
     <div class="container">
       <div class="footer-container">
         <div class="footer-col">
-          <!-- Il titolo H3 "ELIA PIRRELLO" nel footer non è un link, quindi non ha hover colorato -->
           <h3>ELIA PIRRELLO</h3>
           <p>Produttore Musicale a Milano</p>
           <div class="social-links">
@@ -167,7 +86,6 @@ watch(
             <a href="mailto:wavywork1@gmail.com" class="social-link">
               <i class="far fa-envelope"></i>
             </a>
-            <!-- Aggiungi altri social link se necessario -->
           </div>
         </div>
 
@@ -175,7 +93,6 @@ watch(
           <h3>NAVIGAZIONE</h3>
           <ul class="footer-nav">
             <li class="footer-nav-item">
-              <!-- Aggiunta classe specifica per hover -->
               <RouterLink
                 to="/"
                 class="footer-nav-link footer-nav-link-home"
@@ -184,7 +101,6 @@ watch(
               >
             </li>
             <li class="footer-nav-item">
-              <!-- Aggiunta classe specifica per hover -->
               <RouterLink
                 to="/portfolio"
                 class="footer-nav-link footer-nav-link-portfolio"
@@ -193,45 +109,12 @@ watch(
               >
             </li>
             <li class="footer-nav-item">
-              <!-- Aggiunta classe specifica per hover -->
+              <!-- MODIFIED: Link to /about, text is About -->
               <RouterLink
-                to="/contenuti"
-                class="footer-nav-link footer-nav-link-contenuti"
+                to="/about"
+                class="footer-nav-link footer-nav-link-about"
                 @click="handleNavLinkClick"
-                >Contenuti</RouterLink
-              >
-            </li>
-            <li class="footer-nav-item">
-              <!-- Aggiunta classe specifica per hover -->
-              <RouterLink
-                to="/contatti"
-                class="footer-nav-link footer-nav-link-contatti"
-                @click="handleNavLinkClick"
-                >Contatti</RouterLink
-              >
-            </li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h3>SERVIZI</h3>
-          <ul class="footer-nav">
-            <li class="footer-nav-item">
-              <!-- Aggiunta classe specifica per hover -->
-              <RouterLink
-                to="/produzione"
-                class="footer-nav-link footer-nav-link-servizi"
-                @click="handleNavLinkClick"
-                >Produzione Musicale</RouterLink
-              >
-            </li>
-            <li class="footer-nav-item">
-              <!-- Aggiunta classe specifica per hover (può usare la stessa di servizi o una sua) -->
-              <RouterLink
-                to="/recording-mix-master"
-                class="footer-nav-link footer-nav-link-servizi"
-                @click="handleNavLinkClick"
-                >Recording, Mix & Master</RouterLink
+                >About</RouterLink
               >
             </li>
           </ul>
@@ -246,8 +129,6 @@ watch(
 </template>
 
 <style scoped>
-/* Stili Header */
-
 /* Header & Navigation */
 header {
   position: fixed;
@@ -264,11 +145,10 @@ header {
   display: flex;
   align-items: center;
   height: 2rem;
-  position: relative; /* Add this */
-  z-index: 1002; /* Make it higher than the mobile menu */
+  position: relative;
+  z-index: 1002;
 }
 
-/* Logo/Nome Link per Desktop */
 .header-logo-link {
   display:contents;
   font-weight: bold;
@@ -277,21 +157,20 @@ header {
   text-decoration: none;
   text-transform: uppercase;
   padding-top: 1px;
-  transition: color 0.3s ease; /* Aggiunta transizione */
-  position: relative; /* Add this */
-  z-index: 1003; /* Make it the highest z-index */
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 1003;
 }
 
 .header-logo-link:hover {
-  color: var(--color-light-gray); /* MODIFICATO: Hover grigio chiaro */
+  color: var(--color-light-gray);
 }
 
-/* Menu di navigazione per Desktop */
 .nav-menu {
   display: flex;
   list-style: none;
   margin-left: auto;
-  z-index: 1001; /* Keep this lower than the header container and logo */
+  z-index: 1001;
 }
 .nav-item {
   margin-left: 2rem;
@@ -306,98 +185,26 @@ header {
   position: relative;
 }
 
-.nav-link.nav-link-servizi:hover {
+.nav-link.nav-link-home:hover {
   color: var(--color-green);
 }
+
 .nav-link.nav-link-portfolio:hover {
   color: var(--color-red);
 }
-.nav-link.nav-link-contenuti:hover {
-  color: var(--color-yellow);
-}
-.nav-link.nav-link-contatti:hover {
+/* MODIFIED: Changed from nav-link-contatti to nav-link-about, kept the blue hover color */
+.nav-link.nav-link-about:hover {
   color: var(--color-blue);
 }
 
-
-/* Dropdown Menu (Desktop) */
-.nav-item-dropdown {
-  position: relative;
-}
-.dropdown-arrow {
-  margin-left: 0.5em;
-  font-size: 0.8em;
-  transition: transform 0.3s ease;
-}
-.rotate-arrow {
-  transform: rotate(180deg);
-}
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: var(--color-dark-gray);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: none;
-  list-style: none;
-  padding: 0.5rem 0;
-  margin: 0;
-  min-width: 240px;
-  z-index: 1001;
-  border-radius: 0 0 5px 5px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease,
-    transform 0.3s ease;
-}
-.nav-item-dropdown:hover .dropdown-menu,
-.dropdown-menu:hover,
-.nav-item-dropdown .dropdown-menu[style*='display: block;'],
-.nav-item-dropdown .nav-link[aria-expanded='true'] + .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.dropdown-menu li {
-  padding: 0;
-}
-.dropdown-link {
-  display: block;
-  padding: 0.75rem 1.5rem;
-  color: var(--color-white);
-  text-decoration: none;
-  font-weight: normal;
-  text-transform: none;
-  white-space: nowrap;
-  transition: color 0.3s ease;
-}
-
-.dropdown-link:hover {
-  color: var(--color-green);
-}
+/* Dropdown styles removed as per previous step, but can be kept if other dropdowns exist/are planned */
 
 /* Stili per Mobile (<= 768px) */
 @media (max-width: 768px) {
-  .desktop-only {
-    display: none !important;
-  }
-  .mobile-only {
-    display: block !important;
-  }
-
-  .header-container {
-    justify-content: space-between;
-  }
-
-  .header-logo-link-mobile:hover {
-    color: var(--color-light-gray); /* MODIFICATO: Hover grigio chiaro */
-  }
-
+  .desktop-only { display: none !important; }
+  .mobile-only { display: block !important; }
+  .header-container { justify-content: space-between; }
+  .header-logo-link-mobile:hover { color: var(--color-light-gray); }
   .mobile-menu-btn {
     display: flex;
     position: relative;
@@ -408,15 +215,8 @@ header {
     cursor: pointer;
     z-index: 1003;
   }
-
-  .mobile-menu-btn i {
-    transition: transform 0.3s ease;
-  }
-
-  .mobile-menu-btn i.fa-times {
-    transform: rotate(180deg);
-  }
-
+  .mobile-menu-btn i { transition: transform 0.3s ease; }
+  .mobile-menu-btn i.fa-times { transform: rotate(180deg); }
   .nav-menu {
     display: none;
     position: fixed;
@@ -434,42 +234,9 @@ header {
     box-sizing: border-box;
     font-size: 1.6rem;
   }
-
-  .nav-menu.active {
-    display: flex;
-    left: 0;
-  }
-
-  .nav-menu .nav-item {
-    margin: 1rem 0;
-    width: 100%;
-  }
-  .nav-menu .nav-link {
-    display: block;
-
-    text-align: center;
-  }
-
-  .nav-menu.active .dropdown-menu {
-    position: static;
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    padding-left: 0;
-    margin-top: 0.5rem;
-    width: 100%;
-    text-align: center;
-  }
-  .nav-menu.active .dropdown-link {
-    padding: 0.75rem 1rem;
-    font-size: 1.4rem;
-    color: var(--color-light-gray);
-  }
-  .nav-menu.active .dropdown-link:hover {
-    color: var(--color-green);
-  }
-
-  /* Ulteriori stili esistenti per il mobile... */
+  .nav-menu.active { display: flex; left: 0; }
+  .nav-menu .nav-item { margin: 1rem 0; width: 100%; }
+  .nav-menu .nav-link { display: block; text-align: center; }
 }
 
 /* Footer */
@@ -484,45 +251,24 @@ footer {
   gap: 3rem;
 }
 .footer-col h3 {
-  /* Titoli nel footer */
   color: var(--color-white);
-  margin-bottom: 1rem; /* Assicura spazio sotto i titoli */
-  /* text-shadow ereditato dal globale per h3 */
+  margin-bottom: 1rem;
 }
-.footer-nav {
-  list-style: none;
-  padding-left: 0;
-} /* Rimuovi padding di default della lista */
-.footer-nav-item {
-  margin-bottom: 0.8rem;
-}
+.footer-nav { list-style: none; padding-left: 0; }
+.footer-nav-item { margin-bottom: 0.8rem; }
 .footer-nav-link {
   color: var(--color-white);
   text-decoration: none;
   transition: color 0.3s ease;
 }
-/* Hover colorati per i link di navigazione del footer */
-.footer-nav-link.footer-nav-link-home:hover {
-  color: var(--color-light-gray);
-}
-.footer-nav-link.footer-nav-link-servizi:hover {
-  color: var(--color-green);
-}
-.footer-nav-link.footer-nav-link-portfolio:hover {
-  color: var(--color-red);
-}
-.footer-nav-link.footer-nav-link-contenuti:hover {
-  color: var(--color-yellow);
-}
-.footer-nav-link.footer-nav-link-contatti:hover {
+.footer-nav-link.footer-nav-link-home:hover { color: var(--color-light-gray); }
+.footer-nav-link.footer-nav-link-portfolio:hover { color: var(--color-red); }
+/* MODIFIED: Changed from footer-nav-link-contatti to footer-nav-link-about, kept the blue hover color */
+.footer-nav-link.footer-nav-link-about:hover {
   color: var(--color-blue);
 }
 
-.social-links {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
+.social-links { display: flex; gap: 1rem; margin-top: 1rem; }
 .social-link {
   display: flex;
   align-items: center;
@@ -535,30 +281,13 @@ footer {
   text-decoration: none;
   transition: all 0.3s ease;
 }
-.social-link:hover {
-  background-color: var(--color-red); /* Hover per social link */
-  transform: translateY(-3px);
-}
-.copyright {
-  margin-top: 3rem;
-  text-align: center;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-}
+.social-link:hover { background-color: var(--color-red); transform: translateY(-3px); }
+.copyright { margin-top: 3rem; text-align: center; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); }
 
 @media (max-width: 576px) {
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .social-links {
-    justify-content: center;
-  }
-  .footer-col h3 {
-    text-align: center;
-  } /* Centra titoli footer su mobile molto piccolo */
-  .footer-nav {
-    text-align: center;
-  } /* Centra link nav footer su mobile molto piccolo */
+  .footer-container { grid-template-columns: 1fr; text-align: center; }
+  .social-links { justify-content: center; }
+  .footer-col h3 { text-align: center; }
+  .footer-nav { text-align: center; }
 }
 </style>

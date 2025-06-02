@@ -246,7 +246,8 @@ section {
 /* Stile per i titoli di sezione (H2) su sfondi chiari */
 .section-title-on-light {
   color: var(--color-dark-gray);
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+
+  text-shadow: none; /* Nessuna ombra per titoli su sfondi chiari */
   text-align: center;
   /* font-size e text-transform ereditati da h2 globale */
 }
