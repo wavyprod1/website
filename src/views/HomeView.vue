@@ -579,6 +579,7 @@ const scrollDown = () => {
   background-color: var(--color-light-gray);
   border-radius: 10px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
 }
 
 .form-grid {
