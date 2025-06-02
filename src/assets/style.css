@@ -205,7 +205,6 @@ section {
 
 /* Page Hero Section (per pagine interne, es. "Chi Sono", "Servizi") */
 .page-hero {
-  margin-top: 4rem;
   background-color: var(--color-dark-gray); /* Sfondo standard per page-hero */
   text-align: center;
 }
@@ -413,7 +412,6 @@ footer {
       /* position, height, display, align-items, overflow sono già in section o qui */
 
       min-height: calc(100svh - 4rem); /* Subtract header height */
-      margin-top: 4rem;
 
       align-items: center;
       align-content: flex-start;

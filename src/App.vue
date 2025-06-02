@@ -133,7 +133,7 @@ watch(
 header {
   align-content: center;
   width: 100%; /* Kept for full-width background */
-  height: rem;
+  height: 4rem; /* Kept for consistent header height */
   background-color: var(--color-dark-gray);
   transition: background-color 0.3s ease;
 }
