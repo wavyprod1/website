@@ -41,8 +41,8 @@ const bookingFormSuccessMessage = ref('')
 const bookingFormErrorMessage = ref('')
 
 const serviceOptions = [
-  { value: 'prima-consulenza', text: 'Prima Consulenza GRATUITA' },
   { value: '', text: 'Seleziona un servizio...' },
+  { value: 'prima-consulenza', text: 'Prima Consulenza GRATUITA' },
   { value: 'produzione-completa', text: 'Produzione Musicale Completa' },
   { value: 'registrazione', text: 'Registrazione Vocale' },
   { value: 'mix-master', text: 'Mix & Master' },
