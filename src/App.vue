@@ -131,11 +131,9 @@ watch(
 <style scoped>
 /* Header & Navigation */
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
+  align-content: center;
+  width: 100%; /* Kept for full-width background */
+  height: rem;
   background-color: var(--color-dark-gray);
   transition: background-color 0.3s ease;
 }
@@ -144,9 +142,9 @@ header {
   justify-content: center;
   display: flex;
   align-items: center;
-  height: 2rem;
-  position: relative;
-  z-index: 1002;
+  height: rem;
+  position: relative; /* Kept for layout, e.g., positioning of mobile-menu-btn */
+
 }
 
 .header-logo-link {
@@ -158,19 +156,19 @@ header {
   text-transform: uppercase;
   padding-top: 1px;
   transition: color 0.3s ease;
-  position: relative;
-  z-index: 1003;
+  position: relative; /* Was already relative */
+  z-index: 1003; /* Was 1003. Button also 1003. This is fine. */
 }
 
 .header-logo-link:hover {
   color: var(--color-light-gray);
 }
 
-.nav-menu {
+.nav-menu { /* Desktop styles */
   display: flex;
   list-style: none;
   margin-left: auto;
-  z-index: 1001;
+  /* z-index: 1001; */ /* z-index on non-positioned element has no effect, removed for clarity */
 }
 .nav-item {
   margin-left: 2rem;
@@ -192,12 +190,9 @@ header {
 .nav-link.nav-link-portfolio:hover {
   color: var(--color-red);
 }
-/* MODIFIED: Changed from nav-link-contatti to nav-link-about, kept the blue hover color */
 .nav-link.nav-link-about:hover {
   color: var(--color-blue);
 }
-
-/* Dropdown styles removed as per previous step, but can be kept if other dropdowns exist/are planned */
 
 /* Stili per Mobile (<= 768px) */
 @media (max-width: 768px) {
@@ -205,23 +200,26 @@ header {
   .mobile-only { display: block !important; }
   .header-container { justify-content: space-between; }
   .header-logo-link-mobile:hover { color: var(--color-light-gray); }
+
   .mobile-menu-btn {
     display: flex;
-    position: relative;
+    position: relative; /* Important for z-index to work correctly */
     background: none;
     border: none;
     color: var(--color-white);
     font-size: 1.3rem;
     cursor: pointer;
-    z-index: 1003;
+    z-index: 1003; /* Ensures button is above the mobile menu overlay */
   }
   .mobile-menu-btn i { transition: transform 0.3s ease; }
   .mobile-menu-btn i.fa-times { transform: rotate(180deg); }
-  .nav-menu {
-    display: none;
+
+  .nav-menu { /* Mobile menu base styles */
+    /* display: none; */ /* REMOVED: Now controlled by left position and visibility for transition */
+    display: flex; /* Set to flex for layout properties to apply */
     position: fixed;
     top: 0;
-    left: -100%;
+    left: -100%; /* Start off-screen for slide-in animation */
     width: 100%;
     height: 100vh;
     background-color: var(--color-dark-gray);
@@ -229,12 +227,20 @@ header {
     align-items: center;
     justify-content: flex-start;
     padding-top: 4rem;
-    z-index: 1001;
-    overflow-y: auto;
+    z-index: 1001; /* Below the menu button (1003) but above other page content */
+    overflow-y: auto; /* Allows the menu itself to scroll if content overflows */
     box-sizing: border-box;
     font-size: 1.6rem;
+    transition: left 0.3s ease-in-out, visibility 0.3s ease-in-out; /* ADDED transition for slide & visibility */
+    visibility: hidden; /* ADDED: Start hidden, to be revealed by .active */
   }
-  .nav-menu.active { display: flex; left: 0; }
+
+  .nav-menu.active {
+    /* display: flex; */ /* REMOVED: display:flex is now in base .nav-menu mobile rule */
+    left: 0; /* Slide into view */
+    visibility: visible; /* ADDED: Make visible */
+  }
+
   .nav-menu .nav-item { margin: 1rem 0; width: 100%; }
   .nav-menu .nav-link { display: block; text-align: center; }
 }
@@ -263,7 +269,6 @@ footer {
 }
 .footer-nav-link.footer-nav-link-home:hover { color: var(--color-light-gray); }
 .footer-nav-link.footer-nav-link-portfolio:hover { color: var(--color-red); }
-/* MODIFIED: Changed from footer-nav-link-contatti to footer-nav-link-about, kept the blue hover color */
 .footer-nav-link.footer-nav-link-about:hover {
   color: var(--color-blue);
 }

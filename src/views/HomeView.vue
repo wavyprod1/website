@@ -175,7 +175,7 @@ const scrollDown = () => {
     <!-- REVIEWS SECTION -->
     <section class="reviews section-bg-light">
       <div class="container">
-        <h2 class="section-title">COSA DICONO GLI ARTISTI DI ME</h2>
+        <h2 class="section-title">FEEDBACK</h2>
         <div class="google-link-container">
           <a href="https://g.co/kgs/yNMLUtt" target="_blank" class="google-reviews-link">
             Visualizza tutte le recensioni su Google
@@ -288,8 +288,7 @@ const scrollDown = () => {
 <style scoped>
 /* Stili non modificati */
 .main-hero-wrapper {
-  width: 100%;
-  height: 100%;
+  width: 100%;/* Modern browsers */
   display: grid;
 }
 
@@ -525,7 +524,7 @@ const scrollDown = () => {
 
 .booking-form-section.section-bg-white {
   background-color: var(--color-white);
-  padding: 3rem 0;
+
 }
 
 .booking-title-container {
@@ -578,7 +577,6 @@ const scrollDown = () => {
   max-width: 800px;
   margin: 0 auto;
   background-color: var(--color-light-gray);
-  padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
