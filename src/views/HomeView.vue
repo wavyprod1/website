@@ -87,7 +87,7 @@ const handleSubmitBooking = (event) => {
   body += `\n\nMessaggio:\n${bookingForm.value.message}\n\n`
   body += `Grazie,\n${bookingForm.value.name}`
 
-  const mailtoLink = `mailto:wavywork1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+  const mailtoLink = `mailto:produzioni@eliapirrello.it?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 
   const hiddenLink = document.createElement('a')
   hiddenLink.href = mailtoLink
@@ -96,7 +96,7 @@ const handleSubmitBooking = (event) => {
   hiddenLink.click()
   document.body.removeChild(hiddenLink)
 
-  bookingFormSuccessMessage.value = 'Grazie per la tua richiesta! Se il tuo client di posta non si è aperto, copia e invia manualmente i dettagli a wavywork1@gmail.com.'
+  bookingFormSuccessMessage.value = 'Grazie per la tua richiesta! Se il tuo client di posta non si è aperto, copia e invia manualmente i dettagli a produzioni@eliapirrello.it.'
 }
 
 const scrollDown = () => {

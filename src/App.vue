@@ -80,10 +80,10 @@ watch(
           <h3>ELIA PIRRELLO</h3>
           <p>Produttore Musicale a Milano</p>
           <div class="social-links">
-            <a href="https://www.instagram.com/wavyprod1/" class="social-link" target="_blank">
+            <a href="https://www.instagram.com/elia.pirrello/" class="social-link" target="_blank">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="mailto:wavywork1@gmail.com" class="social-link">
+            <a href="mailto:produzioni@eliapirrello.it" class="social-link">
               <i class="far fa-envelope"></i>
             </a>
           </div>
